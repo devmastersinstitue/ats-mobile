@@ -2,14 +2,11 @@ package com.example.demo.service;
 
 import com.example.demo.Transformer.StudentTransformer;
 import com.example.demo.domain.Address;
-import com.example.demo.domain.Book;
 import com.example.demo.domain.Human;
 import com.example.demo.domain.Student;
 import com.example.demo.model.StudentModel;
-import com.example.demo.repository.BookRepository;
 import com.example.demo.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.UUIDEditor;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -19,15 +16,13 @@ import java.util.UUID;
 @Service
 public class StudentService {
     private final StudentRepository studentRepository;
+    StudentTransformer studentTransformer = new StudentTransformer();
 
     @Autowired
     public StudentService(StudentRepository studentRepository) {
         this.studentRepository = studentRepository;
     }
-
-    StudentTransformer studentTransformer = new StudentTransformer();
 //    BookService bookService = new BookService();
-
 
     public List<Student> createStudentList() {
         List<Student> students = new ArrayList<>();

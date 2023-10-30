@@ -4,10 +4,9 @@ import com.example.demo.Transformer.StudentTransformer;
 import com.example.demo.domain.Address;
 import com.example.demo.domain.Book;
 import com.example.demo.domain.Human;
-import com.example.demo.domain.Student;
 import com.example.demo.model.BookModel;
 import com.example.demo.repository.BookRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -16,19 +15,20 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
+@RequiredArgsConstructor
 public class BookService {
 
-    BookRepository bookRepository;
-    @Autowired
-    public BookService(BookRepository bookRepository) {
-      this.bookRepository = bookRepository;
+    private final BookRepository bookRepository;
+//    private final StudentTransformer studentTransformer;
+
+    public List<Book> getAllBooks() {
+        return bookRepository.findAll();
+
     }
 
-    StudentTransformer studentTransformer = new StudentTransformer();
-
-    public List<Book> createBookList() {
+    public void createBookList() {
         List<Book> books = new ArrayList<>();
-        books.add(new Book(UUID.randomUUID(),"English", "White", 500, new Human("Danish", new Address("Pakistan", "Bwp", "12"))));
+        books.add(new Book(UUID.randomUUID(), "English", "White", 500, new Human("Danish", new Address("Pakistan", "Bwp", "12"))));
         books.add(new Book(UUID.randomUUID(), "Urdu", "Gray", 1000, new Human("ALi", new Address("Pak", "Ape", "13"))));
         books.add(new Book(UUID.randomUUID(), "Math", "Skin", 2000, new Human("Alishba", new Address("Ind", "Ape", "11"))));
         books.add(new Book(UUID.randomUUID(), "Urdu", "White", 1000, new Human("Alishba", new Address("Ind", "Ape", "11"))));
@@ -48,7 +48,7 @@ public class BookService {
         books.add(new Book(UUID.randomUUID(), "Physics", "Black", 200, new Human("Ali", new Address("Ind", "Bahawalpur", "9"))));
         books.add(new Book(UUID.randomUUID(), "English", "Gray", 800, new Human("Alina", new Address("Pakistan", "Ahmed pur East", "9"))));
         books.add(new Book(UUID.randomUUID(), "Math", "Skin", 1000, new Human("Danish", new Address("Ind", "Bahawalpur", "9"))));
-        return books;
+        bookRepository.saveAll(books);
     }
 
     public List<Book> getBookListWithPrice(List<Book> books, int price) {
@@ -141,7 +141,7 @@ public class BookService {
         return bookList;
     }
 
-//    public String getStudentListWithBookName(List<Book> bookLists, List<Student> students, String bookName, String color) {
+    //    public String getStudentListWithBookName(List<Book> bookLists, List<Student> students, String bookName, String color) {
 //        for (Book book : bookLists){
 //            if (book.getName().equals(bookName) && book.getColor().equals(color)){
 //                String studentName = "";
@@ -158,37 +158,34 @@ public class BookService {
 //        return "Book cannot exists in our System.";
 //    }
     public double getStudentAverage(List<Book> books) {
-        double totalPrice=0;
-        for (Book book : books){
-          totalPrice += book.getPrice();
+        double totalPrice = 0;
+        for (Book book : books) {
+            totalPrice += book.getPrice();
         }
-        return totalPrice/books.size();
+        return totalPrice / books.size();
     }
 
     public List<BookModel> getBooksInfoAuthorWise(List<Book> books) {
         List<BookModel> bookModels = new ArrayList<>();
-        for(Book book : books){
+        for (Book book : books) {
             boolean match = false;
-            for(BookModel bookModel : bookModels){
-                if(bookModel.getAuthorName().equals(book.getAuthor().getName())){
+            for (BookModel bookModel : bookModels) {
+                if (bookModel.getAuthorName().equals(book.getAuthor().getName())) {
                     bookModel.getBookNames().add(book.getName());
                     match = true;
                 }
             }
-            if(match == false){
-                bookModels.add(new BookModel(book.getAuthor().getName(), new LinkedList<String>() {{add(book.getName());}}));
+            if (match == false) {
+                bookModels.add(new BookModel(book.getAuthor().getName(), new LinkedList<String>() {{
+                    add(book.getName());
+                }}));
             }
         }
         return bookModels;
     }
 
-    public List<Book> getAllBooks() {
-        return bookRepository.findAll();
-
-    }
-
     public void save(List<Book> books) {
-       bookRepository.saveAll(books);
+        bookRepository.saveAll(books);
     }
 }
 
