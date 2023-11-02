@@ -9,5 +9,7 @@ import java.util.UUID;
 public interface StudentRepository extends MongoRepository<Student, UUID> {
 
     List<Student> findAllByHuman_Age(int age);
+
+    List<Student> findAllByBooksIds(UUID id);
 }
 
