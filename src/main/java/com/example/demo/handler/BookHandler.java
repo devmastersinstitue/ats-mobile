@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.UUID;
 
 @Component
 @RequiredArgsConstructor
@@ -59,5 +60,10 @@ public class BookHandler {
 
     public String getStudentNameListWithBookName(String bookName, String color) {
         return bookService.getStudentNameListWithBookName(bookName,color);
+    }
+
+    public void createBook(Book book) {
+        book.setId(UUID.randomUUID());
+        bookService.createBook(book);
     }
 }

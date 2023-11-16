@@ -11,5 +11,7 @@ public interface StudentRepository extends MongoRepository<Student, UUID> {
     List<Student> findAllByHuman_Age(int age);
 
     List<Student> findAllByBooksIds(UUID id);
+
+    List<Student> findByHuman_Name(String name);
 }
 

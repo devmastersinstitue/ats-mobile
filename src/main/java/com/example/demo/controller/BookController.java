@@ -3,10 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.domain.Book;
 import com.example.demo.handler.BookHandler;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,6 +16,12 @@ public class BookController {
     @GetMapping("/detail")
     public List<Book> getAllBooks() {
         return bookHandler.getAllBooks();
+    }
+
+    @PostMapping("/create")
+    public String createBook(@RequestBody Book book){
+        bookHandler.createBook(book);
+        return "Book Created Successfully.";
     }
 
     @GetMapping("/create")

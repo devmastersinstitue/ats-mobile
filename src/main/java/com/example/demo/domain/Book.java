@@ -42,4 +42,24 @@ public class Book {
     public Human getAuthor() {
         return author;
     }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public void setAuthor(Human author) {
+        this.author = author;
+    }
 }

@@ -202,6 +202,10 @@ public class BookService {
         List<Student> students = studentRepository.findAllByBooksIds(book.getId());
         return null;
     }
+
+    public void createBook(Book book) {
+        bookRepository.save(book);
+    }
 }
 
 
