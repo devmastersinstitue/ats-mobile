@@ -6,10 +6,15 @@ import React, { useState, useEffect } from "react";
 function UserInfo(props){
   return (
   <div className='flex flex-row border-blue-500 border-2 justify-between m-10 py-5'>
-    <p>Name : {props.name}</p>
-    <p>Father Name : {props.fatherName}</p>
-    <p>Age : {props.age}</p>
-    <p>Email : {props.email}</p>
+    <div className='pl-20'>
+      <p><span className='text-xl text-red-500'>Name </span> : {props.name}</p><br/>
+      <p><span className='text-xl text-red-500'>Father Name</span> : {props.fatherName}</p>
+    </div>
+    <div className='mr-20'>
+      <p><span className='text-xl text-red-500'>Age</span> : {props.age}</p><br/>
+      <p><span className='text-xl text-red-500'>Email</span> : {props.email}</p>
+    </div>
+    
   </div>
   );
 }
@@ -18,6 +23,7 @@ export default function App(props) {
     return (
     <div >
       <UserInfo name ="KASHMALA" fatherName ="Aziz-ur-Rehman" age ="18" email ="kkhankkhan009@gmail.com"/>
+      <UserInfo name ="Mala" fatherName ="Ali" age ="23" email ="malakhan009@gmail.com"/>
       <UserInfo name ="Mala" fatherName ="Ali" age ="23" email ="malakhan009@gmail.com"/>
     </div>
   );
