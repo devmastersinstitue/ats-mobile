@@ -13,6 +13,7 @@ import java.util.List;
 public class BookController {
     private final BookHandler bookHandler;
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/detail")
     public List<Book> getAllBooks() {
         return bookHandler.getAllBooks();
