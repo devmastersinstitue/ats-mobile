@@ -3,7 +3,7 @@ import './App.css';
 import React,{ useState, useEffect } from 'react';
 import Student from './Component/Student.jsx';
 import Book from './Component/Book.jsx';
-
+import School from './Component/School.jsx';
 
 export default function App() {
   const [books, setBooks] = useState([]);
@@ -13,7 +13,6 @@ export default function App() {
           try {
               // Make the GET request using the fetch method
               const response = await fetch('http://localhost:8080/books/detail');
-
               // Check if the response is successful (status code 200-299)
               if (!response.ok) {
                   throw new Error(`HTTP error! Status: ${response.status}`);
@@ -34,7 +33,7 @@ export default function App() {
     <div>
         <Student books={books}/>
         <Book name="chemistry"/>
-
+        <School/>
     </div>
   );
 }
