@@ -5,6 +5,7 @@ import Student from './Component/Student.jsx';
 import Book from './Component/Book.jsx';
 import School from './Component/School.jsx';
 import Teachers from './Component/Teachers.jsx';
+import Chairs from './Component/Chairs.jsx';
 
 export default function App() {
   const [books, setBooks] = useState([]);
@@ -36,6 +37,7 @@ export default function App() {
         <Book name="chemistry"/>
         <School/>
         <Teachers/>
+        <Chairs name="beautiful"/>
     </div>
   );
 }
