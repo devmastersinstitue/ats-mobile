@@ -4,6 +4,7 @@ import React,{ useState, useEffect } from 'react';
 import Student from './Component/Student.jsx';
 import Book from './Component/Book.jsx';
 import School from './Component/School.jsx';
+import Teachers from './Component/Teachers.jsx';
 
 export default function App() {
   const [books, setBooks] = useState([]);
@@ -34,6 +35,7 @@ export default function App() {
         <Student books={books}/>
         <Book name="chemistry"/>
         <School/>
+        <Teachers/>
     </div>
   );
 }
