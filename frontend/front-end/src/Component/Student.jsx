@@ -5,7 +5,7 @@ class Student extends React.Component {
        
         return (
             <div>
-                <div className=' bg-red-400 mx-40 my-10 p-10 text-center' >
+                <div className=' bg-red-400 mx-40 my-10 p-10 text-center text-green-600' >
                     <h2>Hi, i am a student</h2>
                 </div>
                 <div>

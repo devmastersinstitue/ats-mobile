@@ -51,7 +51,7 @@ export default function App() {
         }
     };
 
-    // Call the fetchData function when the component mounts
+        // Call the fetchData function when the component mounts
     fetchData();
 }, []);
   return (
