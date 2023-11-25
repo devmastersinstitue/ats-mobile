@@ -10,17 +10,17 @@ class Student extends React.Component {
                 </div>
                 <div>
                     <div className='flex flex-row justify-between px-40'>
-                        <div>Book Name</div>
-                        <div>Color</div>
-                        <div>Price</div>
-                        <div>Author</div>
+                        <div className='w-20'>Name</div>
+                        <div className='w-40'>CNIC</div>
+                        <div className='w-40'>Contact Number</div>
+                        <div className='w-20'>Fees</div>
                     </div>
-                    {this.props.books.map((book) => (
+                    {this.props.students.map((student) => (
                         <div className='flex flex-row justify-between px-40 border'>
-                            <div>{book.name}</div>
-                            <div>{book.color}</div>
-                            <div>{book.price}</div>
-                            <div>{book.author.name}</div>
+                            <div className='w-20'>{student.human.name}</div>
+                            <div className='w-40'>{student.human.cnic}</div>
+                            <div className='w-40'>{student.human.contactNo}</div>
+                            <div className='w-20'>{student.fees}</div>
                         </div>
                     ))}
                 </div>
