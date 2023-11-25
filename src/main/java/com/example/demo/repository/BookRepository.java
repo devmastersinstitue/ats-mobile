@@ -21,5 +21,6 @@ public interface BookRepository extends MongoRepository<Book, UUID> {
            List<Book> findAllByAuthor_NameAndAndAuthor_Address_Country(String name,String country);
 
            Book findByNameAndColor(String bookName, String color);
+
 }
 

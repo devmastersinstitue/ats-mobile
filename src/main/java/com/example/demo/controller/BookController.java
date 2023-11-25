@@ -10,6 +10,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(path = "books")
+
 public class BookController {
     private final BookHandler bookHandler;
 
@@ -75,6 +76,15 @@ public class BookController {
        return bookHandler.getBookListWithAuthorNameAndCountry(name,country);
     }
 
+    @GetMapping("/author/names")
+    public List<String> getAllAuthorNames(){
+        return bookHandler.getAllAuthorNames();
+    }
+
+    @GetMapping("/author/address")
+    public List<String> getAuthorAddress(@PathVariable String name){
+        return bookHandler.getAuthorAddress(name);
+    }
 //    @GetMapping("/{bookName}/color/{color}")
 //    public String getStudentNameListWithBookName(@PathVariable String bookName, @PathVariable String color) {
 //      return bookHandler.getStudentNameListWithBookName(bookName,color);

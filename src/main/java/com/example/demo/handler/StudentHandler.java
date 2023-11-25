@@ -33,6 +33,14 @@ public class StudentHandler {
         return studentModels;
     }
 
+    public List<Student> createStudentList() {
+        return studentService.createStudentList();
+    }
+
+    public void save(List<Student> students) {
+        studentService.save(students);
+    }
+
 //    public void createStudentList() {
 //        studentService.createStudentList();
 //    }

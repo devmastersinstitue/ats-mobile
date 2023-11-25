@@ -52,14 +52,13 @@ public class BookService {
     }
 
     public List<Book> getBookListWithPrice(int price) {
-       return bookRepository.findAllByPrice(price);
+        return bookRepository.findAllByPrice(price);
     }
 
     public List<Book> getBookListWithName(String name) {
         return bookRepository.findAllByName(name);
 
     }
-
 
 
 //    public List<Book> getBookListWithCountry(List<Book> books, String country) {
@@ -170,7 +169,7 @@ public class BookService {
     }
 
     public List<Book> getBookListWithAuthorName(String name) {
-       return bookRepository.findAllByAuthor_Name(name);
+        return bookRepository.findAllByAuthor_Name(name);
     }
 
     public List<Book> getBookListWithCountry(String country) {
@@ -186,7 +185,7 @@ public class BookService {
     }
 
     public List<Book> getBookListCityNameAndHouseNumber(String cityName, String houseNo) {
-        return bookRepository.findAllByAuthor_Address_CityAndAuthor_Address_HouseNo(houseNo,cityName);
+        return bookRepository.findAllByAuthor_Address_CityAndAuthor_Address_HouseNo(houseNo, cityName);
     }
 
     public List<Book> getBookListWithPriceAndName(int price, String name) {
@@ -194,7 +193,7 @@ public class BookService {
     }
 
     public List<Book> getBookListWithAuthorNameAndCountry(String name, String country) {
-        return bookRepository.findAllByAuthor_NameAndAndAuthor_Address_Country(name,country);
+        return bookRepository.findAllByAuthor_NameAndAndAuthor_Address_Country(name, country);
     }
 
     public String getStudentNameListWithBookName(String bookName, String color) {
@@ -205,6 +204,28 @@ public class BookService {
 
     public void createBook(Book book) {
         bookRepository.save(book);
+    }
+
+    public List<String> getAllAuthorNames() {
+        List<Book> books = bookRepository.findAll();
+        List<String> authorNames = new ArrayList<>();
+        for (Book book : books) {
+            String authorName = book.getAuthor().getName();
+            if (!authorNames.contains(authorName)) {
+                authorNames.add(authorName);
+            }
+        }
+        return authorNames;
+    }
+
+    public List<String> getAuthorAddress(String name) {
+        List<Book> books = bookRepository.findAll();
+        List<String> authorAddress = new ArrayList<>();
+        for (Book book : books) {
+            book.getAuthor().getAddress().getCompleteAddress();
+
+        }
+        return authorAddress;
     }
 }
 

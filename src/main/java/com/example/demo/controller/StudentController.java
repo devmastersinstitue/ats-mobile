@@ -19,10 +19,12 @@ public class StudentController {
         this.studentHandler = studentHandler;
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/list")
     public List<Student> students() {
         return studentHandler.getAllStudents();
     }
+
     @PostMapping("/create")
     public String createStudent(@RequestBody Student student){
         studentHandler.createStudent(student);
@@ -40,11 +42,11 @@ public class StudentController {
     }
 
 
-//    @GetMapping("/create")
-//    public void createStudents(){
-//        List<Student> students = studentService.createStudentList();
-////        studentService.save(students);
-//    }
+    @GetMapping("/create")
+    public void createStudents(){
+        List<Student> students = studentHandler.createStudentList();
+        studentHandler.save(students);
+    }
 
 //    @GetMapping("/list/{age}")
 //    public List<StudentModel> getStudentListAgeGreaterThenTwenty(@PathVariable int age){

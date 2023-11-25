@@ -66,4 +66,12 @@ public class BookHandler {
         book.setId(UUID.randomUUID());
         bookService.createBook(book);
     }
+
+    public List<String> getAllAuthorNames() {
+        return bookService.getAllAuthorNames();
+    }
+
+    public List<String> getAuthorAddress(String name) {
+        return bookService.getAuthorAddress(name);
+    }
 }
