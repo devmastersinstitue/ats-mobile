@@ -6,7 +6,7 @@ import Book from './Component/Book.jsx';
 import School from './Component/School.jsx';
 import Teachers from './Component/Teachers.jsx';
 import Chairs from './Component/Chairs.jsx';
-
+import StudentCreate from './Component/StudentCreate.jsx';
 export default function App() {
   const [books, setBooks] = useState([]);
   const [students, setStudents] = useState([]);
@@ -56,11 +56,12 @@ export default function App() {
 }, []);
   return (
     <div>
-        <Student students = {students}/>
+        {/* <Student students = {students}/>
         <Book books={books}/>
         <School/>
         <Teachers/>
-        <Chairs name="beautiful"/>
+        <Chairs name="beautiful"/> */}
+        <StudentCreate/>
     </div>
   );
 }
