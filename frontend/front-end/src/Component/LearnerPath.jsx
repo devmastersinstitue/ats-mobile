@@ -1,6 +1,7 @@
-import { formToJSON } from "axios";
 import React, { useState } from "react";
-function StudentCreate() {
+// import "./LearnerPathForm.css";
+
+const LearnerPath = () => {
   const [formData, setFormData] = useState({
     fees: "",
     name: "",
@@ -24,126 +25,50 @@ function StudentCreate() {
     }));
   };
 
-  const handleFormSubmit = async (e) => {
-    e.preventDefault();
-    const bodyData = {
-      fees: formData.fees,
-      human: {
-        name: formData.name,
-        address: {
-          country: formData.country,
-          city: formData.city,
-          houseNo: formData.houseNo,
-        },
-        gender: formData.gender,
-        age: formData.age,
-        cnic: formData.cnic,
-        contactNo: formData.contactNo,
-      },
-    };
-    console.log(bodyData);
-    try {
-      const response = await fetch("https://localhost:8080/student/create", {
-        method: "POST",
-        body: {bodyData},
-      });
-
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-
-      // Handle the response data
-      const responseData = await response.json();
-      console.log("Response:", responseData);
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
-  // Handle form submission logic here
-
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-md shadow-md">
-      <h2 className="text-2xl font-semibold mb-6">Student Create Form</h2>
-      <form onSubmit={handleFormSubmit}>
-        <div className="mb-4">
+    <div>
+      <div className="flex flex-row p-3 mt-5 justify-between items-center">
+        <span className="inline-grid">
+          {/* <ArrowLeftIcon className="hover:cursor-pointer h-5 w-5 text-black-500 " /> */}
+        </span>
+        <label className="pl-[70px] mt-0 text-2xl font-bold has-text-centered">
+          Add New Learner
+        </label>
+        <img className=" h-[45px] w-auto" src="" alt="logo" />
+      </div>
+      <div className="grid grid-cols-2 w-max ml-[23%]">
+        <div className="grid grid-cols-1 w-max mr-10 p-3 z-0 ">
+        <form className="">
+        <div className="mb-4  ">
           <label
-            htmlFor="name"
-            className="block text-gray-600 text-sm font-medium mb-2"
+            htmlFor="Power School Number"
+            className="block text-gray-600 text-sm font-medium mb-2 "
           >
-            Name
+           Power School Number
           </label>
           <input
             type="text"
-            id="name"
-            name="name"
+            id="Power School Number"
+            name="Power School Number"
             value={formData.name}
             onChange={handleChange}
-            className="w-full p-2 border rounded-md"
-            required
+            className=" p-2 border rounded-md"
+           required
           />
         </div>
-        <div className="mb-4">
+       
+        
+        <div className="mb-4 ">
           <label
-            htmlFor="cnic"
+            htmlFor="UIC"
             className="block text-gray-600 text-sm font-medium mb-2"
           >
-            CNIC
+            UIC
           </label>
           <input
             type="text"
-            id="cnic"
-            name="cnic"
-            value={formData.cnic}
-            onChange={handleChange}
-            className="w-full p-2 border rounded-md"
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <label
-            htmlFor="age"
-            className="block text-gray-600 text-sm font-medium mb-2"
-          >
-            AGE
-          </label>
-          <input
-            type="age"
-            id="age"
-            name="age"
-            value={formData.age}
-            onChange={handleChange}
-            className="w-full p-2 border rounded-md"
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <label
-            htmlFor="gender"
-            className="block text-gray-600 text-sm font-medium mb-2"
-          >
-            Gender
-          </label>
-          <input
-            type="text"
-            id="gender"
-            name="gender"
-            value={formData.gender}
-            onChange={handleChange}
-            className="w-full p-2 border rounded-md"
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <label
-            htmlFor="contactNo"
-            className="block text-gray-600 text-sm font-medium mb-2"
-          >
-            Contact No
-          </label>
-          <input
-            type="text"
-            id="contactNo"
-            name="contactNo"
+            id="UIC"
+            name="UIC"
             value={formData.contactNo}
             onChange={handleChange}
             className="w-full p-2 border rounded-md"
@@ -152,67 +77,128 @@ function StudentCreate() {
         </div>
         <div className="mb-4">
           <label
-            htmlFor="country"
+            htmlFor="First Name"
             className="block text-gray-600 text-sm font-medium mb-2"
           >
-            Country
+            First Name
           </label>
           <input
             type="text"
-            id="country"
-            name="country"
+            id="cFirst Namey"
+            name="First Namey"
             value={formData.country}
             onChange={handleChange}
             className="w-full p-2 border rounded-md"
             required
           />
         </div>
+        
+        
         <div className="mb-4">
           <label
-            htmlFor="city"
+            htmlFor="Last Name"
             className="block text-gray-600 text-sm font-medium mb-2"
           >
-            City
+            Last Name
           </label>
           <input
             type="text"
-            id="city"
-            name="city"
-            value={formData.city}
-            onChange={handleChange}
-            className="w-full p-2 border rounded-md"
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <label
-            htmlFor="houseNo"
-            className="block text-gray-600 text-sm font-medium mb-2"
-          >
-            House No
-          </label>
-          <input
-            type="text"
-            id="houseNo"
-            name="houseNo"
-            value={formData.houseNo}
-            onChange={handleChange}
-            className="w-full p-2 border rounded-md"
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <label
-            htmlFor="fees"
-            className="block text-gray-600 text-sm font-medium mb-2"
-          >
-            Fees
-          </label>
-          <input
-            type="text"
-            id="fees"
-            name="fees"
+            id="Last Name"
+            name="Last Name"
             value={formData.fees}
+            onChange={handleChange}
+            className="w-full p-2 border rounded-md"
+            required
+          />
+        </div>
+        <div className="mb-4">
+          <label
+            htmlFor="Grade level"
+            className="block text-gray-600 text-sm font-medium mb-2"
+          >
+            Grade level
+          </label>
+          <input
+            type="text"
+            id="Grade level"
+            name="Grade level"
+            value={formData.fees}
+            onChange={handleChange}
+            className="w-full p-2 border rounded-md"
+            required
+          />
+        </div>
+        
+      </form>
+        </div>
+        <div className="grid grid-cols-1 w-max mr-10 p-3 z-0">
+        <form >
+        <div className="mb-4">
+          <label
+            htmlFor="School Name"
+            className="block text-gray-600 text-sm font-medium mb-2"
+          >
+           School Name 
+          </label>
+          <input
+            type="text"
+            id="School Name"
+            name="School Name"
+            value={formData.name}
+            onChange={handleChange}
+            className="w-full p-2 border rounded-md"
+            required
+          />
+        </div>
+        <div className="mb-4">
+          <label
+            htmlFor="Activate Date"
+            className="block text-gray-600 text-sm font-medium mb-2"
+          >
+            Activate Date
+          </label>
+          <input
+            type="date"
+            id="Activate Date"
+            name="Activate Date"
+            value={formData.cnic}
+            onChange={handleChange}
+            className="w-full p-2 border rounded-md"
+            required
+          />
+        </div>
+        
+        <div className="mb-4">
+          <label
+            htmlFor="Learner Paths"
+            className="block text-gray-600 text-sm font-medium mb-2"
+          >
+            Learner Paths
+          </label>
+          <input
+            type="text"
+            id="Learner Paths"
+            name="Learner Paths"
+            placeholder="Choose a learner's path"
+            value={formData.gender}
+            onChange={handleChange}
+            className="w-full p-2 border rounded-md"
+            required
+          />
+        </div>
+        
+        <div className="mb-4">
+          <label
+            htmlFor="Cohort year"
+            className="block text-gray-600 text-sm font-medium mb-2"
+          >
+           Cohort year
+          </label>
+          <input
+            type="text"
+            id="Cohort year"
+            name="Cohort year"
+            value={formData.city}
             onChange={handleChange}
             className="w-full p-2 border rounded-md"
             required
@@ -220,12 +206,21 @@ function StudentCreate() {
         </div>
         <button
           type="submit"
-          className="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 transition duration-300"
+          className="bg-green-700 text-white p-2 m-3  rounded-md hover:bg-blue-600 transition duration-300"
         >
-          Submit
+          Reset
+        </button>
+        <button
+          type="submit"
+          className="bg-green-700 text-white p-2 m-3 rounded-md hover:bg-blue-600 transition duration-300"
+        >
+          Add new Learner
         </button>
       </form>
+        </div>
+      </div>
     </div>
   );
-}
-export default StudentCreate;
+};
+
+export default LearnerPath;
