@@ -7,7 +7,6 @@ import School from './Component/School.jsx';
 import Teachers from './Component/Teachers.jsx';
 import Chairs from './Component/Chairs.jsx';
 import StudentCreate from './Component/StudentCreate.jsx';
-
 import LearnerPath from './Component/LearnerPath.jsx';
 export default function App() {
   const [books, setBooks] = useState([]);
@@ -65,6 +64,7 @@ export default function App() {
         <Chairs name="beautiful"/> */}
         {/* <StudentCreate/> */}
         <LearnerPath/>
+        
     </div>
   );
 }
