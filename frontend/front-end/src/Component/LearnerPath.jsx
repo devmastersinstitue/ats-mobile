@@ -176,16 +176,17 @@ const LearnerPath = () => {
           >
             Learner Paths
           </label>
-          <input
-            type="text"
-            id="Learner Paths"
-            name="Learner Paths"
-            placeholder="Choose a learner's path"
-            value={formData.gender}
-            onChange={handleChange}
-            className="w-80 p-2 border rounded-md  bg-gray-100"
-            required
-          />
+          <select
+            id="Learner's Paths"
+            disabled={true}
+           className="w-80 p-2 border rounded-md bg-gray-200"
+          >
+            <option selected>Choose a Learners's Paths</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
         </div>
         
         <div className="mb-4">
@@ -210,7 +211,7 @@ const LearnerPath = () => {
     </div>
     <div className="-my-11">
     <label
-  class="inline-block pl-[0.15rem] hover:cursor-pointer"
+  className="inline-block pl-[0.15rem] hover:cursor-pointer hover:to-blue-700"
   for="flexSwitchCheckDefault"
   >Skip Grade Sync with Power School</label>
 
