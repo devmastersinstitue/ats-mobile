@@ -4,10 +4,10 @@ const Courses = () => {
   return (
     <>
       <div>
-        <img className="my-10 w-56 h-30 mx-auto" src="logo01.png" alt="logo" />
+        <img className="my-10 w-52 h-20 mx-auto" src="logo01.png" alt="logo" />
       </div>
       <div className="mx-20">
-        <div className="flex flex-row gap-x-9 ml-96 -mb-7 pl-56">
+        <div className="flex flex-row gap-x-9  justify-end ">
           <input
             type="text"
             id="Manage Courses"

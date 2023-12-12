@@ -1,17 +1,19 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 // import './App.css';
 // import React,{ useState, useEffect } from 'react';
-import Student from './Component/Student.jsx';
-import Book from './Component/Book.jsx';
-import School from './Component/School.jsx';
-import Teachers from './Component/Teachers.jsx';
+// import Student from './Component/Student.jsx';
+// import Book from './Component/Book.jsx';
+// import School from './Component/School.jsx';
+// import Teachers from './Component/Teachers.jsx';
 // import Chairs from './Component/Chairs.jsx';
-import StudentCreate from './Component/StudentCreate.jsx';
-import LearnerPath from './Component/LearnerPath.jsx';
-import FormsData from './Component/FormsData.jsx';
+// import StudentCreate from './Component/StudentCreate.jsx';
+// import LearnerPath from './Component/LearnerPath.jsx';
+// import FormsData from './Component/FormsData.jsx';
 import SyncStatus from './Component/SyncStatus.jsx';
-import Courses from './Component/Courses.jsx';
+// import Courses from './Component/Courses.jsx';
 // import DropdownSearch from './Component/DropdownSearch.jsx';
+// import AssignmentSchool from './Component/AssignmentSchool';
+// import Learn from './Component/Learn.jsx';
 export default function App() {
 //   const [books, setBooks] = useState([]);
 //   const [students, setStudents] = useState([]);
@@ -61,17 +63,25 @@ export default function App() {
 // }, []);
   return (
     <div>
-        {/* <Student students = {students}/>
+        {/* {/* <Student students = {students}/>
         <Book books={books}/>
         <School/>
-        {/* // <Teachers/> */}
+        // <Teachers/> */}
        
         {/* <StudentCreate/> */}
         {/* <LearnerPath/> */}
        {/* <FormsData/> */}
-      {/* <SyncStatus/> */}
-      <Courses/>
+      <SyncStatus/>
+      {/* <Courses/> */}
       {/* <DropdownSearch/> */}
+     {/* <AssignmentSchool/> */}
+     {/* <Optionlist/> */}
+     {/* <Learn/> */}
     </div>
   );
 }
+
+
+
+
+

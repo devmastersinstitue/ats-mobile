@@ -1,6 +1,18 @@
 import React, { useState } from "react";
-
+import Select from "react-select";
 const SyncStatus = () => {
+  // const optionList = [
+  //   { value: "red", label: "Red" },
+  //   { value: "green", label: "Green" },
+  //   { value: "yellow", label: "Yellow" },
+  //   { value: "blue", label: "Blue" },
+  //   { value: "white", label: "White" },
+  // ];
+  const optionList = [
+    { value: "PUBLISHED", label: "PUBLISHED" },
+    { value: "UPDATED", label: "DRAFT" },
+    { value: "ARCHIVED", label: "ARCHIVED" },
+  ];
   return (
     <>
       <div>
@@ -9,18 +21,30 @@ const SyncStatus = () => {
       </div>
       <div>
         <div className="flex flex-row gap-x-9 my-20 justify-end  ">
-          <select
-            id="Select School"
-            class="bg-white border border-gray-300 text-gray-700 text-base rounded-lg focus:ring-blue-500
- focus:border-blue-500 block w-80 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
-   dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          >
-            <option selected>Select School</option>
-            <option value="APS School">APS School</option>
-            <option value="FG School">FG School</option>
-            <option value="Allied School">Allied School</option>
-            <option value="Pace school">Pace school</option>
-          </select>
+        <Select
+          width="175px"
+          className="school-name"
+          classNamePrefix="react-select"
+          isSearchable={true}
+          menuPlacement="auto"
+          // value={selectedSchools}
+          isClearable
+          isMulti
+          // isDisabled={schools.length === 1 ? true : false}
+          inputMode="text"
+          menuPosition="absolute"
+          placeholder="Learners Current School"
+          options={optionList}
+          backspaceRemovesValue={true}
+          clearValue={() => []}
+          noOptionsMessage={() => "No results"}
+         
+          // onChange={(obj) => {
+          //   setLearnersPathsSelectOptions([]);
+          //   handleMultiChangeSchool(obj);
+          //   filterBySchools(obj);
+          // }}
+        />
           <select
             id="Sync Type"
            
