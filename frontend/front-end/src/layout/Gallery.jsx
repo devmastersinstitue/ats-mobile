@@ -1,10 +1,10 @@
 import React from 'react';
+import GallerySection from './GallerySection';
 
 const Content = () => {
   return (
-    <main className='w-full h-44 bg-yellow-200'>
-      {/* Your main content goes here */}
-      <p>Welcome to my React app!</p>
+    <main className='w-full h-72 bg-yellow-200'>
+    <GallerySection/>
     </main>
   );
 }

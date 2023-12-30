@@ -2,10 +2,12 @@ import React from 'react';
 
 const Content = () => {
   return (
-    <main className='w-[70%]  bg-gray-400'>
+    <main className='w-[80%]  bg-gray-400'>
       {/* Your main content goes here */}
-      <p>Welcome to my React app!</p>
+      <h1  className="text-red-950"><b>This is my content section.</b></h1>
+      <p>Welcome to my React app! Welcome to my React app! Welcome to my React app! Welcome to my React app! Welcome to my React app! Welcome to my React app! Welcome to my React app!</p>
     </main>
+
   );
 }
 
