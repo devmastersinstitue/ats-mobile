@@ -15,6 +15,7 @@
 // import Dropdown from './Component/Dropdown.jsx';
 
 import ListItem from "./Component/ListItem";
+import LayoutOne from "./layout/LayoutOne";
 
 // import Learn from './Component/Learn.jsx';
 // import MyComponent from './Component/MyComponent.jsx';
@@ -27,6 +28,7 @@ import ListItem from "./Component/ListItem";
 // import List from './Component/List.jsx';
 // import ClassClick from './Component/ClassClick.jsx';
 // import Form from './Component/Form.jsx';
+
 
 export default function App() {
 //   const [books, setBooks] = useState([]);
@@ -76,33 +78,36 @@ export default function App() {
 //     fetchData();
 // }, []);
   return (
-    <div>
-       {/* <Student students = {students}/> */}
-        {/* <Book books={books}/> */}
-        {/* <School/>
-         <Teachers/> */}
-       <search/>
-        {/* <StudentCreate/> */}
-        {/* <LearnerPath/> */}
-       {/* <FormsData/> */}
-      {/* <SyncStatus/> */}
-      {/* <Courses/> */}
-      {/* <DropdownSearch/> */}
-     {/* <AssignmentSchool/> */}
-     {/* <Optionlist/> */}
-     {/* <Learn/> */}
-     {/* <Dropdown/> */}
-     {/* <SetState/> */}
-     {/* <Message/> */}
-     {/* <Form/> */}
-     {/* <ClassClick/> */}
-     {/* <EventBind/> */}
-     {/* <ParentComponent ChangeMessage={'Goodbye'}/> */}
-     {/* <AlertMessage/> */}
-     {/* <Render/>  */}
-     {/* <List/> */}
-     <ListItem/>
-    </div>
+   <div>
+    <LayoutOne/>
+   </div>
+    // <div>
+    //    {/* <Student students = {students}/> */}
+    //     {/* <Book books={books}/> */}
+    //     {/* <School/>
+    //      <Teachers/> */}
+    //    <search/>
+    //     {/* <StudentCreate/> */}
+    //     {/* <LearnerPath/> */}
+    //    {/* <FormsData/> */}
+    //   {/* <SyncStatus/> */}
+    //   {/* <Courses/> */}
+    //   {/* <DropdownSearch/> */}
+    //  {/* <AssignmentSchool/> */}
+    //  {/* <Optionlist/> */}
+    //  {/* <Learn/> */}
+    //  {/* <Dropdown/> */}
+    //  {/* <SetState/> */}
+    //  {/* <Message/> */}
+    //  {/* <Form/> */}
+    //  {/* <ClassClick/> */}
+    //  {/* <EventBind/> */}
+    //  {/* <ParentComponent ChangeMessage={'Goodbye'}/> */}
+    //  {/* <AlertMessage/> */}
+    //  {/* <Render/>  */}
+    //  {/* <List/> */}
+    //  <ListItem/>
+    // </div>
   );
 }
 
