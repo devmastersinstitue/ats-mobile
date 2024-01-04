@@ -1,22 +1,18 @@
 import React from 'react';
 
+
 const Menu = () => {
   return (
     <nav className="bg-gray-800 p-4">
       <div className="container mx-auto flex items-center justify-between">
-        {/* Logo */}
+        
         <div className="text-white font-bold text-xl">Learning Tech</div>
 
-        {/* Navigation Links */}
+    
         <ul className="flex space-x-4">
           <li>
             <a href="#" className="text-white hover:text-gray-300">
               Home
-            </a>
-          </li>
-          <li>
-            <a href="#" className="text-white hover:text-gray-300">
-              Gallery
             </a>
           </li>
           <li>
@@ -26,14 +22,30 @@ const Menu = () => {
           </li>
           <li>
             <a href="#" className="text-white hover:text-gray-300">
-              Services
+              Courses
             </a>
           </li>
           <li>
             <a href="#" className="text-white hover:text-gray-300">
-              Contact
+              Trainers
             </a>
           </li>
+          <li>
+            <a href="#" className="text-white hover:text-gray-300">
+              Events
+            </a>
+          </li>
+          <li>
+            <a href="#" className="text-white hover:text-gray-300">
+              Pricing
+            </a>
+          </li>
+          <li>
+            <a href="#" className="text-white hover:text-gray-300">
+              Contacts
+            </a>
+          </li>
+
         </ul>
       </div>
     </nav>
