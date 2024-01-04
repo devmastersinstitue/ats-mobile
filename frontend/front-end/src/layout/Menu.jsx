@@ -21,27 +21,27 @@ const Menu = () => {
             </a>
           </li>
           <li>
-            <a href="#" className="text-white hover:text-gray-300">
+            <a href="/courses" className="text-white hover:text-gray-300">
               Courses
             </a>
           </li>
           <li>
-            <a href="#" className="text-white hover:text-gray-300">
+            <a href="trainers" className="text-white hover:text-gray-300">
               Trainers
             </a>
           </li>
           <li>
-            <a href="#" className="text-white hover:text-gray-300">
+            <a href="events" className="text-white hover:text-gray-300">
               Events
             </a>
           </li>
           <li>
-            <a href="#" className="text-white hover:text-gray-300">
+            <a href="pricing" className="text-white hover:text-gray-300">
               Pricing
             </a>
           </li>
           <li>
-            <a href="#" className="text-white hover:text-gray-300">
+            <a href="contacts" className="text-white hover:text-gray-300">
               Contacts
             </a>
           </li>
