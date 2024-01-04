@@ -11,12 +11,12 @@ const Menu = () => {
     
         <ul className="flex space-x-4">
           <li>
-            <a href="#" className="text-white hover:text-gray-300">
+            <a href="/" className="text-white hover:text-gray-300">
               Home
             </a>
           </li>
           <li>
-            <a href="#" className="text-white hover:text-gray-300">
+            <a href="/about" className="text-white hover:text-gray-300">
               About
             </a>
           </li>
