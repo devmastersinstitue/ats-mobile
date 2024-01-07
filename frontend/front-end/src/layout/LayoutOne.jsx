@@ -8,6 +8,7 @@ import Footer from './Footer';
  import Menu from './Menu';
 import HomeContent from './HomeContent';
 
+
 const LayoutOne = () => {
   return (
     
@@ -15,6 +16,7 @@ const LayoutOne = () => {
      {/* <Menu/> */}
     <Header />
     <HomeContent/>
+    
     {/* <div >
       <div className="flex flex-row h-72" > 
       
