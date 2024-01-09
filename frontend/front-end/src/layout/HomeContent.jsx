@@ -1,9 +1,23 @@
 import React from "react";
+
 import {
   SortAscendingIcon,
   BellIcon,
   SortDescendingIcon,
   CheckCircleIcon,
+  CubeIcon,
+  DuplicateIcon,
+  DocumentIcon,
+  PhotographIcon,
+  DeviceTabletIcon,
+  CalendarIcon,
+  WalletIcon,
+  StarIcon,
+  StopIcon,
+  ClipboardIcon,
+  WifiIcon,
+  ArchiveIcon,
+  TableIcon,
 } from "@heroicons/react/solid";
 
 export default function HomeContent() {
@@ -175,7 +189,7 @@ export default function HomeContent() {
           </div>
         </div>
         <div className="w-96 h-96 bg-gray-200 rounded-lg justify-items-center ">
-          <BellIcon className=" h-10 w-16 flex mx-auto mt-16 " />
+          <CubeIcon className=" h-10 w-16 flex mx-auto mt-16 text-green-400 " />
           <h1 className="text-center pt-20 text-3xl font-bold">
             Corporis voluptates <br /> sit
           </h1>{" "}
@@ -186,8 +200,8 @@ export default function HomeContent() {
           </p>
         </div>
 
-        <div className="w-96 h-96 bg-gray-200 rounded-lg">
-          <BellIcon className=" h-10 w-16 flex items-center justify-center  " />
+        <div className="w-96 h-96 bg-gray-200 rounded-lg justify-items-center">
+          <DuplicateIcon className=" h-10 w-16 flex mx-auto mt-16 text-green-400 " />
           <h1 className="text-center pt-20 text-3xl font-bold">
             Ullamco laboris <br /> ladore pan
           </h1>{" "}
@@ -197,8 +211,8 @@ export default function HomeContent() {
             in culpa qui officia deserunt
           </p>
         </div>
-        <div className="w-96 h-96 bg-gray-200 rounded-lg">
-          <BellIcon className=" h-10 w-16 flex items-center justify-center  " />
+        <div className="w-96 h-96 bg-gray-200 rounded-lg justify-items-center">
+          <DocumentIcon className="  h-10 w-16 flex mx-auto mt-16 text-green-400 " />
           <h1 className="text-center pt-20 text-3xl font-bold">
             Labore consequatur
           </h1>{" "}
@@ -212,57 +226,57 @@ export default function HomeContent() {
       <div className="flex flex-row justify-between mx-20">
         <div className="flex flex-col">
           <div className="flex flex-row my-5 w-96 h-20 py-4 border-2  hover:text-green-400 hover:border-green-400 ">
-            <BellIcon className=" h-10 w-16 text-red-600  " />
+            <PhotographIcon className=" h-10 w-16 text-yellow-600  " />
             <h1 className="text-2xl ">Lorem Ipsum</h1>
           </div>
           <div className="flex flex-row my-5 w-96 h-20 py-4 border-2  hover:text-green-400 hover:border-green-400 ">
-            <BellIcon className=" h-10 w-16 text-red-600  " />
+            <CubeIcon className=" h-10 w-16 text-blue-600  " />
             <h1 className="text-2xl ">Nemo Enim</h1>
           </div>
           <div className="flex flex-row my-5 w-96 h-20 py-4 border-2  hover:text-green-400 hover:border-green-400 ">
-            <BellIcon className=" h-10 w-16 text-red-600  " />
+            <SortAscendingIcon className=" h-10 w-16 text-amber-700 " />
             <h1 className="text-2xl ">Dirada Pack</h1>
           </div>
         </div>
         <div className="flex flex-col">
           <div className="flex flex-row my-5 w-96 h-20 py-4 border-2  hover:text-green-400 hover:border-green-400 ">
-            <BellIcon className=" h-10 w-16 text-red-600  " />
+            <DeviceTabletIcon className=" h-10 w-10 text-blue-400  " />
             <h1 className="text-2xl ">Dolor Sitema</h1>
           </div>
           <div className="flex flex-row my-5 w-96 h-20 py-4 border-2  hover:text-green-400 hover:border-green-400 ">
-            <BellIcon className=" h-10 w-16 text-red-600  " />
+            <CalendarIcon className=" h-10 w-16 text-yellow-400  " />
             <h1 className="text-2xl ">Eiusmod Tempor</h1>
           </div>
           <div className="flex flex-row my-5 w-96 h-20 py-4 border-2  hover:text-green-400 hover:border-green-400 ">
-            <BellIcon className=" h-10 w-16 text-red-600  " />
+            <StarIcon className=" h-10 w-16 text-red-800  " />
             <h1 className="text-2xl ">Moton Ideal</h1>
           </div>
         </div>
         <div className="flex flex-col">
           <div className="flex flex-row my-5 w-96 h-20 py-4 border-2  hover:text-green-400 hover:border-green-400 ">
-            <BellIcon className=" h-10 w-10 text-red-600  " />
+            <StopIcon className=" h-10 w-10 text-pink-600  " />
             <h1 className="text-2xl ">Sed Perspiciaais </h1>
           </div>
           <div className="flex flex-row my-5 w-96 h-20 py-4 border-2  hover:text-green-400 hover:border-green-400 ">
-            <BellIcon className=" h-10 w-16 text-red-600  " />
+            <ClipboardIcon className=" h-10 w-16 text-green-600  " />
             <h1 className="text-2xl ">Midela Teren</h1>
           </div>
           <div className="flex flex-row my-5 w-96 h-20 py-4 border-2  hover:text-green-400 hover:border-green-400 ">
-            <BellIcon className=" h-10 w-16 text-red-600  " />
+            <WifiIcon className=" h-10 w-16 text-red-600  " />
             <h1 className="text-2xl ">Verdo Park</h1>
           </div>
         </div>
         <div className="flex flex-col">
           <div className="flex flex-row my-5 w-96 h-20 py-4 border-2  hover:text-green-400 hover:border-green-400 ">
-            <BellIcon className=" h-10 w-10 text-red-600  " />
+            <ArchiveIcon className=" h-10 w-10 text-purple-600  " />
             <h1 className="text-2xl ">Magni Dolores</h1>
           </div>
           <div className="flex flex-row my-5 w-96 h-20 py-4 border-2  hover:text-green-400 hover:border-green-400 ">
-            <BellIcon className=" h-10 w-16 text-red-600  " />
+            <DocumentIcon className=" h-10 w-16 text-blue-600  " />
             <h1 className="text-2xl ">Pira Neve</h1>
           </div>
           <div className="flex flex-row my-5 w-96 h-20 py-4 border-2  hover:text-green-400 hover:border-green-400 ">
-            <CheckCircleIcon className=" h-10 w-16 text-red-600  " />
+            <TableIcon className=" h-10 w-16 text-red-600  " />
             <h1 className="text-2xl ">Flavor Mivelanda</h1>
           </div>
         </div>
@@ -274,10 +288,13 @@ export default function HomeContent() {
         <br />
         <h1 className="font-bold text-5xl">POPULAR COURSES</h1>
         <div className="flex flex-row justify-between py-10">
-          <div
-            className="w-96 h-64 bg-no-repeat flex flex-col "
-            style={{ backgroundImage: "url(pic2.jpg )" }}
-          ></div>
+          <div className="flex items-center justify-center h-screen">
+            <img
+              className="rounded-md shadow-lg"
+              src="Checkmark.png" // Replace with the URL of your image
+              alt="Description of the image"
+            />
+          </div>
           <div
             className="w-96 h-64 bg-no-repeat "
             style={{ backgroundImage: "url(pic3.jpg )" }}
