@@ -4,9 +4,7 @@ import {
   BellIcon,
   SortDescendingIcon,
   CheckCircleIcon,
- 
 } from "@heroicons/react/solid";
-
 
 export default function HomeContent() {
   return (
@@ -176,22 +174,118 @@ export default function HomeContent() {
             </button>
           </div>
         </div>
-        <div className="w-96 h-96 bg-gray-200 rounded-lg">
-        <BellIcon className="inline-block h-10 w-16 flex items-center justify-center  " />
-          <h1 className="text-center pt-20 text-3xl font-bold">Corporis voluptates <br /> sit</h1> <br />
-          <p className="pl-20 text-lg">Consequuntur sunt aut quasi <br />
-             enim aliquam quae harum <br /> pariatur laboris nisi ut aliquip</p>
+        <div className="w-96 h-96 bg-gray-200 rounded-lg justify-items-center ">
+          <BellIcon className=" h-10 w-16 flex mx-auto mt-16 " />
+          <h1 className="text-center pt-20 text-3xl font-bold">
+            Corporis voluptates <br /> sit
+          </h1>{" "}
+          <br />
+          <p className="pl-20 text-lg">
+            Consequuntur sunt aut quasi <br />
+            enim aliquam quae harum <br /> pariatur laboris nisi ut aliquip
+          </p>
         </div>
-         
+
         <div className="w-96 h-96 bg-gray-200 rounded-lg">
-        <BellIcon className="inline-block h-10 w-16 flex items-center justify-center  " />
-          <h1 className="text-center pt-20 text-3xl font-bold">Ullamco laboris <br /> ladore pan</h1> <br />
-          <p className="pl-20 text-lg">Excepteur sint occaecat <br /> cupidatat non proident, <br /> sunt in culpa qui officia deserunt</p>
+          <BellIcon className=" h-10 w-16 flex items-center justify-center  " />
+          <h1 className="text-center pt-20 text-3xl font-bold">
+            Ullamco laboris <br /> ladore pan
+          </h1>{" "}
+          <br />
+          <p className="pl-20 text-lg">
+            Excepteur sint occaecat <br /> cupidatat non proident, <br /> sunt
+            in culpa qui officia deserunt
+          </p>
         </div>
         <div className="w-96 h-96 bg-gray-200 rounded-lg">
-        <BellIcon className="inline-block h-10 w-16 flex items-center justify-center  " />
-          <h1 className="text-center pt-20 text-3xl font-bold">Labore consequatur</h1> <br />
-          <p className="pl-20 text-lg">Aut suscipit aut cum nemo <br /> deleniti aut omnis. Doloribus <br /> ut maiores omnis facere</p>
+          <BellIcon className=" h-10 w-16 flex items-center justify-center  " />
+          <h1 className="text-center pt-20 text-3xl font-bold">
+            Labore consequatur
+          </h1>{" "}
+          <br />
+          <p className="pl-20 text-lg">
+            Aut suscipit aut cum nemo <br /> deleniti aut omnis. Doloribus{" "}
+            <br /> ut maiores omnis facere
+          </p>
+        </div>
+      </div>
+      <div className="flex flex-row justify-between mx-20">
+        <div className="flex flex-col">
+          <div className="flex flex-row my-5 w-96 h-20 py-4 border-2  hover:text-green-400 hover:border-green-400 ">
+            <BellIcon className=" h-10 w-16 text-red-600  " />
+            <h1 className="text-2xl ">Lorem Ipsum</h1>
+          </div>
+          <div className="flex flex-row my-5 w-96 h-20 py-4 border-2  hover:text-green-400 hover:border-green-400 ">
+            <BellIcon className=" h-10 w-16 text-red-600  " />
+            <h1 className="text-2xl ">Nemo Enim</h1>
+          </div>
+          <div className="flex flex-row my-5 w-96 h-20 py-4 border-2  hover:text-green-400 hover:border-green-400 ">
+            <BellIcon className=" h-10 w-16 text-red-600  " />
+            <h1 className="text-2xl ">Dirada Pack</h1>
+          </div>
+        </div>
+        <div className="flex flex-col">
+          <div className="flex flex-row my-5 w-96 h-20 py-4 border-2  hover:text-green-400 hover:border-green-400 ">
+            <BellIcon className=" h-10 w-16 text-red-600  " />
+            <h1 className="text-2xl ">Dolor Sitema</h1>
+          </div>
+          <div className="flex flex-row my-5 w-96 h-20 py-4 border-2  hover:text-green-400 hover:border-green-400 ">
+            <BellIcon className=" h-10 w-16 text-red-600  " />
+            <h1 className="text-2xl ">Eiusmod Tempor</h1>
+          </div>
+          <div className="flex flex-row my-5 w-96 h-20 py-4 border-2  hover:text-green-400 hover:border-green-400 ">
+            <BellIcon className=" h-10 w-16 text-red-600  " />
+            <h1 className="text-2xl ">Moton Ideal</h1>
+          </div>
+        </div>
+        <div className="flex flex-col">
+          <div className="flex flex-row my-5 w-96 h-20 py-4 border-2  hover:text-green-400 hover:border-green-400 ">
+            <BellIcon className=" h-10 w-10 text-red-600  " />
+            <h1 className="text-2xl ">Sed Perspiciaais </h1>
+          </div>
+          <div className="flex flex-row my-5 w-96 h-20 py-4 border-2  hover:text-green-400 hover:border-green-400 ">
+            <BellIcon className=" h-10 w-16 text-red-600  " />
+            <h1 className="text-2xl ">Midela Teren</h1>
+          </div>
+          <div className="flex flex-row my-5 w-96 h-20 py-4 border-2  hover:text-green-400 hover:border-green-400 ">
+            <BellIcon className=" h-10 w-16 text-red-600  " />
+            <h1 className="text-2xl ">Verdo Park</h1>
+          </div>
+        </div>
+        <div className="flex flex-col">
+          <div className="flex flex-row my-5 w-96 h-20 py-4 border-2  hover:text-green-400 hover:border-green-400 ">
+            <BellIcon className=" h-10 w-10 text-red-600  " />
+            <h1 className="text-2xl ">Magni Dolores</h1>
+          </div>
+          <div className="flex flex-row my-5 w-96 h-20 py-4 border-2  hover:text-green-400 hover:border-green-400 ">
+            <BellIcon className=" h-10 w-16 text-red-600  " />
+            <h1 className="text-2xl ">Pira Neve</h1>
+          </div>
+          <div className="flex flex-row my-5 w-96 h-20 py-4 border-2  hover:text-green-400 hover:border-green-400 ">
+            <CheckCircleIcon className=" h-10 w-16 text-red-600  " />
+            <h1 className="text-2xl ">Flavor Mivelanda</h1>
+          </div>
+        </div>
+      </div>
+      <div className="mx-20">
+        <h2 className="text-2xl text-gray-400">
+          Courses <span className="text-green-400">______________</span>
+        </h2>{" "}
+        <br />
+        <h1 className="font-bold text-5xl">POPULAR COURSES</h1>
+        <div className="flex flex-row justify-between py-10">
+          <div
+            className="w-96 h-64 bg-no-repeat flex flex-col "
+            style={{ backgroundImage: "url(pic2.jpg )" }}
+          ></div>
+          <div
+            className="w-96 h-64 bg-no-repeat "
+            style={{ backgroundImage: "url(pic3.jpg )" }}
+          ></div>
+          <div
+            className="w-96 h-64 bg-no-repeat"
+            style={{ backgroundImage: "url(pic4.jpg )" }}
+          ></div>
         </div>
       </div>
     </div>
