@@ -1,7 +1,7 @@
 import React from "react";
-import myImage from './image2.jpg';
-import firstImage  from './pic3.jpg';
-import secondImage from './pic4.jpg';
+import myImage from "./image2.jpg";
+import firstImage from "./pic3.jpg";
+import secondImage from "./pic4.jpg";
 import {
   SortAscendingIcon,
   BellIcon,
@@ -290,14 +290,27 @@ export default function HomeContent() {
         <br />
         <h1 className="font-bold text-5xl">POPULAR COURSES</h1>
         <div className="flex flex-row justify-between py-10">
-          <div className="flex items-center justify-center h-48 w-32">
-          <img src={myImage} alt="My Image" />
+          <div >
+            <div className="flex items-center justify-center h-96 w-96">
+              <img src={myImage} alt="My Image" />
+            </div>
+            < div className="flex flex-row justify-between ">
+            <div className=" bg-green-400 h-8 w-40 text-white text-center py-1 "> Web Development
+            </div>
+            <span className="font-bold">
+              $169
+            </span>
+            </div>
+            <h1 className="font-bold text-2xl py-3">Website Design</h1>
+            <p className="" >Et architecto provident deleniti facere repellat nobis iste. <br />
+             Id facere quia quae dolores dolorem tempore.</p>
           </div>
-          <div className="flex items-center justify-center  h-48 w-32">
-          <img src={firstImage } alt="My Image" />
+
+          <div className="flex items-center justify-center  h-96 w-96">
+            <img src={firstImage} alt="My Image" />
           </div>
-          <div className="flex items-center justify-center  h-48 w-32">
-          <img src={secondImage } alt="My Image" />
+          <div className="flex items-center justify-center  h-96 w-96">
+            <img src={secondImage} alt="My Image" />
           </div>
         </div>
       </div>
