@@ -1,5 +1,5 @@
 import React from "react";
-
+import myImage from './image2.jpg';
 import {
   SortAscendingIcon,
   BellIcon,
@@ -189,7 +189,7 @@ export default function HomeContent() {
           </div>
         </div>
         <div className="w-96 h-96 bg-gray-200 rounded-lg justify-items-center ">
-          <CubeIcon className=" h-10 w-16 flex mx-auto mt-16 text-green-400 " />
+          <CubeIcon className=" h-12 w-12 flex mx-auto mt-16 text-green-400 " />
           <h1 className="text-center pt-20 text-3xl font-bold">
             Corporis voluptates <br /> sit
           </h1>{" "}
@@ -201,7 +201,7 @@ export default function HomeContent() {
         </div>
 
         <div className="w-96 h-96 bg-gray-200 rounded-lg justify-items-center">
-          <DuplicateIcon className=" h-10 w-16 flex mx-auto mt-16 text-green-400 " />
+          <DuplicateIcon className=" h-12 w-12 flex mx-auto mt-16 text-green-400 " />
           <h1 className="text-center pt-20 text-3xl font-bold">
             Ullamco laboris <br /> ladore pan
           </h1>{" "}
@@ -212,7 +212,7 @@ export default function HomeContent() {
           </p>
         </div>
         <div className="w-96 h-96 bg-gray-200 rounded-lg justify-items-center">
-          <DocumentIcon className="  h-10 w-16 flex mx-auto mt-16 text-green-400 " />
+          <DocumentIcon className="  h-12 w-12 flex mx-auto mt-16 text-green-400 " />
           <h1 className="text-center pt-20 text-3xl font-bold">
             Labore consequatur
           </h1>{" "}
@@ -226,83 +226,77 @@ export default function HomeContent() {
       <div className="flex flex-row justify-between mx-20">
         <div className="flex flex-col">
           <div className="flex flex-row my-5 w-96 h-20 py-4 border-2  hover:text-green-400 hover:border-green-400 ">
-            <PhotographIcon className=" h-10 w-16 text-yellow-600  " />
-            <h1 className="text-2xl ">Lorem Ipsum</h1>
+            <PhotographIcon className=" h-10 w-10 text-yellow-600  " />
+            <h1 className="text-xl ">Lorem Ipsum</h1>
           </div>
           <div className="flex flex-row my-5 w-96 h-20 py-4 border-2  hover:text-green-400 hover:border-green-400 ">
-            <CubeIcon className=" h-10 w-16 text-blue-600  " />
-            <h1 className="text-2xl ">Nemo Enim</h1>
+            <CubeIcon className=" h-10 w-10 text-blue-600  " />
+            <h1 className="text-xl ">Nemo Enim</h1>
           </div>
           <div className="flex flex-row my-5 w-96 h-20 py-4 border-2  hover:text-green-400 hover:border-green-400 ">
-            <SortAscendingIcon className=" h-10 w-16 text-amber-700 " />
-            <h1 className="text-2xl ">Dirada Pack</h1>
+            <SortAscendingIcon className=" h-10 w-10 text-amber-700 " />
+            <h1 className="text-xl ">Dirada Pack</h1>
           </div>
         </div>
         <div className="flex flex-col">
           <div className="flex flex-row my-5 w-96 h-20 py-4 border-2  hover:text-green-400 hover:border-green-400 ">
             <DeviceTabletIcon className=" h-10 w-10 text-blue-400  " />
-            <h1 className="text-2xl ">Dolor Sitema</h1>
+            <h1 className="text-xl ">Dolor Sitema</h1>
           </div>
           <div className="flex flex-row my-5 w-96 h-20 py-4 border-2  hover:text-green-400 hover:border-green-400 ">
-            <CalendarIcon className=" h-10 w-16 text-yellow-400  " />
-            <h1 className="text-2xl ">Eiusmod Tempor</h1>
+            <CalendarIcon className=" h-10 w-10 text-yellow-400  " />
+            <h1 className="text-xl ">Eiusmod Tempor</h1>
           </div>
           <div className="flex flex-row my-5 w-96 h-20 py-4 border-2  hover:text-green-400 hover:border-green-400 ">
-            <StarIcon className=" h-10 w-16 text-red-800  " />
-            <h1 className="text-2xl ">Moton Ideal</h1>
+            <StarIcon className=" h-10 w-10 text-red-800  " />
+            <h1 className="text-xl ">Moton Ideal</h1>
           </div>
         </div>
         <div className="flex flex-col">
           <div className="flex flex-row my-5 w-96 h-20 py-4 border-2  hover:text-green-400 hover:border-green-400 ">
             <StopIcon className=" h-10 w-10 text-pink-600  " />
-            <h1 className="text-2xl ">Sed Perspiciaais </h1>
+            <h1 className="text-xl ">Sed Perspiciaais </h1>
           </div>
           <div className="flex flex-row my-5 w-96 h-20 py-4 border-2  hover:text-green-400 hover:border-green-400 ">
-            <ClipboardIcon className=" h-10 w-16 text-green-600  " />
+            <ClipboardIcon className=" h-10 w-10 text-green-600  " />
             <h1 className="text-2xl ">Midela Teren</h1>
           </div>
           <div className="flex flex-row my-5 w-96 h-20 py-4 border-2  hover:text-green-400 hover:border-green-400 ">
-            <WifiIcon className=" h-10 w-16 text-red-600  " />
-            <h1 className="text-2xl ">Verdo Park</h1>
+            <WifiIcon className=" h-10 w-10 text-red-600  " />
+            <h1 className="text-xl ">Verdo Park</h1>
           </div>
         </div>
         <div className="flex flex-col">
           <div className="flex flex-row my-5 w-96 h-20 py-4 border-2  hover:text-green-400 hover:border-green-400 ">
             <ArchiveIcon className=" h-10 w-10 text-purple-600  " />
-            <h1 className="text-2xl ">Magni Dolores</h1>
+            <h1 className="text-xl ">Magni Dolores</h1>
           </div>
           <div className="flex flex-row my-5 w-96 h-20 py-4 border-2  hover:text-green-400 hover:border-green-400 ">
-            <DocumentIcon className=" h-10 w-16 text-blue-600  " />
-            <h1 className="text-2xl ">Pira Neve</h1>
+            <DocumentIcon className=" h-10 w-10 text-blue-600  " />
+            <h1 className="text-xl ">Pira Neve</h1>
           </div>
           <div className="flex flex-row my-5 w-96 h-20 py-4 border-2  hover:text-green-400 hover:border-green-400 ">
-            <TableIcon className=" h-10 w-16 text-red-600  " />
-            <h1 className="text-2xl ">Flavor Mivelanda</h1>
+            <TableIcon className=" h-10 w-10 text-red-600  " />
+            <h1 className="text-xl ">Flavor Mivelanda</h1>
           </div>
         </div>
       </div>
       <div className="mx-20">
-        <h2 className="text-2xl text-gray-400">
+        <h2 className="text-xl text-gray-400">
           Courses <span className="text-green-400">______________</span>
         </h2>{" "}
         <br />
         <h1 className="font-bold text-5xl">POPULAR COURSES</h1>
         <div className="flex flex-row justify-between py-10">
           <div className="flex items-center justify-center h-screen">
-            <img
-              className="rounded-md shadow-lg"
-              src="Checkmark.png" // Replace with the URL of your image
-              alt="Description of the image"
-            />
+          <img src={myImage} alt="My Image" />
           </div>
-          <div
-            className="w-96 h-64 bg-no-repeat "
-            style={{ backgroundImage: "url(pic3.jpg )" }}
-          ></div>
-          <div
-            className="w-96 h-64 bg-no-repeat"
-            style={{ backgroundImage: "url(pic4.jpg )" }}
-          ></div>
+          <div className="flex items-center justify-center h-screen">
+          <img src={myImage} alt="My Image" />
+          </div>
+          <div className="flex items-center justify-center h-screen">
+          <img src={myImage} alt="My Image" />
+          </div>
         </div>
       </div>
     </div>
