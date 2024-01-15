@@ -311,8 +311,8 @@ export default function HomeContent() {
             </p>{" "}
             </div>
             <hr />
-            <div className="flex items-center justify-center  h-5 w-20">
-              <img src={thirdImage} alt="My Image" />
+            <div className="flex items-center justify-center py-20 h-5 w-20">
+              <img src={thirdImage} alt="My Image" className=" rounded-full />
             </div>
           </div>
 
