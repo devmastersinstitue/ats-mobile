@@ -310,9 +310,14 @@ export default function HomeContent() {
               Id facere quia quae dolores dolorem tempore.
             </p>{" "}
             </div>
+            <br />
             <hr />
-            <div className="flex items-center justify-center py-20 h-5 w-20">
-              <img src={thirdImage} alt="My Image" className=" rounded-full />
+            <div className="flex items-center justify-center py-20 h-20 w-20">
+            <div>
+              <img src={thirdImage} alt="My Image" className="rounded-full" />
+              
+              </div>
+              <span className="mx-40">Antonio</span>
             </div>
           </div>
 
