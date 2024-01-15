@@ -290,13 +290,13 @@ export default function HomeContent() {
         <br />
         <h1 className="font-bold text-5xl">POPULAR COURSES</h1>
         <div className="flex flex-row justify-between py-10">
-          <div className="flex items-center justify-center h-screen">
+          <div className="flex items-center justify-center h-48 w-32">
           <img src={myImage} alt="My Image" />
           </div>
-          <div className="flex items-center justify-center h-screen">
+          <div className="flex items-center justify-center  h-48 w-32">
           <img src={firstImage } alt="My Image" />
           </div>
-          <div className="flex items-center justify-center h-screen">
+          <div className="flex items-center justify-center  h-48 w-32">
           <img src={secondImage } alt="My Image" />
           </div>
         </div>
