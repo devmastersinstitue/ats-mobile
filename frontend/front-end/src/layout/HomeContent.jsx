@@ -1,5 +1,7 @@
 import React from "react";
 import myImage from './image2.jpg';
+import firstImage  from './pic3.jpg';
+import secondImage from './pic4.jpg';
 import {
   SortAscendingIcon,
   BellIcon,
@@ -292,10 +294,10 @@ export default function HomeContent() {
           <img src={myImage} alt="My Image" />
           </div>
           <div className="flex items-center justify-center h-screen">
-          <img src={myImage} alt="My Image" />
+          <img src={firstImage } alt="My Image" />
           </div>
           <div className="flex items-center justify-center h-screen">
-          <img src={myImage} alt="My Image" />
+          <img src={secondImage } alt="My Image" />
           </div>
         </div>
       </div>
