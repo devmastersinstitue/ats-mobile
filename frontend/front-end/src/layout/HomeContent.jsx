@@ -3,6 +3,9 @@ import myImage from "./image2.jpg";
 import firstImage from "./pic3.jpg";
 import secondImage from "./pic4.jpg";
 import thirdImage from "./Walter.jpg";
+import fourthImage from "./images/Sarah.jpg";
+import fifthImage from "./images/Bill.jpg";
+
 import {
   SortAscendingIcon,
   BellIcon,
@@ -21,6 +24,10 @@ import {
   WifiIcon,
   ArchiveIcon,
   TableIcon,
+  UserIcon,
+  HeartIcon,
+  CalculatorIcon,
+  CameraIcon,
 } from "@heroicons/react/solid";
 
 export default function HomeContent() {
@@ -293,7 +300,7 @@ export default function HomeContent() {
         <div className="flex flex-row justify-between py-10">
           <div className=" border-2 ">
             <div className="flex items-center justify-center mb-5 w-96">
-              <img src={myImage} alt="My Image" className="w-full"  />
+              <img src={myImage} alt="My Image" className="w-full" />
             </div>
             <div className="flex flex-row justify-between mx-2">
               <div className=" bg-green-400 h-8 w-40 text-white text-center py-1 ">
@@ -303,7 +310,9 @@ export default function HomeContent() {
               <span className="font-bold">$169</span>
             </div>
             <div className="mx-2">
-              <h1 className="font-bold text-2xl py-3">Website Design</h1>
+              <h1 className="font-bold text-2xl py-3  hover:text-green-500 cursor-pointer">
+                Website Design
+              </h1>
               <p className="">
                 Et architecto provident deleniti facere repellat nobis iste.
                 <br />
@@ -314,29 +323,36 @@ export default function HomeContent() {
             <hr />
             <div className=" flex flex-row  justify-between mx-2 ">
               <div className="">
-              <div className=" flex flex-row  ">
-                <img src={thirdImage} alt="My Image" className="rounded-full h-7 w-7 " />
-                <span className="text-2xl">Antonio</span>
+                <div className=" flex flex-row  ">
+                  <img
+                    src={thirdImage}
+                    alt="My Image"
+                    className="rounded-full h-7 w-7 "
+                  />
+                  <span className="text-xl">Antonio</span>
+                </div>
               </div>
-             
-              </div>
-              <TableIcon className=" h-10 w-10 text-red-600  " />
+              <UserIcon className=" h-10 w-10  text-gray-400 mx-2 " />
+              <span className="text-xl px-20 ">50</span>
+              <HeartIcon className="h-10 w-10  text-gray-400 pl-3" />
+              <span className="text-2xl">65</span>
             </div>
           </div>
-          <div>
+          <div className=" border-2">
             <div className="flex items-center justify-center mb-5 w-96">
-             
               <img src={firstImage} alt="My Image" />
             </div>
             <div className="flex flex-row justify-between ">
               <div className=" bg-green-400 h-8 w-40 text-white text-center py-1 ">
                 {" "}
-                Web Development
+                Marketing
               </div>
-              <span className="font-bold">$169</span>
+              <span className="font-bold">$250</span>
             </div>
             <div>
-              <h1 className="font-bold text-2xl py-3">Website Design</h1>
+              <h1 className="font-bold text-2xl py-3  hover:text-green-500 cursor-pointer">
+                Search Engine Optimization
+              </h1>
               <p className="">
                 Et architecto provident deleniti facere repellat nobis iste.
                 <br />
@@ -347,28 +363,36 @@ export default function HomeContent() {
             <hr />
             <div className=" flex flex-row  justify-between ">
               <div className="">
-              <div className=" flex flex-row  ">
-                <img src={thirdImage} alt="My Image" className="rounded-full h-7 w-7 " />
-                <span className="text-2xl">Antonio</span>
+                <div className=" flex flex-row  ">
+                  <img
+                    src={fourthImage}
+                    alt="My Image"
+                    className="rounded-full h-7 w-7 "
+                  />
+                  <span className="text-xl">Lana</span>
+                </div>
               </div>
-             
-              </div>
-              <TableIcon className=" h-10 w-10 text-red-600  " />
+              <UserIcon className=" h-10 w-10  text-gray-400 mx-2 " />
+              <span className="text-xl px-20  ">35</span>
+              <HeartIcon className="h-10 w-10  text-gray-400 pl-3" />
+              <span className="text-2xl">42</span>
             </div>
           </div>
-          <div>
+          <div className=" border-2">
             <div className="flex items-center justify-center mb-5 w-96">
-            <img src={secondImage} alt="My Image" />
+              <img src={secondImage} alt="My Image" />
             </div>
             <div className="flex flex-row justify-between ">
               <div className=" bg-green-400 h-8 w-40 text-white text-center py-1 ">
                 {" "}
-                Web Development
+                Content
               </div>
-              <span className="font-bold">$169</span>
+              <span className="font-bold">$180</span>
             </div>
             <div>
-              <h1 className="font-bold text-2xl py-3">Website Design</h1>
+              <h1 className="font-bold text-2xl py-3 hover:text-green-500 cursor-pointer">
+                CopyWriting
+              </h1>
               <p className="">
                 Et architecto provident deleniti facere repellat nobis iste.
                 <br />
@@ -378,18 +402,73 @@ export default function HomeContent() {
             <br />
             <hr />
             <div className=" flex flex-row  justify-between ">
-              <div className="">
-              <div className=" flex flex-row  ">
-                <img src={thirdImage} alt="My Image" className="rounded-full h-7 w-7 " />
-                <span className="text-2xl">Antonio</span>
+              <div>
+                <div className=" flex flex-row  ">
+                  <img
+                    src={fifthImage}
+                    alt="My Image"
+                    className="rounded-full h-7 w-7 "
+                  />
+                  <span className="text-xl">Brandon</span>
+                </div>
               </div>
-             
-              </div>
-              <TableIcon className=" h-10 w-10 text-red-600  " />
+              <UserIcon className=" h-10 w-10  text-gray-400 mx-2 " />
+              <span className="text-xl px-20 ">20</span>
+              <HeartIcon className="h-10 w-10  text-gray-400 pl-3" />
+              <span className="text-2xl">85</span>
+            </div>
+          </div>
+        </div>
+        <div className="flex flex-row justify-between">
+          <div className="text-center border-2">
+            <img src={thirdImage} alt="My Image" className=" h-96 w-96" />
+            <h1 className="text-2xl mt-4">Walter White</h1>
+            <h2>Web development</h2> <br />
+            <p>
+              Magni qui quod omnis unde et eos fuga et exercitationem. <br />
+              Odio veritatis perspiciatis quaerat qui aut aut aut
+            </p>{" "}
+            <br />
+            <div className="flex flex-row  flex items-center justify-center ">
+              <CalculatorIcon className=" h-10 w-10  text-gray-400 mx-2  " />
+              <CameraIcon className=" h-10 w-10  text-gray-400 mx-2  " />
+              <CubeIcon className=" h-10 w-10  text-gray-400 mx-2  " />
+              <CalendarIcon className=" h-10 w-10  text-gray-400 mx-2  " />
             </div>
           </div>
 
-         
+          <div className="text-center border-2">
+            <img src={fourthImage} alt="My Image" className=" h-96 w-96" />
+            <h1 className="text-2xl mt-4">Sarah Jhinson</h1>
+            <h2>Marketing</h2> <br />
+            <p>
+              Repellat fugiat adipisci nemo illum nesciunt voluptas <br />
+              repellendus. In architecto rerum rerum temporibus
+            </p>
+            <br />
+            <div className="flex flex-row  flex items-center justify-center ">
+              <CalculatorIcon className=" h-10 w-10  text-gray-400 mx-2  " />
+              <CameraIcon className=" h-10 w-10  text-gray-400 mx-2  " />
+              <CubeIcon className=" h-10 w-10  text-gray-400 mx-2  " />
+              <CalendarIcon className=" h-10 w-10  text-gray-400 mx-2  " />
+            </div>
+          </div>
+          <div className="text-center border-2">
+            <img src={fifthImage} alt="My Image" className=" h-96 w-96" />
+            <h1 className="text-2xl mt-4">William Anderson</h1>
+            <h2>Content</h2> <br />
+            <p>
+              Voluptas necessitatibus occaecati quia. Earum totam <br />
+              consequuntur qui porro et laborum toro des clara
+            </p>
+            <br />
+            <div className="flex flex-row  flex items-center justify-center ">
+              <CalculatorIcon className=" h-10 w-10  text-gray-400 mx-2  " />
+              <CameraIcon className=" h-10 w-10  text-gray-400 mx-2  " />
+              <CubeIcon className=" h-10 w-10  text-gray-400 mx-2  " />
+              <CalendarIcon className=" h-10 w-10  text-gray-400 mx-2  " />
+            </div>
+          </div>
         </div>
       </div>
     </div>
