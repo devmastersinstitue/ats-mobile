@@ -291,9 +291,42 @@ export default function HomeContent() {
         <br />
         <h1 className="font-bold text-5xl">POPULAR COURSES</h1>
         <div className="flex flex-row justify-between py-10">
+          <div className=" border-2 ">
+            <div className="flex items-center justify-center mb-5 w-96">
+              <img src={myImage} alt="My Image" className="w-full"  />
+            </div>
+            <div className="flex flex-row justify-between mx-2">
+              <div className=" bg-green-400 h-8 w-40 text-white text-center py-1 ">
+                {" "}
+                Web Development
+              </div>
+              <span className="font-bold">$169</span>
+            </div>
+            <div className="mx-2">
+              <h1 className="font-bold text-2xl py-3">Website Design</h1>
+              <p className="">
+                Et architecto provident deleniti facere repellat nobis iste.
+                <br />
+                Id facere quia quae dolores dolorem tempore.
+              </p>{" "}
+            </div>
+            <br />
+            <hr />
+            <div className=" flex flex-row  justify-between mx-2 ">
+              <div className="">
+              <div className=" flex flex-row  ">
+                <img src={thirdImage} alt="My Image" className="rounded-full h-7 w-7 " />
+                <span className="text-2xl">Antonio</span>
+              </div>
+             
+              </div>
+              <TableIcon className=" h-10 w-10 text-red-600  " />
+            </div>
+          </div>
           <div>
-            <div className="flex items-center justify-center h-96 w-96">
-              <img src={myImage} alt="My Image" />
+            <div className="flex items-center justify-center mb-5 w-96">
+             
+              <img src={firstImage} alt="My Image" />
             </div>
             <div className="flex flex-row justify-between ">
               <div className=" bg-green-400 h-8 w-40 text-white text-center py-1 ">
@@ -303,30 +336,60 @@ export default function HomeContent() {
               <span className="font-bold">$169</span>
             </div>
             <div>
-            <h1 className="font-bold text-2xl py-3">Website Design</h1>
-            <p className="">
-              Et architecto provident deleniti facere repellat nobis iste.
-              <br />
-              Id facere quia quae dolores dolorem tempore.
-            </p>{" "}
+              <h1 className="font-bold text-2xl py-3">Website Design</h1>
+              <p className="">
+                Et architecto provident deleniti facere repellat nobis iste.
+                <br />
+                Id facere quia quae dolores dolorem tempore.
+              </p>{" "}
             </div>
             <br />
             <hr />
-            <div className="flex items-center justify-center py-20 h-20 w-20">
-            <div>
-              <img src={thirdImage} alt="My Image" className="rounded-full" />
-              
+            <div className=" flex flex-row  justify-between ">
+              <div className="">
+              <div className=" flex flex-row  ">
+                <img src={thirdImage} alt="My Image" className="rounded-full h-7 w-7 " />
+                <span className="text-2xl">Antonio</span>
               </div>
-              <span className="mx-40">Antonio</span>
+             
+              </div>
+              <TableIcon className=" h-10 w-10 text-red-600  " />
+            </div>
+          </div>
+          <div>
+            <div className="flex items-center justify-center mb-5 w-96">
+            <img src={secondImage} alt="My Image" />
+            </div>
+            <div className="flex flex-row justify-between ">
+              <div className=" bg-green-400 h-8 w-40 text-white text-center py-1 ">
+                {" "}
+                Web Development
+              </div>
+              <span className="font-bold">$169</span>
+            </div>
+            <div>
+              <h1 className="font-bold text-2xl py-3">Website Design</h1>
+              <p className="">
+                Et architecto provident deleniti facere repellat nobis iste.
+                <br />
+                Id facere quia quae dolores dolorem tempore.
+              </p>{" "}
+            </div>
+            <br />
+            <hr />
+            <div className=" flex flex-row  justify-between ">
+              <div className="">
+              <div className=" flex flex-row  ">
+                <img src={thirdImage} alt="My Image" className="rounded-full h-7 w-7 " />
+                <span className="text-2xl">Antonio</span>
+              </div>
+             
+              </div>
+              <TableIcon className=" h-10 w-10 text-red-600  " />
             </div>
           </div>
 
-          <div className="flex items-center justify-center  h-96 w-96">
-            <img src={firstImage} alt="My Image" />
-          </div>
-          <div className="flex items-center justify-center  h-96 w-96">
-            <img src={secondImage} alt="My Image" />
-          </div>
+         
         </div>
       </div>
     </div>
