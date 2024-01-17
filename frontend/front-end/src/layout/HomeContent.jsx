@@ -313,7 +313,7 @@ export default function HomeContent() {
               <h1 className="font-bold text-2xl py-3  hover:text-green-500 cursor-pointer">
                 Website Design
               </h1>
-              <p className="">
+              <p>
                 Et architecto provident deleniti facere repellat nobis iste.
                 <br />
                 Id facere quia quae dolores dolorem tempore.
@@ -321,9 +321,9 @@ export default function HomeContent() {
             </div>
             <br />
             <hr />
-            <div className=" flex flex-row  justify-between mx-2 ">
+            <div className=" flex flex-row  justify-between ">
               <div className="">
-                <div className=" flex flex-row  ">
+                <div className=" flex flex-row p-1 ">
                   <img
                     src={thirdImage}
                     alt="My Image"
@@ -332,10 +332,12 @@ export default function HomeContent() {
                   <span className="text-xl">Antonio</span>
                 </div>
               </div>
-              <UserIcon className=" h-10 w-10  text-gray-400 mx-2 " />
-              <span className="text-xl px-20 ">50</span>
-              <HeartIcon className="h-10 w-10  text-gray-400 pl-3" />
-              <span className="text-2xl">65</span>
+              <div className="flex space-x-2">
+                <UserIcon className=" h-10 w-10  text-gray-400 mx-2" />
+                <span className="text-2xl p-1 ">50</span>
+                <HeartIcon className="h-10 w-10  text-gray-400 " />
+                <span className="text-2xl">65</span>
+              </div>
             </div>
           </div>
           <div className=" border-2">
@@ -361,9 +363,9 @@ export default function HomeContent() {
             </div>
             <br />
             <hr />
-            <div className=" flex flex-row  justify-between ">
+            <div className=" flex flex-row  justify-between mx-2  ">
               <div className="">
-                <div className=" flex flex-row  ">
+                <div className=" flex flex-row p-1 ">
                   <img
                     src={fourthImage}
                     alt="My Image"
@@ -372,10 +374,12 @@ export default function HomeContent() {
                   <span className="text-xl">Lana</span>
                 </div>
               </div>
-              <UserIcon className=" h-10 w-10  text-gray-400 mx-2 " />
-              <span className="text-xl px-20  ">35</span>
-              <HeartIcon className="h-10 w-10  text-gray-400 pl-3" />
-              <span className="text-2xl">42</span>
+              <div className="flex space-x-2">
+                <UserIcon className=" h-10 w-10  text-gray-400 mx-2" />
+                <span className="text-2xl p-1 ">35</span>
+                <HeartIcon className="h-10 w-10  text-gray-400 " />
+                <span className="text-2xl">42</span>
+              </div>
             </div>
           </div>
           <div className=" border-2">
@@ -401,9 +405,9 @@ export default function HomeContent() {
             </div>
             <br />
             <hr />
-            <div className=" flex flex-row  justify-between ">
+            <div className=" flex flex-row  justify-between mx-2 ">
               <div>
-                <div className=" flex flex-row  ">
+                <div className=" flex flex-row p-1 ">
                   <img
                     src={fifthImage}
                     alt="My Image"
@@ -412,10 +416,12 @@ export default function HomeContent() {
                   <span className="text-xl">Brandon</span>
                 </div>
               </div>
-              <UserIcon className=" h-10 w-10  text-gray-400 mx-2 " />
-              <span className="text-xl px-20 ">20</span>
-              <HeartIcon className="h-10 w-10  text-gray-400 pl-3" />
-              <span className="text-2xl">85</span>
+              <div className="flex space-x-2">
+                <UserIcon className=" h-10 w-10  text-gray-400 mx-2" />
+                <span className="text-2xl p-1 ">20</span>
+                <HeartIcon className="h-10 w-10  text-gray-400 " />
+                <span className="text-2xl">85</span>
+              </div>
             </div>
           </div>
         </div>
@@ -469,6 +475,252 @@ export default function HomeContent() {
               <CalendarIcon className=" h-10 w-10  text-gray-400 mx-2  " />
             </div>
           </div>
+        </div>
+      </div>
+      <div className="flex flex-row justify-between h-96 bg-gray-100 w-auto my-5 ">
+        <div className="pl-32">
+          <h1 className="mt-12 text-4xl mb-5 ">Mentor</h1>
+          <pre>
+            A108 Adam Street <br />
+            New York, NY 535022 <br />
+            United States
+          </pre>
+          <br />
+          <pre>
+            <b>Phone:</b> +1 5589 55488 55 <br />
+            <b>Email:</b> info@example.com
+          </pre>
+        </div>
+
+        <div>
+          <h1 className="mt-12 text-2xl mb-5">Useful Links</h1>
+          <div
+            className=" text-xl text-black
+         hover:text-green-400 flex flex-row "
+          >
+            <svg
+              className="w-3 h-7  "
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="4"
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+            Home
+          </div>
+          <br />
+          <div
+            className=" text-xl text-black
+         hover:text-green-400 flex flex-row   "
+          >
+            <svg
+              className="w-3 h-7  "
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="4"
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+            About us
+          </div>
+          <br />
+          <div
+            className=" text-xl text-black
+         hover:text-green-400 flex flex-row  "
+          >
+            <svg
+              className="w-3 h-7  "
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="4"
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+            Services
+          </div>
+          <br />
+          <div
+            className=" text-xl text-black
+         hover:text-green-400 flex flex-row   "
+          >
+            <svg
+              className="w-3 h-7  "
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="4"
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+            Terms of service
+          </div>
+          <br />
+          <div
+            className=" text-xl text-black
+         hover:text-green-400 flex flex-row   "
+          >
+            <svg
+              className="w-3 h-7 "
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="4"
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+            Privacy policy
+          </div>
+        </div>
+        <div>
+          <div>
+            <h1 className="mt-12 text-2xl mb-5">Our Services</h1>
+            <div
+              className=" text-xl text-black
+         hover:text-green-400 flex flex-row "
+            >
+              <svg
+                className="w-3 h-7  "
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="4"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+              Web Design
+            </div>
+            <br />
+            <div
+              className=" text-xl text-black
+         hover:text-green-400 flex flex-row   "
+            >
+              <svg
+                className="w-3 h-7  "
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="4"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+              Web Development
+            </div>
+            <br />
+            <div
+              className=" text-xl text-black
+         hover:text-green-400 flex flex-row  "
+            >
+              <svg
+                className="w-3 h-7  "
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="4"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+              Product Management
+            </div>
+            <br />
+            <div
+              className=" text-xl text-black
+         hover:text-green-400 flex flex-row   "
+            >
+              <svg
+                className="w-3 h-7  "
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="4"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+              Marketing
+            </div>
+            <br />
+            <div
+              className=" text-xl text-black
+         hover:text-green-400 flex flex-row   "
+            >
+              <svg
+                className="w-3 h-7 "
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="4"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+              Graphic Design
+            </div>
+          </div>
+        </div>
+        <div>
+        <h1 className="mt-12 text-2xl mb-5">Join Our Newsletter</h1>
+        <br />
+        <pre className="text-xl">
+        Tamen quem nulla quae legam multos aute sint culpa <br />
+        legam noster magna
+        </pre>
+        <br />
+        <div className="bg-gray-200 h-16 w-11/12 rounded-full my-5">
+        <button className="p-3 rounded-full w-36 h-16 mt-6 text-2xl text-white bg-green-400 border border-white px-4 py-2 flex flex-row ml-96 ">
+            Subscribe
+          </button>
+        </div>
         </div>
       </div>
     </div>
