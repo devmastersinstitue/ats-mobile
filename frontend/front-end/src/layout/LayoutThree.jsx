@@ -7,7 +7,7 @@ import Gallery from './Gallery';
 import Footer from './Footer';
  import Menu from './Menu';
 import HomeContent from './HomeContent';
-
+import Courses from './Courses';
 const LayoutThree = () => {
   return (
     
@@ -24,7 +24,7 @@ const LayoutThree = () => {
       <Gallery />
     </div>
     <Footer /> */}
-    
+    <Courses/>
   </div>
   );
 }
