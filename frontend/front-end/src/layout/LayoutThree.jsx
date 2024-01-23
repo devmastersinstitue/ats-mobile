@@ -15,14 +15,13 @@ const LayoutThree = () => {
      {/* <Menu/> */}
     <Header />
     <div className="bg-green-400 w-full h-48 my-10">
-        <h1 className="text-white text-4xl  text-center py-10">About Us</h1>
+        <h1 className="text-white text-4xl  text-center py-10">Courses</h1>
         <p className="text-white text-xl text-center -mt-7">
           Est dolorum ut non facere possimus quibusdam eligendi voluptatem. Quia
           id aut similique quia voluptas sit quaerat debitis. Rerum omnis ipsam
-          aperiam consequatur laboriosam nemo harum  praesentium.
+          aperiam consequatur laboriosam nemo harum <br /> praesentium.
         </p>
       </div>
-      
     {/* <HomeContent/> */}
     {/* <div >
       <div className="flex flex-row h-72" > 
@@ -34,7 +33,6 @@ const LayoutThree = () => {
     </div>
     <Footer /> */}
     <Courses/>
-    <Footer/>
   </div>
   );
 }
