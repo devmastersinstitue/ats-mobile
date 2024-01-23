@@ -9,15 +9,16 @@ import HomeContent from "./HomeContent";
 import Info from "./Info";
 import User from "./User";
 import sixImage from "./Jena.jpg";
-import firstImage from "./image2.jpg"
+import sevenImage from "./Sarah.jpg";
+import firstImage from "./image2.jpg";
 
 const LayoutTwo = () => {
   const images = [
-   firstImage,
-   firstImage,
-   firstImage,
-   firstImage,
-   firstImage,
+    firstImage,
+    firstImage,
+    firstImage,
+    firstImage,
+    firstImage,
     // Add more image URLs as needed
   ];
 
@@ -44,11 +45,42 @@ const LayoutTwo = () => {
           </h2>{" "}
           <h1 className="font-bold text-5xl">WHAT ARE THEY SAYING</h1>{" "}
         </div>
-
-        <div className="container mx-auto my-8">
-          <h1 className="text-3xl font-bold mb-4">Image Gallery</h1>
-          <Gallery images={images} />
+        <div className="flex flex-row justify-between mx-40 my-12">
+          <div className="bg-white border-2 w-5/12 h-64">
+            <img
+              src={sixImage}
+              alt="My Image"
+              className="h-20 w-20 -ml-12 my-4"
+            />
+            <div className="mx-12 -mt-20 ">
+              <h1 className="font-bold text-2xl">Jena Karlis</h1>
+              <h2 className="text-xl">Store Owner</h2>
+              <p className="text-xl py-2">
+                {" "}
+                Jena Karlis is a public figure or has gained recognition after
+                my last update, I recommend checking recent news articles,
+                professional websites for the latest information.
+              </p>
+            </div>
+          </div>
+          <div className="bg-white border-2 w-5/12 h-64">
+            <img
+              src={sevenImage}
+              alt="My Image"
+              className="h-20 w-20 -ml-12 my-4"
+            />
+            <div className="mx-12 -mt-20 ">
+              <h1 className="font-bold text-2xl">Sarah Wilsson</h1>
+              <h2 className="text-xl">Designer</h2>
+              <p className="text-xl py-5">
+                If Sarah Wilsson is a private individual or has gained
+                prominence after my last update, you might want to check more
+                recent and specific sources for up-to-date.{" "}
+              </p>
+            </div>
+          </div>
         </div>
+
         <Footer />
         {/* <HomeContent/> */}
         {/* <div >
