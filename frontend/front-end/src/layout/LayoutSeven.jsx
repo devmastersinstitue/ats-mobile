@@ -68,7 +68,7 @@ const LayoutSeven = () => {
               <input
                 type="text"
                 placeholder="Message"
-                className="h-20 w-6/12 border-2 ml-56 placeholder"
+                className="h-20 w-6/12 border-2 ml-56"
               />
             </div>
           </form>
