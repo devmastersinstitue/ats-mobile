@@ -6,6 +6,8 @@ import Gallery from "./Gallery";
 import Footer from "./Footer";
 import Menu from "./Menu";
 import HomeContent from "./HomeContent";
+import StudentTable from "./StudentTable";
+import LayoutEight from "./LayoutEight";
 
 const LayoutSix = () => {
   return (
@@ -97,17 +99,10 @@ const LayoutSix = () => {
         </div>
         
       </div>
+      <StudentTable/>
+      <LayoutEight/>
       <Footer />
-      {/* <HomeContent/> */}
-      {/* <div >
-      <div className="flex flex-row h-72" > 
-      
-      <SideMenu />
-      <Content />
-      </div>
-      <Gallery />
-    </div>
-    <Footer /> */}
+     
     </div>
   );
 };
