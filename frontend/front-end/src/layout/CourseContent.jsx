@@ -13,7 +13,7 @@ import {
    
   } from "@heroicons/react/solid";
 
-export default function Courses() {
+export default function CourseContent() {
   return (
     <div>
        <div className="flex flex-row justify-between py-10">

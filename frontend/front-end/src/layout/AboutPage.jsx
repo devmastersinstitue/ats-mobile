@@ -6,13 +6,12 @@ import Gallery from "./Gallery";
 import Footer from "./Footer";
 import Menu from "./Menu";
 import HomeContent from "./HomeContent";
-import Info from "./Info";
-import User from "./User";
 import sixImage from "./Jena.jpg";
 import sevenImage from "./Sarah.jpg";
 import firstImage from "./image2.jpg";
+import AboutContent from "./AboutContent";
 
-const LayoutTwo = () => {
+const AboutPage = () => {
   const images = [
     firstImage,
     firstImage,
@@ -36,8 +35,7 @@ const LayoutTwo = () => {
         </p>
       </div>
 
-      <Info />
-      <User />
+      <AboutContent/>
       <div>
         <div className="mx-32 mt-16 ">
           <h2 className="text-xl text-gray-400">
@@ -97,4 +95,4 @@ const LayoutTwo = () => {
   );
 };
 
-export default LayoutTwo;
+export default AboutPage;

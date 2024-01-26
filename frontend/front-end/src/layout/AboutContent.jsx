@@ -1,11 +1,11 @@
 import React from "react";
+import manPic from "./pic4.jpg"
 
-export default function Info() {
+export default function AboutContent() {
   return (
     <div>
-    
-      <div className="flex flex-row w-full justify-between mt-12">
-        <div className="pl-24 ">
+      <div className="sm:columns-1 lg:columns-2 w-full h-auto border-8 p-20">
+        <div className="">
           <h1 className="font-medium text-3xl ">
             Voluptatem dignissimos provident quasi corporis <br />
             voluptates sit assumenda.
@@ -15,10 +15,9 @@ export default function Info() {
             eiusmod tempor incididunt
             <br />
             ut labore et dolore magna aliqua.
-          </h3>{" "}
+          </h3>
           <br />
-          <div className="flex items-center space-x-2">
-            {/* Circle with correct mark icon */}
+          <div className="flex space-x-2">
             <svg
               className="w-8 h-8 text-green-500 bg-white p-1 rounded-full"
               viewBox="0 0 24 24"
@@ -39,8 +38,7 @@ export default function Info() {
               Ullamco laboris nisi ut aliquip ex ea commodo consequat.
             </span>
           </div>
-          <div className="flex items-center space-x-2">
-            {/* Circle with correct mark icon */}
+          <div className="flex space-x-2">
             <svg
               className="w-8 h-8 text-green-500 bg-white p-1 rounded-full"
               viewBox="0 0 24 24"
@@ -61,8 +59,7 @@ export default function Info() {
               Duis aute irure dolor in reprehenderit in voluptate velit.
             </span>
           </div>
-          <div className="flex items-center space-x-2">
-            {/* Circle with correct mark icon */}
+          <div className="flex space-x-2">
             <svg
               className="w-8 h-8 text-green-500 bg-white p-1 rounded-full"
               viewBox="0 0 24 24"
@@ -93,11 +90,33 @@ export default function Info() {
             reprehenderit in voluptate
           </span>
         </div>
-
-        <div
-          className="w-4/12 h-72 bg-no-repeat  mr-10 "
-          style={{ backgroundImage: "url(pic4.jpg )" }}
-        ></div>
+        <div className="lg:ml-40 sm:ml-0">
+          <img
+            src={manPic}
+            alt="My Image"
+            className="w-[450px] h-[500px]"
+          />
+        </div>
+      </div>
+      <div>
+        <div className=" bg-gray-100 lg:columns-4 sm:columns-2 whitespace border-8 p-20  text-center">
+          <div className="">
+            <h1 className="text-green-400 text-7xl font font-bold">1232</h1>
+            <p className="text-3xl">Students</p>
+          </div>
+          <div className="">
+            <h1 className="text-green-400 text-7xl font font-bold">64</h1>
+            <p className="text-3xl">Courses</p>
+          </div>
+          <div className="">
+            <h1 className="text-green-400 text-7xl font font-bold">42</h1>
+            <p className="text-3xl">Events</p>
+          </div>
+          <div className="">
+            <h1 className="text-green-400 text-7xl font font-bold">15</h1>
+            <p className="text-3xl">Trainers</p>
+          </div>
+        </div>
       </div>
     </div>
   );

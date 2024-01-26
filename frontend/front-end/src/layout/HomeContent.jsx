@@ -1,7 +1,4 @@
 import React from "react";
-import myImage from "./image2.jpg";
-import firstImage from "./pic3.jpg";
-import secondImage from "./pic4.jpg";
 import thirdImage from "./Walter.jpg";
 import fourthImage from "./images/Sarah.jpg";
 import fifthImage from "./images/Bill.jpg";
@@ -30,19 +27,17 @@ import {
   CameraIcon,
   cogIcon,
 } from "@heroicons/react/solid";
-import Footer from "./Footer";
-import Info from "./Info";
-import User from "./User";
-import Courses from "./Courses";
+import AboutContent from "./AboutContent";
+import CourseContent from "./CourseContent";
 
 export default function HomeContent() {
   return (
     <div>
       <div
-        className="w-full h-96 bg-no-repeat"
+        className="w-auto h-auto bg-no-repeat"
         style={{ backgroundImage: "url(girl-pic1.jpg )" }}
       >
-        <div className="ml-20 pt-10">
+        <div className="p-10 border-8 ">
           <h1 className="text-white font-bold text-6xl">Learning Today,</h1>
           <h1 className="text-white font-bold text-6xl">Leading Tomorrow</h1>
           <br />
@@ -54,13 +49,12 @@ export default function HomeContent() {
           </button>
         </div>
       </div>
-      <Info/>
-      <User/>
-      <div className="flex flex-row px-20 my-10 justify-between">
-        <div className="w-[500px] h-4/6 bg-green-400 rounded-lg">
-          <h1 className="text-white text-5xl font-bold text-center pt-7">
+      <AboutContent/>
+      <div className="flex flex-row justify-between border-8 p-20">
+        <div className="w-[500px] h-auto bg-green-400 rounded-lg p-2">
+          <h1 className="text-white text-5xl font-bold text-center">
             Why Choose Mentor?
-          </h1>{" "}
+          </h1>
           <br />
           <p className="text-white text-2xl text-center">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -103,7 +97,6 @@ export default function HomeContent() {
             enim aliquam quae harum <br /> pariatur laboris nisi ut aliquip
           </p>
         </div>
-
         <div className="w-96 h-96 bg-gray-200 rounded-lg justify-items-center">
           <DuplicateIcon className=" h-12 w-12 flex mx-auto mt-16 text-green-400 " />
           <h1 className="text-center pt-20 text-3xl font-bold">
@@ -191,8 +184,10 @@ export default function HomeContent() {
         </h2>{" "}
         <br />
         <h1 className="font-bold text-5xl">POPULAR COURSES</h1>
-       <Courses/>
-        <div className="flex flex-row justify-between">
+       <CourseContent/>
+        
+      </div>
+      <div className="flex flex-row justify-between">
           <div className="text-center border-2">
             <img src={thirdImage} alt="My Image" className=" h-96 w-96" />
             <h1 className="text-2xl mt-4">Walter White</h1>
@@ -235,7 +230,7 @@ export default function HomeContent() {
               consequuntur qui porro et laborum toro des clara
             </p>
             <br />
-            <div className="flex flex-row  flex items-center justify-center ">
+            <div className="flex flex-row items-center justify-center ">
               <CalculatorIcon className=" h-10 w-10  text-gray-400 mx-2  " />
               <CameraIcon className=" h-10 w-10  text-gray-400 mx-2  " />
               <CubeIcon className=" h-10 w-10  text-gray-400 mx-2  " />
@@ -243,8 +238,6 @@ export default function HomeContent() {
             </div>
           </div>
         </div>
-      </div>
-     <Footer/>
     </div>
   );
 }
