@@ -29,16 +29,16 @@ class Student extends React.Component {
               {this.props.students.map((student) => (
                 <tr className="text-center">
                   <td className="py-2 px-4 border-b text-sm text-gray-600">
-                    {student.human.name}
+                    {student?.human?.name}
                   </td>
                   <td className="py-2 px-4 border-b text-sm text-gray-600">
-                    {student.human.cnic}
+                    {student?.human?.cnic}
                   </td>
                   <td className="py-2 px-4 border-b text-sm text-gray-600">
-                    {student.human.contactNo}
+                    {student?.human?.contactNo}
                   </td>
                   <td className="py-2 px-4 border-b text-sm text-gray-600">
-                    {student.fees}
+                    {student?.fees}
                   </td>
                 </tr>
               ))}

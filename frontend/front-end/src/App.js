@@ -7,6 +7,10 @@ import LayoutFour from "./layout/LayoutFour";
 import LayoutFive from "./layout/LayoutFive";
 import LayoutSix from "./layout/LayoutSix";
 import LayoutSeven from './layout/LayoutSeven';
+import LayoutNine from './layout/LayoutNine';
+import Layoutten from './layout/Layoutten';
+import Layouteleven from './layout/Layouteleven';
+import Layouttwelve from './layout/Layouttwelve';
 export default function App() {
   //   const [books, setBooks] = useState([]);
     
@@ -54,6 +58,10 @@ export default function App() {
         <Route path="/events" element={<LayoutFive />} />
         <Route path="/pricing" element={<LayoutSix />} />
         <Route path="/contacts" element={<LayoutSeven />} />
+        <Route path="/Studentform" element={<LayoutNine />} />
+        <Route path="/Studentrecord" element={<Layoutten />} />
+        <Route path="/Studentdetails" element={<Layouteleven />} />
+        <Route path="/Booksrecord" element={<Layouttwelve />} />
       </Routes>
     </Router>
   );

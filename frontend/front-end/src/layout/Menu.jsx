@@ -48,7 +48,26 @@ const Menu = () => {
               Pricing
             </a>
           </li>
-
+          <li>
+            <a href="Studentform" className="text-white hover:text-gray-300">
+              StudentForm
+            </a>
+          </li>
+          <li>
+            <a href="Studentrecord" className="text-white hover:text-gray-300">
+              Studentrecord
+            </a>
+          </li>
+          <li>
+            <a href="Studentdetails" className="text-white hover:text-gray-300">
+              Studentdetails
+            </a>
+          </li>
+          <li>
+            <a href="Booksrecord" className="text-white hover:text-gray-300">
+              Booksrecord
+            </a>
+          </li>
           <div className="relative inline-block text-left">
             <button
               onClick={toggleDropdown}

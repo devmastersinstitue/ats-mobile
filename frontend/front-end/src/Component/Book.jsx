@@ -28,16 +28,16 @@ function Book(props) {
             {props.books.map((book) => (
               <tr className="text-center">
                 <td className="py-2 px-4 border-b text-sm text-gray-600">
-                  {book.name}
+                  {book?.name}
                 </td>
                 <td className="py-2 px-4 border-b text-sm text-gray-600">
-                  {book.color}
+                  {book?.color}
                 </td>
                 <td className="py-2 px-4 border-b text-sm text-gray-600">
-                  {book.price}
+                  {book?.price}
                 </td>
                 <td className="py-2 px-4 border-b text-sm text-gray-600">
-                  {book.author.name}
+                  {book?.author?.name}
                 </td>
               </tr>
             ))}
