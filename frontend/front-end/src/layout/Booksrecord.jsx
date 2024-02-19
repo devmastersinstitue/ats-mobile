@@ -15,6 +15,7 @@ function Booksrecord() {
       .get(`http://localhost:8080/books/detail`)
       .then((response) => {
         if (response.status === 200) {
+          console.log(response.data)
           setBooksRecord(response.data);
         }
       })
