@@ -1,0 +1,84 @@
+import React, { useState } from "react";
+
+export default function CustomerForm({ isOpen, onClose }) {
+    const [customerModel, setCustomerModel] = useState({
+        firstName: "",
+        lastName: "",
+        contact: "",
+        cnic: "",
+        email: "",
+        route: "",
+        shopName: "",
+        address: "",
+        remainingAmount: ""
+    });
+
+    const handleChange = (e) => {
+        setCustomerModel({ ...customerModel, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        console.log(customerModel);
+        try {
+            const response = await fetch("http://localhost:8080/customer", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(customerModel),
+            });
+    
+            if (!response.ok) {
+                throw new Error("Failed to create customer");
+            }
+    
+            const newCustomer = await response.json();
+            console.log("Customer added:", newCustomer);
+            alert("Customer added successfully!");
+            setCustomerModel({
+                firstName: "",
+                lastName: "",
+                contact: "",
+                cnic: "",
+                email: "",
+                route: "",
+                shopName: "",
+                address: "",
+                remainingAmount: ""
+            });
+            onClose(); // Close modal after successful submission
+        } catch (error) {
+            console.error("Error:", error);
+            alert("Something went wrong");
+        }
+    };
+
+    if (!isOpen) return null;
+
+    return (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+            <div className="bg-white p-6 rounded-lg shadow-lg w-96">
+                <h2 className="text-2xl font-bold text-center text-[#26a69d] mb-4">Add Customer</h2>
+                <form onSubmit={handleSubmit} className="space-y-4">
+                    <input type="text" name="firstName" value={customerModel.firstName} onChange={handleChange} placeholder="First Name" className="w-full p-2 border rounded" required />
+                    <input type="text" name="lastName" value={customerModel.lastName} onChange={handleChange} placeholder="Last Name" className="w-full p-2 border rounded" required />
+                    <input type="tel" name="contact" value={customerModel.contact} onChange={handleChange} placeholder="Contact Number" className="w-full p-2 border rounded" required />
+                    <input type="text" name="cnic" value={customerModel.cnic} onChange={handleChange} placeholder="CNIC" className="w-full p-2 border rounded" required />
+                    <input type="email" name="email" value={customerModel.email} onChange={handleChange} placeholder="Email" className="w-full p-2 border rounded" required />
+                    <select name="role" value={customerModel.route} onChange={handleChange} className="w-full p-2 border rounded" required>
+                        <option value="Route 1">Route 1</option>
+                        <option value="Route 2">Route 2</option>
+                        <option value="Route 3">Route 3</option>
+                        <option value="Route 4">Route 4</option>
+                    </select>
+                    <input type="text" name="shopName" value={customerModel.shopName} onChange={handleChange} placeholder="Shop Name" className="w-full p-2 border rounded" required />
+                    <input type="text" name="address" value={customerModel.address} onChange={handleChange} placeholder="Address" className="w-full p-2 border rounded" required />
+                    <input type="number" name="remainingAmount" value={customerModel.remainingAmount} onChange={handleChange} placeholder="Remaining Amount" className="w-full p-2 border rounded" required />
+                    <div className="flex justify-between">
+                        <button type="button" onClick={onClose} className="px-4 py-2 bg-gray-400 text-white rounded">Cancel</button>
+                        <button type="submit" className="px-4 py-2 bg-[#26a69d] text-white rounded hover:bg-[#208888]">Add Customer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    );
+}
