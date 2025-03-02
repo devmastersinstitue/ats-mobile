@@ -17,13 +17,9 @@
     "react-icons": "^4.12.0",
     "react-router-dom": "^6.18.0",
     "react-scripts": "^5.0.1",
-<<<<<<< HEAD:frontend/front-end/package.json
-    "web-vitals": "^2.1.4"
-=======
     "react-toastify": "^11.0.5",
     "web-vitals": "^2.1.4",
     "yup": "^1.6.1"
->>>>>>> 13aa404b11a71cd459ce5082883a89ebda92ca89:frontend/package.json
   },
   "scripts": {
     "start": "react-scripts start",
