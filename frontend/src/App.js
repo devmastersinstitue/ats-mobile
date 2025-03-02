@@ -10,7 +10,7 @@ import AddProvider from './layouts/AddProvider';
 export default function App() {
   
   return (
-    <Router>
+    <Router basename="/ats-mobile">
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/app/dashboard" element={<Dashboard />} />
