@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/ats-mobile/static/css/main.2a5fdd11.css",
-    "main.js": "/ats-mobile/static/js/main.51ee8f7d.js",
+    "main.js": "/ats-mobile/static/js/main.a96b69a6.js",
     "static/media/Dev Masters Learning.png": "/ats-mobile/static/media/Dev Masters Learning.17eba225a25f9f3492a4.png",
     "static/media/ats_logo.jpeg": "/ats-mobile/static/media/ats_logo.ff80bcc9d429b52e7229.jpeg",
     "index.html": "/ats-mobile/index.html",
     "main.2a5fdd11.css.map": "/ats-mobile/static/css/main.2a5fdd11.css.map",
-    "main.51ee8f7d.js.map": "/ats-mobile/static/js/main.51ee8f7d.js.map"
+    "main.a96b69a6.js.map": "/ats-mobile/static/js/main.a96b69a6.js.map"
   },
   "entrypoints": [
     "static/css/main.2a5fdd11.css",
-    "static/js/main.51ee8f7d.js"
+    "static/js/main.a96b69a6.js"
   ]
 }
