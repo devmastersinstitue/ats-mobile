@@ -51,7 +51,7 @@ function AddCustomer() {
                 </div>
 
                 {/* Add Customer Button */}
-                <div className="p-6 flex justify-end">
+                <div className="p-6 flex justify-start">
                     <button
                         onClick={() => setIsModalOpen(true)}
                         className="px-4 py-2 bg-[#26a69d] text-white rounded hover:bg-[#208888]"
@@ -62,8 +62,8 @@ function AddCustomer() {
 
                 {/* Customer List Table */}
                 <div className="p-6">
-                    {/* Wrapper to allow both horizontal and vertical scrolling */}
-                    <div className="overflow-auto max-h-[70vh] border border-gray-300 rounded-md shadow-md">
+                    {/* Wrapper for both horizontal and vertical scrolling */}
+                    <div className="overflow-x-auto overflow-y-auto max-h-[70vh] border border-gray-300 rounded-md shadow-md">
                         <table className="min-w-full bg-white">
                             <thead className="bg-[#26a69d] text-white">
                                 <tr>
@@ -73,7 +73,7 @@ function AddCustomer() {
                                     <th className="py-2 px-4 border whitespace-nowrap">Contact</th>
                                     <th className="py-2 px-4 border whitespace-nowrap">CNIC</th>
                                     <th className="py-2 px-4 border whitespace-nowrap">Email</th>
-                                    <th className="py-2 px-4 border whitespace-nowrap">Route</th>
+                                    <th className="py-2 px-4 border whitespace-nowrap">Root</th>
                                     <th className="py-2 px-4 border whitespace-nowrap">Shop Name</th>
                                     <th className="py-2 px-4 border whitespace-nowrap">Address</th>
                                     <th className="py-2 px-4 border whitespace-nowrap">Remaining Amount</th>
@@ -88,7 +88,7 @@ function AddCustomer() {
                                         <td className="py-2 px-4 border">{customer.contact}</td>
                                         <td className="py-2 px-4 border">{customer.cnic}</td>
                                         <td className="py-2 px-4 border">{customer.email}</td>
-                                        <td className="py-2 px-4 border">{customer.route}</td>
+                                        <td className="py-2 px-4 border">{customer.root}</td>
                                         <td className="py-2 px-4 border">{customer.shopName}</td>
                                         <td className="py-2 px-4 border">{customer.address}</td>
                                         <td className="py-2 px-4 border">{customer.remainingAmount}</td>

@@ -16,6 +16,7 @@ export default function Navbar({ sidebarOpen, setSidebarOpen }) {
 
     const userRole = localStorage.getItem("role");
     const userName = localStorage.getItem("userName");
+    const userEmail = localStorage.getItem("email")
 
 
 
@@ -35,7 +36,7 @@ export default function Navbar({ sidebarOpen, setSidebarOpen }) {
 
     return (
         <div>
-            {console.log(userName)
+            {console.log(userEmail)
             }
             {/* Sidebar for Tablet & Desktop (Collapsible) */}
             {!isMobile ? (
@@ -83,11 +84,14 @@ export default function Navbar({ sidebarOpen, setSidebarOpen }) {
                                         <Link className="block py-2 px-6 hover:bg-[#208888]" to="/app/add-employee">
                                             Add Employee
                                         </Link>
+                                        <Link className="block py-2 px-6 hover:bg-[#208888]" to="/app/add-root">
+                                            Add Root
+                                        </Link>
                                         <Link className="block py-2 px-6 hover:bg-[#208888]" to="/app/add-customer">
                                             Add Customer
                                         </Link>
-                                        <Link className="block py-2 px-6 hover:bg-[#208888]" to="/app/add-provider">
-                                            Add Provider
+                                        <Link className="block py-2 px-6 hover:bg-[#208888]" to="/app/add-supplier">
+                                            Add Supplier
                                         </Link>
                                     </div>
                                 )}
@@ -224,15 +228,21 @@ export default function Navbar({ sidebarOpen, setSidebarOpen }) {
                                     </Link>
                                     <Link
                                         className="block w-full py-2 px-6 hover:bg-[#208888] font-bold"
+                                        to="/app/add-root"
+                                    >
+                                        Add Root
+                                    </Link>
+                                    <Link
+                                        className="block w-full py-2 px-6 hover:bg-[#208888] font-bold"
                                         to="/app/add-customer"
                                     >
                                         Add Customer
                                     </Link>
                                     <Link
                                         className="block w-full py-2 px-6 hover:bg-[#208888] font-bold"
-                                        to="/app/add-provider"
+                                        to="/app/add-supplier"
                                     >
-                                        Add Provider
+                                        Add Supplier
                                     </Link>
                                 </div>
                             )}

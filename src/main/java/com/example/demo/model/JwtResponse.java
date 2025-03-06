@@ -11,6 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class JwtResponse {
+    private String userId;
     private String userName;
     private String email;
     private Role role;

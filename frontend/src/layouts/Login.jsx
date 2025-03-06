@@ -25,6 +25,7 @@ export default function Login() {
             .then((res) => {
                 debugger
                 if (res.status === 200 && res.data !== '') {
+                    localStorage.setItem("userId", res.data.userId)
                     localStorage.setItem("email", res.data.email);
                     localStorage.setItem("userName", res.data.userName);
                     localStorage.setItem("role", res.data.role);

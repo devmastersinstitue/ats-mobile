@@ -1,14 +1,24 @@
 package com.example.demo.Transformer;
 
 import com.example.demo.domain.Customer;
+import com.example.demo.domain.Root;
 import com.example.demo.model.CustomerModel;
+import com.example.demo.repository.RootRepository;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Component
 public class CustomerTransformer {
+
+    private final RootRepository rootRepository;
+
+    public CustomerTransformer(RootRepository rootRepository) {
+        this.rootRepository = rootRepository;
+    }
 
     public Customer toEntity(CustomerModel model) {
         if(model != null)
@@ -19,11 +29,18 @@ public class CustomerTransformer {
                     .contact(model.getContact())
                     .cnic(model.getCnic())
                     .email(model.getEmail())
-                    .route(model.getRoute())
+                    .root(getRootRef(model.getRoot()))
                     .shopName(model.getShopName())
                     .address(model.getAddress())
                     .remainingAmount(model.getRemainingAmount())
                     .build();
+        return null;
+    }
+
+    private Root getRootRef(String name) {
+        Optional<Root> optionalRoot = rootRepository.findByName(name);
+        if (optionalRoot.isPresent())
+            return optionalRoot.get();
         return null;
     }
 
@@ -36,7 +53,7 @@ public class CustomerTransformer {
                     .contact(entity.getContact())
                     .cnic(entity.getCnic())
                     .email(entity.getEmail())
-                    .route(entity.getRoute())
+                    .root(entity.getRoot().getName())
                     .shopName(entity.getShopName())
                     .address(entity.getAddress())
                     .remainingAmount(entity.getRemainingAmount())

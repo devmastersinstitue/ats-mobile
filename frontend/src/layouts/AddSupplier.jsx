@@ -1,34 +1,34 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Navbar from "../components/Navbar";
-import ProviderForm from "./forms/ProviderForm";
+import SupplierForm from "./forms/SupplierForm";
 
-function AddProvider() {
+function AddSupplier() {
     const [sidebarOpen, setSidebarOpen] = useState(true);
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [providers, setProviders] = useState([]); // Provider list
+    const [Suppliers, setSuppliers] = useState([]); // Supplier list
 
-    // Fetch provider list from backend
+    // Fetch Supplier list from backend
     useEffect(() => {
-        fetchProviders();
+        fetchSuppliers();
     }, [isModalOpen]);
 
-    const fetchProviders = async () => {
+    const fetchSuppliers = async () => {
         try {
-            const response = await axios.get("http://localhost:8080/provider");
-            setProviders(response.data); // Update state with API data
+            const response = await axios.get("http://localhost:8080/supplier");
+            setSuppliers(response.data); // Update state with API data
         } catch (error) {
-            console.error("Error fetching providers:", error);
+            console.error("Error fetching Suppliers:", error);
         }
     };
 
-    // Handle adding new provider
-    const handleAddProvider = async (newProvider) => {
+    // Handle adding new Supplier
+    const handleAddSupplier = async (newSupplier) => {
         try {
-            await axios.post("http://localhost:8080/provider", newProvider);
-            fetchProviders(); // Refresh list after adding
+            await axios.post("http://localhost:8080/supplier", newSupplier);
+            fetchSuppliers(); // Refresh list after adding
         } catch (error) {
-            console.error("Error adding provider:", error);
+            console.error("Error adding Supplier:", error);
         }
     };
 
@@ -46,21 +46,21 @@ function AddProvider() {
                 {/* Header */}
                 <div className="flex justify-center text-center">
                     <h1 className="text-2xl font-bold h-14 bg-[#26a69d] text-white py-2 md:rounded-md w-full">
-                        Provider Management
+                        Supplier Management
                     </h1>
                 </div>
 
-                {/* Add Provider Button */}
+                {/* Add Supplier Button */}
                 <div className="p-6 flex justify-end">
                     <button
                         onClick={() => setIsModalOpen(true)}
                         className="px-4 py-2 bg-[#26a69d] text-white rounded hover:bg-[#208888]"
                     >
-                        Add Provider
+                        Add Supplier
                     </button>
                 </div>
 
-                {/* Provider List Table */}
+                {/* Supplier List Table */}
                 <div className="p-6">
                     <div className="overflow-auto max-h-[70vh] border border-gray-300 rounded-md shadow-md">
                         <table className="min-w-full bg-white">
@@ -77,16 +77,16 @@ function AddProvider() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {providers.map((provider, index) => (
-                                    <tr key={provider.id} className="text-center border hover:bg-gray-100">
+                                {Suppliers.map((Supplier, index) => (
+                                    <tr key={Supplier.id} className="text-center border hover:bg-gray-100">
                                         <td className="py-2 px-4 border">{index + 1}</td>
-                                        <td className="py-2 px-4 border">{provider.firstName}</td>
-                                        <td className="py-2 px-4 border">{provider.lastName}</td>
-                                        <td className="py-2 px-4 border">{provider.contact}</td>
-                                        <td className="py-2 px-4 border">{provider.email}</td>
-                                        <td className="py-2 px-4 border">{provider.city}</td>
-                                        <td className="py-2 px-4 border">{provider.address}</td>
-                                        <td className="py-2 px-4 border">{provider.companyName}</td>
+                                        <td className="py-2 px-4 border">{Supplier.firstName}</td>
+                                        <td className="py-2 px-4 border">{Supplier.lastName}</td>
+                                        <td className="py-2 px-4 border">{Supplier.contact}</td>
+                                        <td className="py-2 px-4 border">{Supplier.email}</td>
+                                        <td className="py-2 px-4 border">{Supplier.city}</td>
+                                        <td className="py-2 px-4 border">{Supplier.address}</td>
+                                        <td className="py-2 px-4 border">{Supplier.companyName}</td>
                                     </tr>
                                 ))}
                             </tbody>
@@ -94,11 +94,11 @@ function AddProvider() {
                     </div>
                 </div>
 
-                {/* Provider Form Modal */}
-                <ProviderForm isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} onAdd={handleAddProvider} />
+                {/* Supplier Form Modal */}
+                <SupplierForm isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} onAdd={handleAddSupplier} />
             </div>
         </div>
     );
 }
 
-export default AddProvider;
+export default AddSupplier;

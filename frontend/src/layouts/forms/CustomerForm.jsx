@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function CustomerForm({ isOpen, onClose }) {
     const [customerModel, setCustomerModel] = useState({
@@ -7,11 +7,31 @@ export default function CustomerForm({ isOpen, onClose }) {
         contact: "",
         cnic: "",
         email: "",
-        route: "",
+        root: "",
         shopName: "",
         address: "",
         remainingAmount: ""
     });
+    const [roots, setRoots] = useState([]);
+
+    useEffect(() => {
+        const fetchRoots = async () => {
+            try {
+                const response = await fetch("http://localhost:8080/root");
+                if (!response.ok) {
+                    throw new Error("Failed to fetch roots");
+                }
+                const data = await response.json();
+                console.log(data);
+                setRoots(data);
+                console.log(roots)
+            } catch (error) {
+                console.error("Error fetching roots:", error);
+            }
+        };
+
+        fetchRoots();
+    }, []);
 
     const handleChange = (e) => {
         setCustomerModel({ ...customerModel, [e.target.name]: e.target.value });
@@ -40,7 +60,7 @@ export default function CustomerForm({ isOpen, onClose }) {
                 contact: "",
                 cnic: "",
                 email: "",
-                route: "",
+                root: "",
                 shopName: "",
                 address: "",
                 remainingAmount: ""
@@ -64,11 +84,11 @@ export default function CustomerForm({ isOpen, onClose }) {
                     <input type="tel" name="contact" value={customerModel.contact} onChange={handleChange} placeholder="Contact Number" className="w-full p-2 border rounded" required />
                     <input type="text" name="cnic" value={customerModel.cnic} onChange={handleChange} placeholder="CNIC" className="w-full p-2 border rounded" required />
                     <input type="email" name="email" value={customerModel.email} onChange={handleChange} placeholder="Email" className="w-full p-2 border rounded" required />
-                    <select name="role" value={customerModel.route} onChange={handleChange} className="w-full p-2 border rounded" required>
-                        <option value="Route 1">Route 1</option>
-                        <option value="Route 2">Route 2</option>
-                        <option value="Route 3">Route 3</option>
-                        <option value="Route 4">Route 4</option>
+                    <select name="root" value={customerModel.root} onChange={handleChange} className="w-full p-2 border rounded" required>
+                        <option value="">Select Root</option>
+                        {roots.map((root) => (
+                            <option key={root.id} value={root.name}>{root.name}</option>
+                        ))}
                     </select>
                     <input type="text" name="shopName" value={customerModel.shopName} onChange={handleChange} placeholder="Shop Name" className="w-full p-2 border rounded" required />
                     <input type="text" name="address" value={customerModel.address} onChange={handleChange} placeholder="Address" className="w-full p-2 border rounded" required />
