@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import ProductForm from "./forms/ProductForm";
 
 function AddProduct() {
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
     const [sidebarOpen, setSidebarOpen] = useState(true);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [products, setProducts] = useState([]);
@@ -32,15 +33,21 @@ function AddProduct() {
     };
 
     return (
-        <div className="flex h-screen overflow-hidden">
+        <div>
             <Navbar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
             <div className={`flex-1 h-full md:pt-1 md:pl-6 md:mr-1 md:mt-0 transition-all duration-300 ${sidebarOpen ? "md:ml-64" : "md:ml-16 ml-0"}`}>
-                <div className="flex justify-center text-center">
+                {!isMobile && <div className="flex justify-center text-center">
                     <h1 className="text-2xl font-bold h-14 bg-[#26a69d] text-white py-2 md:rounded-md w-full">
                         Product Management
                     </h1>
-                </div>
-                <div className="p-6 flex justify-end">
+                </div>}
+
+                {isMobile && <div className="flex">
+                    <h1 className="text-xl pl-16 font-bold h-14 bg-[#26a69d] text-white py-2 md:rounded-md w-full">
+                        Product Management
+                    </h1>
+                </div>}
+                <div className="p-6 flex justify-start">
                     <button
                         onClick={() => setIsModalOpen(true)}
                         className="px-4 py-2 bg-[#26a69d] text-white rounded hover:bg-[#208888]"

@@ -5,7 +5,7 @@ import LifeTechLogo from './../images/ats_logo.jpeg';
 
 const Logo = () => {
     return (
-        <img className="mb-8 h-28 w-72 rounded-lg items-center" src={LifeTechLogo} alt="Tenant Logo" />
+        <img className="h-28 w-72 rounded-lg m-auto" src={LifeTechLogo} alt="Tenant Logo" />
     );
 };
 

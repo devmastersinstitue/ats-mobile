@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import RootForm from "./forms/RootForm";
 
 function AddRoot() {
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
     const [sidebarOpen, setSidebarOpen] = useState(true);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [roots, setRoots] = useState([]); // Root list
@@ -33,7 +34,7 @@ function AddRoot() {
     };
 
     return (
-        <div className="flex h-screen overflow-hidden">
+        <div>
             {/* Sidebar */}
             <Navbar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 
@@ -42,14 +43,20 @@ function AddRoot() {
                     sidebarOpen ? "md:ml-64" : "md:ml-16 ml-0"
                 }`}>
                 {/* Header */}
-                <div className="flex justify-center text-center">
+                {!isMobile && <div className="flex justify-center text-center">
                     <h1 className="text-2xl font-bold h-14 bg-[#26a69d] text-white py-2 md:rounded-md w-full">
                         Root Management
                     </h1>
-                </div>
+                </div>}
+
+                {isMobile && <div className="flex">
+                    <h1 className="text-xl pl-16 font-bold h-14 bg-[#26a69d] text-white py-2 md:rounded-md w-full">
+                        Root Management
+                    </h1>
+                </div>}
 
                 {/* Add Root Button */}
-                <div className="p-6 flex justify-end">
+                <div className="p-6 flex justify-start">
                     <button
                         onClick={() => setIsModalOpen(true)}
                         className="px-4 py-2 bg-[#26a69d] text-white rounded hover:bg-[#208888]"

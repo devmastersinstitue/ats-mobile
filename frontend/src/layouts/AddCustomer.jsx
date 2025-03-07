@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import CustomerForm from "./forms/CustomerForm";
 
 function AddCustomer() {
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
     const [sidebarOpen, setSidebarOpen] = useState(true);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [customers, setCustomers] = useState([]); // Customer list
@@ -33,7 +34,7 @@ function AddCustomer() {
     };
 
     return (
-        <div className="flex h-screen overflow-hidden">
+        <div>
             {/* Sidebar */}
             <Navbar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 
@@ -44,11 +45,17 @@ function AddCustomer() {
                 }`}
             >
                 {/* Header */}
-                <div className="flex justify-center text-center">
+                {!isMobile && <div className="flex justify-center text-center">
                     <h1 className="text-2xl font-bold h-14 bg-[#26a69d] text-white py-2 md:rounded-md w-full">
                         Customer Management
                     </h1>
-                </div>
+                </div>}
+
+                {isMobile && <div className="flex">
+                    <h1 className="text-xl pl-16 font-bold h-14 bg-[#26a69d] text-white py-2 md:rounded-md w-full">
+                        Customer Management
+                    </h1>
+                </div>}
 
                 {/* Add Customer Button */}
                 <div className="p-6 flex justify-start">

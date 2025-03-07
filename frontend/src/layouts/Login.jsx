@@ -60,18 +60,17 @@ export default function Login() {
     });
 
     return (
-        <div className=" ">
+        <div>
             <ToastContainer position="top-right" autoClose={3000} />
-            <div className="">
+            <div className="mb-16">
                 <form onSubmit={formik.handleSubmit}>
-                    <div className="flex flex-col h-screen items-center justify-center">
+                    <div className="flex flex-col text-xl font-bold text-gray-700 p-10 lg:mt-20">
                         <Logo />
-                        <label className="my-6 text-2xl font-bold text-center">
-                            <h1>SIGN IN</h1>
-                        </label>
-                        <label className="mt-7 mb-1 block text-md font-medium text-gray-700 -ml-[340px]">Email</label>
+                        <label className="w-20 my-5 m-auto">SIGN IN</label>
+                        <div className="flex flex-col w-full md:w-[55%] lg:w-[40%] xl:w-[28%] 2xl:w-[20%] m-auto">
+                        <label className="my-5">Email</label>
                         <input
-                            className="rounded-md border-gray-300 bg-gray-200 w-96 h-10"
+                            className="rounded-md border-gray-300 bg-gray-200 md:w-96 w-[100%] h-10"
                             type={"text"}
                             label={"Email"}
                             name="email"
@@ -82,11 +81,9 @@ export default function Login() {
                         {formik.touched.email && formik.errors.email && (
                             <div className="text-red-600">{formik.errors.email}</div>
                         )}
-                        <label className="mt-7 mb-1 block text-md font-medium text-gray-700 -ml-[310px]">
-                            Password
-                        </label>
+                        <label className="my-5">Password</label>
                         <input
-                            className="rounded-md border-gray-300 bg-gray-200 w-96 h-10"
+                            className="rounded-md border-gray-300 bg-gray-200 md:w-96 w-[100%] h-10"
                             type={"password"}
                             label={"Password"}
                             name="password"
@@ -97,16 +94,16 @@ export default function Login() {
                         {formik.touched.password && formik.errors.password && (
                             <div className="text-red-600">{formik.errors.password}</div>
                         )}
-                        <Link to="/app/email">
+                        {/* <Link to="/app/email">
                             <p className="my-8 text-sm font-medium underline hover:cursor-pointer">Forgot password?</p>
-                        </Link>
-                        <Button label="Login" />
+                        </Link> */}
+                        <Button label="Login" width="md:w-96 w-[100%]"/>
+                        </div>
+                        
                     </div>
                 </form>
             </div>
-            <div className="-mt-20 sm:mr-20 md:mr-20 lg:mr-16 xl:mr-16 2xl:mr-32">
-                <Footer />
-            </div>
+            <Footer />
         </div>
     );
 }

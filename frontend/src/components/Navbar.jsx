@@ -36,8 +36,6 @@ export default function Navbar({ sidebarOpen, setSidebarOpen }) {
 
     return (
         <div>
-            {console.log(userEmail)
-            }
             {/* Sidebar for Tablet & Desktop (Collapsible) */}
             {!isMobile ? (
                 <div
@@ -192,7 +190,7 @@ export default function Navbar({ sidebarOpen, setSidebarOpen }) {
                 </div>
             ) : (
                 // Mobile Navbar (Hamburger Menu)
-                <div className="bg-[#26a69d] text-white fixed top-0 right-0 p-3">
+                <div className="bg-[#26a69d] text-white fixed top-0 left-0 p-3">
                     <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden">
                         {menuOpen ? <XIcon className="w-6 h-6" /> : <MenuIcon className="w-6 h-6" />}
                     </button>
