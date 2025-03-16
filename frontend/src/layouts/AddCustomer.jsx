@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 import CustomerForm from "./forms/CustomerForm";
 
 function AddCustomer() {
-    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+    const [isMobile] = useState(window.innerWidth < 768);
     const [sidebarOpen, setSidebarOpen] = useState(true);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [customers, setCustomers] = useState([]); // Customer list

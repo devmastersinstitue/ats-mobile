@@ -18,4 +18,5 @@ public class CustomerModel {
     private String shopName;
     private String address;
     private double remainingAmount;
+    private String lastPaidDate;
 }

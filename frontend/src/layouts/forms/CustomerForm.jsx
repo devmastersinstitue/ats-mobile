@@ -22,9 +22,7 @@ export default function CustomerForm({ isOpen, onClose }) {
                     throw new Error("Failed to fetch roots");
                 }
                 const data = await response.json();
-                console.log(data);
                 setRoots(data);
-                console.log(roots)
             } catch (error) {
                 console.error("Error fetching roots:", error);
             }
@@ -39,7 +37,6 @@ export default function CustomerForm({ isOpen, onClose }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(customerModel);
         try {
             const response = await fetch("http://localhost:8080/customer", {
                 method: "POST",
@@ -51,8 +48,6 @@ export default function CustomerForm({ isOpen, onClose }) {
                 throw new Error("Failed to create customer");
             }
     
-            const newCustomer = await response.json();
-            console.log("Customer added:", newCustomer);
             alert("Customer added successfully!");
             setCustomerModel({
                 firstName: "",
@@ -67,7 +62,6 @@ export default function CustomerForm({ isOpen, onClose }) {
             });
             onClose(); // Close modal after successful submission
         } catch (error) {
-            console.error("Error:", error);
             alert("Something went wrong");
         }
     };

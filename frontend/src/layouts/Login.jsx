@@ -11,7 +11,6 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function Login() {
-    // const url = `${process.env.REACT_APP_BASE_URL}/api/auth/signin`;
     const validationSchema = Yup.object({
         email: Yup.string().email("Must be a valid email").max(255).required("Email is required"),
         password: Yup.string().max(255).required("Password is required"),
@@ -70,7 +69,7 @@ export default function Login() {
                         <div className="flex flex-col w-full md:w-[55%] lg:w-[40%] xl:w-[28%] 2xl:w-[20%] m-auto">
                         <label className="my-5">Email</label>
                         <input
-                            className="rounded-md border-gray-300 bg-gray-200 md:w-96 w-[100%] h-10"
+                            className="rounded-md font-normal pl-4 border-gray-300 bg-gray-200 md:w-96 w-[100%] h-10"
                             type={"text"}
                             label={"Email"}
                             name="email"
@@ -83,7 +82,7 @@ export default function Login() {
                         )}
                         <label className="my-5">Password</label>
                         <input
-                            className="rounded-md border-gray-300 bg-gray-200 md:w-96 w-[100%] h-10"
+                            className="rounded-md font-normal pl-4 border-gray-300 bg-gray-200 md:w-96 w-[100%] h-10"
                             type={"password"}
                             label={"Password"}
                             name="password"

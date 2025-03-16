@@ -23,4 +23,5 @@ public class Customer {
     private String shopName;
     private String address;
     private double remainingAmount;
+    private String lastPaidDate;
 }

@@ -7,6 +7,12 @@ import AddCustomer from './layouts/AddCustomer';
 import AddProvider from './layouts/AddSupplier';
 import AddRoot from './layouts/AddRoot';
 import AddSupplier from './layouts/AddSupplier';
+import AddProduct from './layouts/AddProduct';
+import UpdateProductPurchasePrice from './layouts/UpdateProductPurchasePrice';
+import AddExpenses from './layouts/AddExpenses';
+import ShowCustomerRemainingBalance from './layouts/ShowCustomerRemainingBalance';
+
+
 
 export default function App() {
   
@@ -20,6 +26,11 @@ export default function App() {
         <Route path="/app/add-customer" element={<AddCustomer />} />
         <Route path="/app/add-supplier" element={<AddSupplier />} />
         <Route path="/app/add-provider" element={<AddProvider />} />
+        <Route path="/app/add-product" element={<AddProduct />} />
+        <Route path="/app/update-price" element={<UpdateProductPurchasePrice />} />
+        <Route path="/app/expenses" element={<AddExpenses />} />
+        <Route path="/app/customer-balance" element={<ShowCustomerRemainingBalance />} />
+        
       </Routes>
     </Router>
   );

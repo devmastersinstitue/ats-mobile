@@ -8,4 +8,6 @@ public interface SupplierService {
     Supplier create(Supplier entity);
 
     List<Supplier> getAllSupplier();
+
+    Supplier findByCompanyName(String companyName);
 }

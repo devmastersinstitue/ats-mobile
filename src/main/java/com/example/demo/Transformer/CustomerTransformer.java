@@ -33,6 +33,7 @@ public class CustomerTransformer {
                     .shopName(model.getShopName())
                     .address(model.getAddress())
                     .remainingAmount(model.getRemainingAmount())
+                    .lastPaidDate(model.getLastPaidDate() == null ? null : model.getLastPaidDate())
                     .build();
         return null;
     }
@@ -57,6 +58,7 @@ public class CustomerTransformer {
                     .shopName(entity.getShopName())
                     .address(entity.getAddress())
                     .remainingAmount(entity.getRemainingAmount())
+                    .lastPaidDate(entity.getLastPaidDate() == null ? "" : entity.getLastPaidDate())
                     .build();
         return null;
     }

@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 import SupplierForm from "./forms/SupplierForm";
 
 function AddSupplier() {
-    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+    const [isMobile] = useState(window.innerWidth < 768);
     const [sidebarOpen, setSidebarOpen] = useState(true);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [Suppliers, setSuppliers] = useState([]); // Supplier list
