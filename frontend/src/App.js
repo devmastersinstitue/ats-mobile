@@ -11,6 +11,7 @@ import AddProduct from './layouts/AddProduct';
 import UpdateProductPurchasePrice from './layouts/UpdateProductPurchasePrice';
 import AddExpenses from './layouts/AddExpenses';
 import ShowCustomerRemainingBalance from './layouts/ShowCustomerRemainingBalance';
+import Sale from './layouts/Sale';
 
 
 
@@ -30,6 +31,7 @@ export default function App() {
         <Route path="/app/update-price" element={<UpdateProductPurchasePrice />} />
         <Route path="/app/expenses" element={<AddExpenses />} />
         <Route path="/app/customer-balance" element={<ShowCustomerRemainingBalance />} />
+        <Route path="/app/sale-product" element={<Sale />} />
         
       </Routes>
     </Router>
