@@ -1,15 +1,21 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { PencilIcon, CheckIcon, XIcon } from "@heroicons/react/solid";
 import Navbar from "../components/Navbar";
 import SaleProductModal from "./forms/SaleProductForm";
+import UpdateSaleForm from "./forms/UpdateSaleForm";
 
-function Sale() {
+function PendingSale() {
     const [isMobile] = useState(window.innerWidth < 768);
     const [sidebarOpen, setSidebarOpen] = useState(true);
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [sales, setSales] = useState([]); // Sales list
+    const [selectedSale, setSelectedSale] = useState(null);
+    const [sales, setSales] = useState([]);
 
-    // 🚀 Fetch sales list from backend
+    // Get user role and name from localStorage
+    const userRole = localStorage.getItem("role");
+    const userName = localStorage.getItem("userName");
+
     useEffect(() => {
         fetchSales();
     }, [isModalOpen]);
@@ -18,57 +24,43 @@ function Sale() {
         try {
             const response = await axios.get("http://localhost:8080/sale", {
                 params: {
-                    isApproval: true,
-                    approvedStatus: "APPROVED"
-                }
+                    isApproval: false,
+                    approvedStatus: "PENDING"
+                },
             });
-            setSales(response.data); // Update state with API data
+            setSales(response.data);
         } catch (error) {
-            console.error("Error fetching sales:", error);
+            console.error("Error fetching pending sales:", error);
         }
     };
 
-    const handleSaleProduct = async (newSale) => {
+    const handleSaleAction = async (billNumber, status) => {
         try {
-            await axios.post("http://localhost:8080/sale", newSale);
+            await axios.put(`http://localhost:8080/sale/status`, null, {
+                params: { billNumber, status, userRole, userName }, // Include userRole & userName
+            });
             fetchSales();
         } catch (error) {
-            console.error("Error saling product:", error);
+            console.error("Error updating sale status:", error);
         }
+    };
+
+    const handleEditSale = (sale) => {
+        setSelectedSale(sale);
+        setIsModalOpen(true);
     };
 
     return (
         <div>
-            {/* Sidebar */}
             <Navbar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-
-            {/* Main Content */}
             <div className={`flex-1 h-full md:pt-1 md:pl-6 md:mr-1 md:mt-0 transition-all duration-300 ${
                     sidebarOpen ? "md:ml-64" : "md:ml-16 ml-0"
                 }`}>
-                {/* Header */}
-                {!isMobile && <div className="flex justify-center text-center">
+                <div className="flex justify-center text-center">
                     <h1 className="text-2xl font-bold h-14 bg-[#26a69d] text-white py-2 md:rounded-md w-full">
-                        Sales Management
+                        Pending Sales Management
                     </h1>
-                </div>}
-
-                {isMobile && <div className="flex">
-                    <h1 className="text-xl pl-16 font-bold h-14 bg-[#26a69d] text-white py-2 md:rounded-md w-full">
-                        Sales Management
-                    </h1>
-                </div>}
-
-                <div className="p-6">
-                    <button
-                        onClick={() => setIsModalOpen(true)}
-                        className="px-4 py-2 bg-[#26a69d] text-white rounded hover:bg-[#208888]"
-                    >
-                        Sale Product
-                    </button>
                 </div>
-
-                {/* Sales List Table */}
                 <div className="p-6">
                     <div className="overflow-auto max-h-[70vh] border border-gray-300 rounded-md shadow-md">
                         <table className="min-w-full bg-white">
@@ -81,6 +73,7 @@ function Sale() {
                                     <th className="py-2 px-4 border">Root</th>
                                     <th className="py-2 px-4 border">Customer Info</th>
                                     <th className="py-2 px-4 border">Remaining Amount</th>
+                                    <th className="py-2 px-4 border">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -93,16 +86,21 @@ function Sale() {
                                         <td className="py-2 px-4 border">{sale.customerModel?.root}</td>
                                         <td className="py-2 px-4 border">{sale.customerModel.firstName} {sale.customerModel.lastName} - {sale.customerModel.shopName}</td>
                                         <td className="py-2 px-4 border">{sale.remainingBill}</td>
+                                        <td className="py-2 px-4 border flex justify-center space-x-2">
+                                            <CheckIcon className="w-6 h-6 text-green-500 cursor-pointer" onClick={() => handleSaleAction(sale.billNumber, "APPROVED")} />
+                                            <XIcon className="w-6 h-6 text-red-500 cursor-pointer" onClick={() => handleSaleAction(sale.billNumber, "REJECTED")} />
+                                            <PencilIcon className="w-6 h-6 text-blue-500 cursor-pointer" onClick={() => handleEditSale(sale)} />
+                                        </td>
                                     </tr>
                                 ))}
                             </tbody>
                         </table>
                     </div>
                 </div>
-                <SaleProductModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} onAdd={handleSaleProduct} />
+                <UpdateSaleForm isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} billData={selectedSale} />
             </div>
         </div>
     );
 }
 
-export default Sale;
+export default PendingSale;

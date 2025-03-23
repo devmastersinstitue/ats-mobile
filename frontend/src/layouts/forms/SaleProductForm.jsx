@@ -12,6 +12,7 @@ export default function SaleProductModal({ isOpen, onClose }) {
     const [cart, setCart] = useState([]);
     const [discount, setDiscount] = useState(0);
     const [paidAmount, setPaidAmount] = useState(0);
+    const [currentTime, setCurrentTime] = useState(""); // New time state
     const userName = localStorage.getItem("userName");
     const userRole = localStorage.getItem("role");
     const [billNumber, setBillNumber] = useState("");
@@ -20,7 +21,18 @@ export default function SaleProductModal({ isOpen, onClose }) {
     useEffect(() => {
         fetchCustomers();
         fetchProducts();
+        updateTime(); // Set initial time
+        const timer = setInterval(updateTime, 1000); // Update time every second
+        return () => clearInterval(timer); // Cleanup on unmoun
     }, []);
+
+    const updateTime = () => {
+        const now = new Date();
+        const hours = now.getHours() % 12 || 12; // Convert 24-hour to 12-hour format
+        const minutes = now.getMinutes().toString().padStart(2, "0"); // Add leading zero if needed
+        const ampm = now.getHours() >= 12 ? "PM" : "AM";
+        setCurrentTime(`${hours}:${minutes} ${ampm}`);
+    };
 
     useEffect(() => {
         if (isOpen) {
@@ -116,7 +128,7 @@ export default function SaleProductModal({ isOpen, onClose }) {
         // Prepare sale data
         const saleData = {
             billNumber,
-            date: todayDate,
+            date: todayDate + "-" + currentTime,
             employeeName: userName,
             employeeRole: userRole,
             customerModel: customer, // Pass full customer object
@@ -161,6 +173,9 @@ export default function SaleProductModal({ isOpen, onClose }) {
                 <h2 className="text-2xl font-bold text-center text-[#26a69d] mb-4">Sale Product</h2>
                 <p>
                     Today Date : <b>{todayDate}</b>
+                </p>
+                <p>
+                    Time : <b>{currentTime}</b> {/* Display current time */}
                 </p>
                 <p>
                     Bill Number: <b>{billNumber}</b>

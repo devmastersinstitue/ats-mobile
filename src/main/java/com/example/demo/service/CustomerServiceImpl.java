@@ -28,7 +28,10 @@ public class CustomerServiceImpl implements CustomerService {
         Customer customer = customerRepository.findByCnic(sale.getCustomer().getCnic());
         if(sale.getPayedAmount() > 0.0)
             customer.setLastPaidDate(sale.getDate());
-        customer.setRemainingAmount(sale.getRemainingBill());
+        if(sale.getRemainingAmount() == customer.getRemainingAmount())
+            customer.setRemainingAmount(sale.getRemainingBill());
+        else
+            customer.setRemainingAmount(customer.getRemainingAmount()+sale.getRemainingBill()-sale.getRemainingAmount());
         customerRepository.save(customer);
     }
 

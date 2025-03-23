@@ -9,6 +9,7 @@ import com.example.demo.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.UUID;
 
 @Component
@@ -65,5 +66,9 @@ public class SaleTransformer {
                     .approvedStatus(entity.getApprovedStatus().toString())
                     .build();
         return null;
+    }
+
+    public List<SaleModel> toModelList(List<Sale> allSale) {
+        return allSale.stream().map(this::toModel).toList();
     }
 }

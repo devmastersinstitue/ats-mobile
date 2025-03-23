@@ -163,8 +163,8 @@ export default function Navbar({ sidebarOpen, setSidebarOpen }) {
                                         <Link className="block py-2 px-6 hover:bg-[#208888]" to="/app/show-bills">
                                             Show Bills
                                         </Link>
-                                        <Link className="block py-2 px-6 hover:bg-[#208888]" to="/app/verify-salesman">
-                                            Verify Salesman Entry
+                                        <Link className="block py-2 px-6 hover:bg-[#208888]" to="/app/pending-sale">
+                                            Verify Salesman Bill
                                         </Link>
                                         <Link className="block py-2 px-6 hover:bg-[#208888]" to="/app/customer-balance">
                                             Customer Balance
@@ -349,9 +349,9 @@ export default function Navbar({ sidebarOpen, setSidebarOpen }) {
                                     </Link>
                                     <Link
                                         className="block w-full py-2 px-6 hover:bg-[#208888] font-bold"
-                                        to="/app/verify-salesman"
+                                        to="/app/pending-sale"
                                     >
-                                        Verify Salesman Entry
+                                        Verify Salesman Bill
                                     </Link>
                                     <Link
                                         className="block w-full py-2 px-6 hover:bg-[#208888] font-bold"

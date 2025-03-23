@@ -10,5 +10,5 @@ public interface ProductService {
 
     List<Product> getAllProduct();
 
-    void updateSaleProductList(List<ProductItem> items);
+    void updateSaleProductList(List<ProductItem> items, String status);
 }

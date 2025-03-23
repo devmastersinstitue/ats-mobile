@@ -26,7 +26,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void updateSaleProductList(List<ProductItem> items) {
+    public void updateSaleProductList(List<ProductItem> items, String status) {
         // Extract all product names from items
         List<String> productNames = items.stream().map(ProductItem::getName).collect(Collectors.toList());
 
@@ -40,7 +40,11 @@ public class ProductServiceImpl implements ProductService {
         for (ProductItem item : items) {
             Product product = productMap.get(item.getName());
             if (product != null) {
-                product.setQuantity(product.getQuantity() - item.getQuantity());
+                if(status.equals("APPROVED")) {
+                    product.setQuantity(product.getQuantity() - item.getQuantity());
+                }else if(status.equals("REJECTED")){
+                    product.setQuantity(product.getQuantity() + item.getQuantity());
+                }
             }
         }
 
