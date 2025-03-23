@@ -8,12 +8,13 @@ export default function SaleProductModal({ isOpen, onClose }) {
     const [selectedCustomer, setSelectedCustomer] = useState(null);
     const [remainingAmount, setRemainingAmount] = useState(0);
     const [selectedProduct, setSelectedProduct] = useState(null);
-    const [quantity, setQuantity] = useState();
+    const [quantity, setQuantity] = useState(1);
     const [cart, setCart] = useState([]);
     const [discount, setDiscount] = useState(0);
     const [paidAmount, setPaidAmount] = useState(0);
     const userName = localStorage.getItem("userName");
     const userRole = localStorage.getItem("role");
+    const [billNumber, setBillNumber] = useState("");
     const todayDate = new Date().toLocaleDateString("en-GB").replace(/\//g, "-");
 
     useEffect(() => {
@@ -30,8 +31,18 @@ export default function SaleProductModal({ isOpen, onClose }) {
             setCart([]);
             setDiscount(0);
             setPaidAmount(0);
+            fetchBillNumber(); // Fetch new bill number
         }
     }, [isOpen]);
+
+    const fetchBillNumber = async () => {
+        try {
+            const response = await axios.get("http://localhost:8080/sale/create-bill-number");
+            setBillNumber(response.data); // Set bill number
+        } catch (error) {
+            console.error("Error fetching bill number:", error);
+        }
+    };
 
     const fetchCustomers = async () => {
         try {
@@ -85,44 +96,58 @@ export default function SaleProductModal({ isOpen, onClose }) {
     const remainingBill = grandTotal - paidAmount;
 
     const handleSaveSale = async () => {
-        // Find the full customer record from the customers list
+        // Find the full customer record
         const customer = customers.find((c) => c.id === selectedCustomer?.value);
 
         if (!customer) {
             alert("Customer not found!");
             return;
         }
-        if (paidAmount > 0) {
-            customer.lastPaidDate = todayDate;
-        }
-    
-        customer.remainingAmount = remainingBill;
-        console.log(customer);
-        
+
+        // Update customer details
+        const updatedCustomer = {
+            ...customer,
+            remainingAmount: remainingBill,
+            lastPaidDate: paidAmount > 0 ? todayDate : customer.lastPaidDate,
+        };
+
+        // Prepare sale data
         const saleData = {
+            billNumber,
             date: todayDate,
             employeeName: userName,
             employeeRole: userRole,
-            customer,
-            items: cart,
+            customerModel: customer, // Pass full customer object
+            remainingAmount: customer.remainingAmount,
+            items: cart.map((item) => ({
+                name: item.name,
+                quantity: item.quantity,
+                unitSalePrice: item.unitSalePrice,
+                unitPurchasePrice: item.unitPurchasePrice || 0,
+                total: item.total,
+            })),
             totalBill,
             discount,
             grandTotal,
-            paidAmount,
-            remainingAmount: remainingBill,
+            payedAmount: paidAmount,
+            remainingBill: remainingBill,
+            isApproval: userRole !== "Sales Man" ? true : false, // Default to false unless there's an approval mechanism
+            approvedBy: userRole !== "Sales Man" ? userName : null, // If not approved, no approver
         };
-        console.log(saleData);
-        
+
+        console.log("Sending Sale Data:", JSON.stringify(saleData, null, 2));
 
         try {
-            // await axios.post("http://localhost:8080/sale", saleData);
-            // await axios.put(`http://localhost:8080/customer/${selectedCustomer.id}/updateRemaining`, {
-            //     remainingAmount: remainingBill,
-            // });
+            // Send sale data to API
+            await axios.post("http://localhost:8080/sale", saleData, {
+                headers: { "Content-Type": "application/json" },
+            });
+
             alert("Sale saved successfully!");
-            // onClose();
+            onClose();
         } catch (error) {
-            console.error("Error saving sale:", error);
+            console.error("Error saving sale:", error.response?.data || error.message);
+            alert("Failed to save sale. Check console for details.");
         }
     };
 
@@ -134,6 +159,9 @@ export default function SaleProductModal({ isOpen, onClose }) {
                 <h2 className="text-2xl font-bold text-center text-[#26a69d] mb-4">Sale Product</h2>
                 <p>
                     Today Date : <b>{todayDate}</b>
+                </p>
+                <p>
+                    Bill Number: <b>{billNumber}</b>
                 </p>
                 <p>
                     Employee Name : <b>{userName}</b>

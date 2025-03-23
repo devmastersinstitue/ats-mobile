@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.UUID;
 
 @Component
-
 public class ProductTransformer {
     private final SupplierService supplierService;
 
