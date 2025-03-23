@@ -13,6 +13,7 @@ export default function SaleProductModal({ isOpen, onClose }) {
     const [discount, setDiscount] = useState(0);
     const [paidAmount, setPaidAmount] = useState(0);
     const [currentTime, setCurrentTime] = useState(""); // New time state
+    const [salePrice, setSalePrice] = useState(""); // Store updated sale price
     const userName = localStorage.getItem("userName");
     const userRole = localStorage.getItem("role");
     const [billNumber, setBillNumber] = useState("");
@@ -82,10 +83,10 @@ export default function SaleProductModal({ isOpen, onClose }) {
         const productInCart = cart.find((item) => item.id === selectedProduct.id);
         if (productInCart) {
             productInCart.quantity += quantity;
-            productInCart.total = productInCart.quantity * productInCart.unitSalePrice;
+            productInCart.total = productInCart.quantity * salePrice;
             setCart([...cart]);
         } else {
-            setCart([...cart, { ...selectedProduct, quantity, total: quantity * selectedProduct.unitSalePrice }]);
+            setCart([...cart, { ...selectedProduct, quantity, perItem:salePrice, total: quantity * salePrice }]);
         }
 
         // Update the stock quantity in the product list
@@ -98,6 +99,7 @@ export default function SaleProductModal({ isOpen, onClose }) {
         );
         // Reset selected product and quantity
         setSelectedProduct(null);
+        setSalePrice(0);
         setQuantity(1);
     };
 
@@ -254,11 +256,26 @@ export default function SaleProductModal({ isOpen, onClose }) {
                                 menuPortalTarget={document.querySelector("body")}
                                 onChange={(selectedOption) => {
                                     const product = products.find((p) => p.id === selectedOption?.value);
+                                    console.log(product);
+                                    product !== undefined ? setSalePrice(product.unitSalePrice) : setSalePrice(0);
                                     setSelectedProduct(product);
                                 }}
                             />
                         </div>
                     </fieldset>
+
+                    {/* Sale Price Input */}
+                    {userRole !== "Sales Man" && <fieldset>
+                        <div className="pt-6 mb-2 space-y-6 sm:pt-4 sm:space-y-4">
+                            <input
+                                type="number"
+                                className={`w-full p-2 border rounded`}
+                                value={salePrice}
+                                onChange={(e) => setSalePrice(+e.target.value)}
+                                placeholder="Enter Sale Price"
+                            />
+                        </div>
+                    </fieldset>}
 
                     {/* Quantity Input */}
                     <fieldset>
@@ -298,7 +315,7 @@ export default function SaleProductModal({ isOpen, onClose }) {
                             <tr key={item.id} className="text-center">
                                 <td className="text-left">{item.name}</td>
                                 <td>{item.quantity}</td>
-                                <td>{item.unitSalePrice}</td>
+                                <td>{item.perItem}</td>
                                 <td>{item.total}</td>
                                 <td>
                                     <button onClick={() => handleRemoveFromCart(item.id)}>❌</button>
