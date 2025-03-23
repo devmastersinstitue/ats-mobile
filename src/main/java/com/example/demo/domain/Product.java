@@ -17,7 +17,6 @@ public class Product {
     private double unitSalePrice;
     private double unitPurchasePrice;
     private int quantity;
-    private double differencePrice;
     private boolean isActive;
     private int lowStockLimit;
     @DBRef

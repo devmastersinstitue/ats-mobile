@@ -1,8 +1,11 @@
 package com.example.demo.Transformer;
 
+import com.example.demo.domain.Customer;
 import com.example.demo.domain.Sale;
 import com.example.demo.model.ApprovedStatus;
+import com.example.demo.model.CustomerModel;
 import com.example.demo.model.SaleModel;
+import com.example.demo.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -12,6 +15,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class SaleTransformer {
     private final CustomerTransformer customerTransformer;
+    private final CustomerService customerService;
 
     public Sale toSale(SaleModel model) {
         if (model != null)
@@ -21,7 +25,7 @@ public class SaleTransformer {
                     .date(model.getDate())
                     .employeeName(model.getEmployeeName())
                     .employeeRole(model.getEmployeeRole())
-                    .customer(customerTransformer.toEntity(model.getCustomerModel()))
+                    .customer(getCustomer(model.getCustomerModel()))
                     .remainingAmount(model.getRemainingAmount())
                     .items(model.getItems())
                     .totalBill(model.getTotalBill())
@@ -30,10 +34,14 @@ public class SaleTransformer {
                     .payedAmount(model.getPayedAmount())
                     .remainingBill(model.getRemainingBill())
                     .isApproval(model.isApproval())
-                    .approvedBy(model.getEmployeeRole() != "Sales Man" ? model.getEmployeeRole()+"-"+model.getEmployeeName() : "")
+                    .approvedBy(!model.getEmployeeRole().contains("Sales Man") ? model.getEmployeeRole()+"-"+model.getEmployeeName() : "")
                     .approvedStatus(model.isApproval() ? ApprovedStatus.APPROVED : ApprovedStatus.PENDING)
                     .build();
         return null;
+    }
+
+    private Customer getCustomer(CustomerModel customerModel) {
+        return customerService.findByCnic(customerModel.getCnic());
     }
 
     public SaleModel toModel(Sale entity) {

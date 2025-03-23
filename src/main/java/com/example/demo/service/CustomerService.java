@@ -11,4 +11,6 @@ public interface CustomerService {
     List<Customer> getAllCustomer();
 
     void updateCustomerInfoAfterSale(Sale sale);
+
+    Customer findByCnic(String cnic);
 }

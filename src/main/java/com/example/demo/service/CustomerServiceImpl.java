@@ -31,4 +31,9 @@ public class CustomerServiceImpl implements CustomerService {
         customer.setRemainingAmount(sale.getRemainingBill());
         customerRepository.save(customer);
     }
+
+    @Override
+    public Customer findByCnic(String cnic) {
+        return customerRepository.findByCnic(cnic);
+    }
 }

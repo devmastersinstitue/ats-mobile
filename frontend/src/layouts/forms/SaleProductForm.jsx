@@ -31,6 +31,8 @@ export default function SaleProductModal({ isOpen, onClose }) {
             setCart([]);
             setDiscount(0);
             setPaidAmount(0);
+            fetchCustomers();
+            fetchProducts();
             fetchBillNumber(); // Fetch new bill number
         }
     }, [isOpen]);
@@ -135,7 +137,7 @@ export default function SaleProductModal({ isOpen, onClose }) {
             approvedBy: userRole !== "Sales Man" ? userName : null, // If not approved, no approver
         };
 
-        console.log("Sending Sale Data:", JSON.stringify(saleData, null, 2));
+        // console.log("Sending Sale Data:", JSON.stringify(saleData, null, 2));
 
         try {
             // Send sale data to API
