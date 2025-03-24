@@ -2,12 +2,15 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Navbar from "../components/Navbar";
 import SaleProductModal from "./forms/SaleProductForm";
+import SaleDetailsModal from "./forms/SaleDetailModal";
 
 function Sale() {
     const [isMobile] = useState(window.innerWidth < 768);
     const [sidebarOpen, setSidebarOpen] = useState(true);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isDetailModelOpen, setIsDetailModelOpen] = useState(false);
     const [sales, setSales] = useState([]); // Sales list
+    const [selectedSale, setSelectedSale] = useState(null);
 
     // 🚀 Fetch sales list from backend
     useEffect(() => {
@@ -81,6 +84,7 @@ function Sale() {
                                     <th className="py-2 px-4 border">Root</th>
                                     <th className="py-2 px-4 border">Customer Info</th>
                                     <th className="py-2 px-4 border">Remaining Amount</th>
+                                    <th className="py-2 px-4 border">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -93,6 +97,18 @@ function Sale() {
                                         <td className="py-2 px-4 border">{sale.customerModel?.root}</td>
                                         <td className="py-2 px-4 border">{sale.customerModel.firstName} {sale.customerModel.lastName} - {sale.customerModel.shopName}</td>
                                         <td className="py-2 px-4 border">{sale.remainingBill}</td>
+                                        <td className="py-2 px-4 border">
+                                            <button 
+                                                className="px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"
+                                                onClick={() => {setSelectedSale(sale);
+                                                    setIsDetailModelOpen(true);
+                                                }
+                                                    
+                                                }
+                                            >
+                                                View
+                                            </button>
+                                        </td>
                                     </tr>
                                 ))}
                             </tbody>
@@ -100,6 +116,8 @@ function Sale() {
                     </div>
                 </div>
                 <SaleProductModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} onAdd={handleSaleProduct} />
+                <SaleDetailsModal isOpen={isDetailModelOpen} onClose={() => setIsDetailModelOpen(false)} sale={selectedSale} />
+                
             </div>
         </div>
     );
