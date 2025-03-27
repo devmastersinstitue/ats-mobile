@@ -11,4 +11,6 @@ public interface ProductService {
     List<Product> getAllProduct();
 
     void updateSaleProductList(List<ProductItem> items, String status);
+
+    void updatePurchaseProductList(List<ProductItem> items);
 }

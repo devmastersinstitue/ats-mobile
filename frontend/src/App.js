@@ -13,6 +13,7 @@ import AddExpenses from './layouts/AddExpenses';
 import ShowCustomerRemainingBalance from './layouts/ShowCustomerRemainingBalance';
 import Sale from './layouts/Sale';
 import PendingSale from './layouts/PendingSale';
+import Purchase from './layouts/Purchase';
 
 
 
@@ -34,7 +35,7 @@ export default function App() {
         <Route path="/app/customer-balance" element={<ShowCustomerRemainingBalance />} />
         <Route path="/app/sale-product" element={<Sale />} />
         <Route path="/app/pending-sale" element={<PendingSale />} />
-        
+        <Route path="/app/purchase-product" element={<Purchase />} />
       </Routes>
     </Router>
   );

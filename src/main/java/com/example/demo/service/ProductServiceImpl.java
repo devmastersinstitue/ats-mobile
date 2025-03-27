@@ -40,15 +40,39 @@ public class ProductServiceImpl implements ProductService {
         for (ProductItem item : items) {
             Product product = productMap.get(item.getName());
             if (product != null) {
-                if(status.equals("APPROVED")) {
+                if (status.equals("APPROVED")) {
                     product.setQuantity(product.getQuantity() - item.getQuantity());
-                }else if(status.equals("REJECTED")){
+                } else if (status.equals("REJECTED")) {
                     product.setQuantity(product.getQuantity() + item.getQuantity());
                 }
             }
         }
 
         // Save all updated products in one batch
+        productRepository.saveAll(products);
+
+    }
+
+    @Override
+    public void updatePurchaseProductList(List<ProductItem> items) {
+        // Fetch all products in a single query
+        List<String> productNames = items.stream().map(ProductItem::getName).collect(Collectors.toList());
+        List<Product> products = productRepository.findAllByNameIn(productNames);
+
+        // Create a map for quick lookup
+        Map<String, Product> productMap = products.stream().collect(Collectors.toMap(Product::getName, p -> p));
+
+        // Update products in memory
+        for (ProductItem item : items) {
+            Product product = productMap.get(item.getName());
+            if (product != null) {
+                product.setQuantity(product.getQuantity() + item.getQuantity());
+                product.setUnitPurchasePrice(item.getUnitPurchasePrice());
+                product.setUnitSalePrice(item.getUnitSalePrice()); // Fixed duplicate assignment
+            }
+        }
+
+        // Save all updated products in one database call
         productRepository.saveAll(products);
 
     }
