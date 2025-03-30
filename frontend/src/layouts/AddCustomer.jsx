@@ -72,7 +72,7 @@ function AddCustomer() {
                     {/* Wrapper for both horizontal and vertical scrolling */}
                     <div className="overflow-x-auto overflow-y-auto max-h-[70vh] border border-gray-300 rounded-md shadow-md">
                         <table className="min-w-full bg-white">
-                            <thead className="bg-[#26a69d] text-white">
+                            <thead className="bg-[#26a69d] text-white sticky top-0 z-10">
                                 <tr>
                                     <th className="py-2 px-4 border whitespace-nowrap">#</th>
                                     <th className="py-2 px-4 border whitespace-nowrap">First Name</th>
