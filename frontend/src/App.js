@@ -14,13 +14,14 @@ import ShowCustomerRemainingBalance from './layouts/ShowCustomerRemainingBalance
 import Sale from './layouts/Sale';
 import PendingSale from './layouts/PendingSale';
 import Purchase from './layouts/Purchase';
-
+import Transaction from './layouts/Transaction';
+import DebitTransactionRecord from './layouts/DebitTransactionRecord';
 
 
 export default function App() {
   
   return (
-    <Router basename="/">
+    <Router>
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/app/dashboard" element={<Dashboard />} />
@@ -36,6 +37,8 @@ export default function App() {
         <Route path="/app/sale-product" element={<Sale />} />
         <Route path="/app/pending-sale" element={<PendingSale />} />
         <Route path="/app/purchase-product" element={<Purchase />} />
+        <Route path="/app/transaction" element={<Transaction />} />
+        <Route path="/app/debit-transaction-record" element={<DebitTransactionRecord />} />
       </Routes>
     </Router>
   );

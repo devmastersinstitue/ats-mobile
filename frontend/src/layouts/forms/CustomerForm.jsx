@@ -43,12 +43,14 @@ export default function CustomerForm({ isOpen, onClose }) {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(customerModel),
             });
-    
+            const message = await response.text();
+            
             if (!response.ok) {
-                throw new Error("Failed to create customer");
+                alert("Error: " + message);
             }
-    
-            alert("Customer added successfully!");
+            else{
+                alert("Success: " + message);
+            }
             setCustomerModel({
                 firstName: "",
                 lastName: "",

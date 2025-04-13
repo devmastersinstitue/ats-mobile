@@ -2,6 +2,7 @@ package com.example.demo.Transformer;
 
 import com.example.demo.domain.Customer;
 import com.example.demo.domain.Sale;
+import com.example.demo.domain.user.Role;
 import com.example.demo.model.ApprovedStatus;
 import com.example.demo.model.CustomerModel;
 import com.example.demo.model.SaleModel;
@@ -10,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Component
@@ -25,7 +27,7 @@ public class SaleTransformer {
                     .billNumber(model.getBillNumber())
                     .date(model.getDate())
                     .employeeName(model.getEmployeeName())
-                    .employeeRole(model.getEmployeeRole())
+                    .employeeRole(getEmployeeRole(model.getEmployeeRole()))
                     .customer(getCustomer(model.getCustomerModel()))
                     .remainingAmount(model.getRemainingAmount())
                     .items(model.getItems())
@@ -41,8 +43,15 @@ public class SaleTransformer {
         return null;
     }
 
+    private String getEmployeeRole(String employeeRole) {
+        return String.valueOf(employeeRole.equals("Sales Man") ? Role.ROLE_SALE_MAN :employeeRole.equals("Admin") ? Role.ROLE_ADMIN : Role.ROLE_SUPER_ADMIN);
+    }
+
     private Customer getCustomer(CustomerModel customerModel) {
-        return customerService.findByCnic(customerModel.getCnic());
+        Optional<Customer> optionalCustomer = customerService.findByCnic(customerModel.getCnic());
+        if (optionalCustomer.isPresent())
+            return optionalCustomer.get();
+        return null;
     }
 
     public SaleModel toModel(Sale entity) {

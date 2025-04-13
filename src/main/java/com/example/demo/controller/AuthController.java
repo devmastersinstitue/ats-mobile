@@ -18,6 +18,6 @@ public class AuthController {
     @PostMapping("/signin")
     public JwtResponse authenticateUser(@RequestBody LoginRequest loginRequest) {
         User user = userService.findByEmailAndPassword(loginRequest.getEmail(), loginRequest.getPassword());
-        return user != null ? new JwtResponse(user.getId().toString(), user.getFirstName() + " " + user.getLastName(), user.getEmail(), user.getRole()) : null;
+        return user != null ? new JwtResponse(user.getId().toString(), user.getFirstName(), user.getEmail(), user.getRole()) : null;
     }
 }

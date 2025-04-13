@@ -151,8 +151,7 @@ export default function SaleProductModal({ isOpen, onClose }) {
             approvedBy: userRole !== "Sales Man" ? userName : null, // If not approved, no approver
         };
 
-        // console.log("Sending Sale Data:", JSON.stringify(saleData, null, 2));
-
+        
         try {
             // Send sale data to API
             await axios.post("http://localhost:8080/sale", saleData, {
@@ -177,7 +176,7 @@ export default function SaleProductModal({ isOpen, onClose }) {
                     Today Date : <b>{todayDate}</b>
                 </p>
                 <p>
-                    Time : <b>{currentTime}</b> {/* Display current time */}
+                    Time : <b>{currentTime}</b> 
                 </p>
                 <p>
                     Bill Number: <b>{billNumber}</b>
@@ -188,9 +187,6 @@ export default function SaleProductModal({ isOpen, onClose }) {
                 <p>
                     Employee Role : <b>{userRole}</b>
                 </p>
-                {/* <input type="text" value={todayDate} disabled className="w-full p-2 border rounded mb-2" />
-                <input type="text" value={userName} disabled className="w-full p-2 border rounded mb-2" />
-                <input type="text" value={userRole} disabled className="w-full p-2 border rounded mb-2" /> */}
                 <div className="gap-y-10 auto-rows-min md:gap-x-6">
                     <fieldset>
                         <div className="pt-6 space-y-6 sm:pt-4 sm:space-y-4">
@@ -223,8 +219,7 @@ export default function SaleProductModal({ isOpen, onClose }) {
                     </fieldset>
                 </div>
                 <p className="mt-2">Remaining Amount: {remainingAmount}</p>
-                {/* <input type="text" value={remainingAmount} disabled className="w-full p-2 border rounded mb-2" /> */}
-
+                
                 <div className="gap-y-10 auto-rows-min md:gap-x-6">
                     <fieldset>
                         <div className="pt-6 space-y-6 sm:pt-4 sm:space-y-4">

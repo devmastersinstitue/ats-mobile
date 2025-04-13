@@ -4,13 +4,14 @@ import com.example.demo.domain.Customer;
 import com.example.demo.domain.Sale;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface CustomerService {
-    void createCustomer(Customer customer);
+    String createCustomer(Customer customer);
 
     List<Customer> getAllCustomer();
 
     void updateCustomerInfoAfterSale(Sale sale);
 
-    Customer findByCnic(String cnic);
+    Optional<Customer> findByCnic(String cnic);
 }

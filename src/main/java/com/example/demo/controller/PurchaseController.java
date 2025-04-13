@@ -11,7 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/purchase")
 @RequiredArgsConstructor
-public class PurchastController {
+public class PurchaseController {
     private final PurchaseHandler purchaseHandler;
 
 

@@ -15,9 +15,9 @@ public class CustomerHandler {
     private final CustomerTransformer customerTransformer;
     private final CustomerService customerService;
 
-    public void createCustomer(CustomerModel customerModel) {
+    public String createCustomer(CustomerModel customerModel) {
         Customer customer = customerTransformer.toEntity(customerModel);
-        customerService.createCustomer(customer);
+        return customerService.createCustomer(customer);
     }
 
     public List<CustomerModel> getAllCustomer() {

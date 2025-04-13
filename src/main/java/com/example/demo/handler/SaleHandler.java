@@ -65,16 +65,18 @@ public class SaleHandler {
 
     public void updateSaleStatus(String billNumber, String status, String userRole, String userName) {
         Optional<Sale> optionalSale = saleService.getBillByBillNumber(billNumber);
-        Sale sale = optionalSale.get();
-        sale.setApprovedStatus(ApprovedStatus.valueOf(status));
-        sale.setApprovedBy(userRole + "-" + userName);
+        if(optionalSale.isPresent()) {
+            Sale sale = optionalSale.get();
+            sale.setApprovedStatus(ApprovedStatus.valueOf(status));
+            sale.setApprovedBy(userRole + "-" + userName);
 
-        if(status.equals("APPROVED")) {
-            sale.setApproval(true);
-            customerService.updateCustomerInfoAfterSale(sale);
-        }else if(status.equals("REJECTED")) {
-            productService.updateSaleProductList(sale.getItems(), "REJECTED");
+            if(status.equals("APPROVED")) {
+                sale.setApproval(true);
+                customerService.updateCustomerInfoAfterSale(sale);
+            }else if(status.equals("REJECTED")) {
+                productService.updateSaleProductList(sale.getItems(), "REJECTED");
+            }
+            saleService.createSale(sale);
         }
-        saleService.createSale(sale);
     }
 }

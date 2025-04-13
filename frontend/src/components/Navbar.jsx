@@ -80,16 +80,16 @@ export default function Navbar({ sidebarOpen, setSidebarOpen }) {
                                 {openSubMenu === "users" && sidebarOpen && (
                                     <div className="pl-6">
                                         <Link className="block py-2 px-6 hover:bg-[#208888]" to="/app/add-employee">
-                                            Add Employee
+                                            Employee Record
                                         </Link>
                                         <Link className="block py-2 px-6 hover:bg-[#208888]" to="/app/add-root">
-                                            Add Root
+                                            Root Record
                                         </Link>
                                         <Link className="block py-2 px-6 hover:bg-[#208888]" to="/app/add-customer">
-                                            Add Customer
+                                            Customer Record
                                         </Link>
                                         <Link className="block py-2 px-6 hover:bg-[#208888]" to="/app/add-supplier">
-                                            Add Supplier
+                                            Supplier Record
                                         </Link>
                                     </div>
                                 )}
@@ -107,10 +107,10 @@ export default function Navbar({ sidebarOpen, setSidebarOpen }) {
                                 {openSubMenu === "products" && sidebarOpen && (
                                     <div className="pl-6">
                                         <Link className="block py-2 px-6 hover:bg-[#208888]" to="/app/add-product">
-                                            Add Product
+                                            Product Record
                                         </Link>
                                         <Link className="block py-2 px-6 hover:bg-[#208888]" to="/app/update-price">
-                                            Update Sales Price
+                                            Update Product Record
                                         </Link>
                                     </div>
                                 )}
@@ -129,6 +129,9 @@ export default function Navbar({ sidebarOpen, setSidebarOpen }) {
                                     <div className="pl-6">
                                         <Link className="block py-2 px-6 hover:bg-[#208888]" to="/app/sale-product">
                                             Sale Product
+                                        </Link>
+                                        <Link className="block py-2 px-6 hover:bg-[#208888]" to="/app/transaction">
+                                            Transaction Record
                                         </Link>
                                         {userRole !== "Sales Man" && (<><Link className="block py-2 px-6 hover:bg-[#208888]" to="/app/purchase-product">
                                             Purchase Product
@@ -158,16 +161,16 @@ export default function Navbar({ sidebarOpen, setSidebarOpen }) {
                                 {openSubMenu === "finance" && sidebarOpen && (
                                     <div className="pl-6">
                                         <Link className="block py-2 px-6 hover:bg-[#208888]" to="/app/expenses">
-                                            Expenses
+                                            Expenses Record
                                         </Link>
-                                        <Link className="block py-2 px-6 hover:bg-[#208888]" to="/app/show-bills">
-                                            Show Bills
+                                        <Link className="block py-2 px-6 hover:bg-[#208888]" to="/app/debit-transaction-record">
+                                            Debit Transaction Record
                                         </Link>
                                         <Link className="block py-2 px-6 hover:bg-[#208888]" to="/app/pending-sale">
                                             Verify Salesman Bill
                                         </Link>
                                         <Link className="block py-2 px-6 hover:bg-[#208888]" to="/app/customer-balance">
-                                            Customer Balance
+                                            Customer Balance Record
                                         </Link>
                                     </div>
                                 )}
@@ -222,25 +225,25 @@ export default function Navbar({ sidebarOpen, setSidebarOpen }) {
                                         className="block w-full py-2 px-6 hover:bg-[#208888] font-bold"
                                         to="/app/add-employee"
                                     >
-                                        Add Employee
+                                        Employee Record
                                     </Link>
                                     <Link
                                         className="block w-full py-2 px-6 hover:bg-[#208888] font-bold"
                                         to="/app/add-root"
                                     >
-                                        Add Root
+                                        Root Record
                                     </Link>
                                     <Link
                                         className="block w-full py-2 px-6 hover:bg-[#208888] font-bold"
                                         to="/app/add-customer"
                                     >
-                                        Add Customer
+                                        Customer Record
                                     </Link>
                                     <Link
                                         className="block w-full py-2 px-6 hover:bg-[#208888] font-bold"
                                         to="/app/add-supplier"
                                     >
-                                        Add Supplier
+                                        Supplier Record
                                     </Link>
                                 </div>
                             )}
@@ -263,13 +266,13 @@ export default function Navbar({ sidebarOpen, setSidebarOpen }) {
                                         className="block w-full py-2 px-6 hover:bg-[#208888] font-bold"
                                         to="/app/add-product"
                                     >
-                                        Add Product
+                                        Product Record
                                     </Link>
                                     <Link
                                         className="block w-full py-2 px-6 hover:bg-[#208888] font-bold"
                                         to="/app/update-price"
                                     >
-                                        Update Sales Price
+                                        Update Product Record
                                     </Link>
                                 </div>
                             )}
@@ -296,6 +299,12 @@ export default function Navbar({ sidebarOpen, setSidebarOpen }) {
                                     </Link>
                                     <Link
                                         className="block w-full py-2 px-6 hover:bg-[#208888] font-bold"
+                                        to="/app/transaction"
+                                    >
+                                        Transaction Record
+                                    </Link>
+                                    {userRole !== "Sales Man" && (<><Link
+                                        className="block w-full py-2 px-6 hover:bg-[#208888] font-bold"
                                         to="/app/purchase-product"
                                     >
                                         Purchase Product
@@ -317,7 +326,7 @@ export default function Navbar({ sidebarOpen, setSidebarOpen }) {
                                         to="/app/exchange-waiting-product"
                                     >
                                         Exchange Waiting Product
-                                    </Link>
+                                    </Link></>)}
                                 </div>
                             )}
                         </div>
@@ -339,13 +348,13 @@ export default function Navbar({ sidebarOpen, setSidebarOpen }) {
                                         className="block w-full py-2 px-6 hover:bg-[#208888] font-bold"
                                         to="/app/expenses"
                                     >
-                                        Expenses
+                                        Expenses Record
                                     </Link>
                                     <Link
                                         className="block w-full py-2 px-6 hover:bg-[#208888] font-bold"
-                                        to="/app/show-bills"
+                                        to="/app/debit-transaction-record"
                                     >
-                                        Show Bills
+                                        Debit Transaction Record
                                     </Link>
                                     <Link
                                         className="block w-full py-2 px-6 hover:bg-[#208888] font-bold"
@@ -357,7 +366,7 @@ export default function Navbar({ sidebarOpen, setSidebarOpen }) {
                                         className="block w-full py-2 px-6 hover:bg-[#208888] font-bold"
                                         to="/app/customer-balance"
                                     >
-                                        Customer Balance
+                                        Customer Balance Record
                                     </Link>
                                 </div>
                             )}
