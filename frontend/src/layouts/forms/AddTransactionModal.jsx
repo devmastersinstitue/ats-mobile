@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import api from "../../api";
 import Select from "react-select";
 
 export default function AddTransactionModal({ isOpen, onClose, onSuccess }) {
@@ -26,7 +26,7 @@ export default function AddTransactionModal({ isOpen, onClose, onSuccess }) {
 
     const fetchCustomers = async () => {
         try {
-            const response = await axios.get("http://localhost:8080/customer");
+            const response = await api.get("/customer");
             setCustomers(response.data);
         } catch (error) {
             console.error("Error fetching customers:", error);
@@ -49,12 +49,11 @@ export default function AddTransactionModal({ isOpen, onClose, onSuccess }) {
         };
 
         try {
-            const response = await axios.post("http://localhost:8080/transaction/debit", transactionData, {
+            const response = await api.post("/transaction/debit", transactionData, {
                 headers: { "Content-Type": "application/json" },
             });
             
             const message = response.data;
-            console.log(message);
             
             if (message != "Transaction created successfully") {
                 alert("Error: " + message);

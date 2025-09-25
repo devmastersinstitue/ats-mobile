@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import api from "../api";
 import Navbar from "../components/Navbar";
 import SupplierForm from "./forms/SupplierForm";
 
@@ -16,7 +16,7 @@ function AddSupplier() {
 
     const fetchSuppliers = async () => {
         try {
-            const response = await axios.get("http://localhost:8080/supplier");
+            const response = await api.get("/supplier");
             setSuppliers(response.data); // Update state with API data
         } catch (error) {
             console.error("Error fetching Suppliers:", error);
@@ -26,7 +26,7 @@ function AddSupplier() {
     // Handle adding new Supplier
     const handleAddSupplier = async (newSupplier) => {
         try {
-            await axios.post("http://localhost:8080/supplier", newSupplier);
+            await api.post("/supplier", newSupplier);
             fetchSuppliers(); // Refresh list after adding
         } catch (error) {
             console.error("Error adding Supplier:", error);

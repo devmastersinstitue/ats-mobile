@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import api from "../api";
 import Navbar from "../components/Navbar";
 import TransactionDetailsModal from "./TransactionDetailsModal";
 import AddTransactionModal from "./forms/AddTransactionModal";
@@ -27,7 +27,7 @@ function Transaction() {
 
     const fetchTransactions = async () => {
         try {
-            const response = await axios.get("http://localhost:8080/transaction");
+            const response = await api.get("/transaction");
             setTransactions(response.data);
         } catch (error) {
             console.error("Error fetching Transactions:", error);

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import api from "../api";
 import { PencilIcon, CheckIcon, XIcon } from "@heroicons/react/solid";
 import Navbar from "../components/Navbar";
 import SaleProductModal from "./forms/SaleProductForm";
@@ -22,10 +22,10 @@ function PendingSale() {
 
     const fetchSales = async () => {
         try {
-            const response = await axios.get("http://localhost:8080/sale", {
+            const response = await api.get("/sale", {
                 params: {
                     isApproval: false,
-                    approvedStatus: "PENDING"
+                    approvedStatus: "PENDING",
                 },
             });
             setSales(response.data);
@@ -36,8 +36,8 @@ function PendingSale() {
 
     const handleSaleAction = async (billNumber, status) => {
         try {
-            await axios.put(`http://localhost:8080/sale/status`, null, {
-                params: { billNumber, status, userRole, userName }, // Include userRole & userName
+            await api.put("/sale/status", null, {
+                params: { billNumber, status, userRole, userName },
             });
             fetchSales();
         } catch (error) {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import api from "../api";
 import Navbar from "../components/Navbar";
 import Select from "react-select";
 
@@ -14,23 +14,14 @@ function DebitTransactionRecord() {
     const [selectedRoot, setSelectedRoot] = useState(null);
 
     useEffect(() => {
-        // fetchTransactions();
         fetchEmployees();
         fetchRoots();
     }, []);
 
-    // const fetchTransactions = async () => {
-    //     try {
-    //         const response = await axios.get("http://localhost:8080/transaction/debit-records");
-    //         setTransactions(response.data);
-    //     } catch (error) {
-    //         console.error("Error fetching debit transactions:", error);
-    //     }
-    // };
 
     const fetchEmployees = async () => {
         try {
-            const response = await axios.get("http://localhost:8080/employee");
+            const response = await api.get("/employee");
             setEmployees(response.data);
         } catch (error) {
             console.error("Error fetching employees:", error);
@@ -39,7 +30,7 @@ function DebitTransactionRecord() {
 
     const fetchRoots = async () => {
         try {
-            const response = await fetch("http://localhost:8080/root");
+            const response = await api.get("/root");
             if (!response.ok) {
                 throw new Error("Failed to fetch roots");
             }
@@ -76,7 +67,7 @@ function DebitTransactionRecord() {
         }
         if (selectedRoot) params.append("rootName", selectedRoot.value);
         try {
-            const response = await fetch(`http://localhost:8080/transaction/debit-records?${params.toString()}`);
+            const response = await api.get("/transaction/debit-records", {params: params,});
             const data = await response.json();
             setTransactions(data);
         } catch (error) {

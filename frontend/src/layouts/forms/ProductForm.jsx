@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import api from "../../api";
 
 export default function ProductForm({ isOpen, onClose, onSave, productToEdit }) {
     const [productModel, setProductModel] = useState({
@@ -31,7 +32,7 @@ export default function ProductForm({ isOpen, onClose, onSave, productToEdit }) 
     useEffect(() => {
         const fetchSuppliers = async () => {
             try {
-                const response = await fetch("http://localhost:8080/supplier");
+                const response = await api.get("/supplier");
                 if (!response.ok) {
                     throw new Error("Failed to fetch suppliers");
                 }
@@ -50,15 +51,13 @@ export default function ProductForm({ isOpen, onClose, onSave, productToEdit }) 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        const response = null;
         try {
-            const url = productToEdit ? `http://localhost:8080/product` : "http://localhost:8080/product";
-            const method = productToEdit ? "PUT" : "POST";
-
-            const response = await fetch(url, {
-                method,
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(productModel),
-            });
+            if (productToEdit) {
+               response = await api.put("/product", productModel);
+            } else {
+                response = await api.post("/product", productModel);
+            }
 
             if (!response.ok) {
                 throw new Error(productToEdit ? "Failed to update product" : "Failed to add product");

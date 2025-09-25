@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import api from "../../api";
 
 export default function ExpensesForm({ isOpen, onClose }) {
     const [expenseModel, setExpenseModel] = useState({
@@ -14,20 +15,14 @@ export default function ExpensesForm({ isOpen, onClose }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(expenseModel);
         try {
-            const response = await fetch("http://localhost:8080/expenses", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(expenseModel),
-            });
-    
+            const response = await api.post("/expenses", expenseModel);
+            
             if (!response.ok) {
                 throw new Error("Failed to create expense");
             }
     
             const newExpense = await response.json();
-            console.log("Expense added:", newExpense);
             alert("Expense added successfully!");
             setExpenseModel({
                 name: "",

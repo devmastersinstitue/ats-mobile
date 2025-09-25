@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import api from "../api";
 import Navbar from "../components/Navbar";
 import ProductForm from "./forms/ProductForm";
 
@@ -17,7 +17,7 @@ function AddProduct() {
 
     const fetchProducts = async () => {
         try {
-            const response = await axios.get("http://localhost:8080/product");
+            const response = await api.get("/product");
             setProducts(response.data);
         } catch (error) {
             console.error("Error fetching products:", error);
@@ -26,7 +26,7 @@ function AddProduct() {
 
     const handleAddProduct = async (newProduct) => {
         try {
-            await axios.post("http://localhost:8080/product", newProduct);
+            await api.post("/product", newProduct);
             fetchProducts();
         } catch (error) {
             console.error("Error adding product:", error);

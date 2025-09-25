@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import api from "../../api";
 
 export default function SupplierForm({ isOpen, onClose }) {
     const [supplierModel, setSupplierModel] = useState({
@@ -19,18 +20,13 @@ export default function SupplierForm({ isOpen, onClose }) {
         e.preventDefault();
 
         try {
-            const response = await fetch("http://localhost:8080/supplier", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(supplierModel),
-            });
+            const response = await api.post("/supplier", supplierModel);
     
             if (!response.ok) {
                 throw new Error("Failed to create supplier");
             }
     
             const newSupplier = await response.json(); // Parse response
-            console.log("Supplier added:", newSupplier);
             alert("Supplier added successfully!");
             setSupplierModel({
                 firstName: "",

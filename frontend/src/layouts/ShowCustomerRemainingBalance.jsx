@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import api from "../api";
 import Navbar from "../components/Navbar";
 
 function ShowCustomerRemainingBalance() {
@@ -9,17 +9,13 @@ function ShowCustomerRemainingBalance() {
     const [customers, setCustomers] = useState([]);
     const today = new Date().toLocaleDateString("en-GB").split("/").join("-"); // Format: DD-MM-YYYY
 
-    console.log(today);
-    
     useEffect(() => {
         fetchCustomers();
     }, [setIsModalOpen, isModalOpen]);
 
     const fetchCustomers = async () => {
         try {
-            const response = await axios.get("http://localhost:8080/customer");
-            console.log(response.data);
-            
+            const response = await api.get("/customer");
             setCustomers(response.data);
         } catch (error) {
             console.error("Error fetching customers:", error);
@@ -66,7 +62,6 @@ function ShowCustomerRemainingBalance() {
                             <tbody>
                                 {customers.map((customer, index) => {
                                     const isOverdue = customer.lastPaidDate < today || customer.lastPaidDate == "" ? true : false;
-                                    console.log(customer.paidLastDate);
                                     
                                     return (
                                         <tr key={customer.id} className={`text-center border hover:bg-gray-100 ${isOverdue ? "text-red-500" : ""}`}>

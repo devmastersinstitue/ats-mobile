@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import api from "../../api";
 
 export default function EmployeeForm({ isOpen, onClose }) {
     const [employeeModel, setEmployeeModel] = useState({
@@ -18,20 +19,14 @@ export default function EmployeeForm({ isOpen, onClose }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(employeeModel);
         try {
-            const response = await fetch("http://localhost:8080/employee", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(employeeModel),
-            });
+            const response = await api.post("/employee", employeeModel);
     
             if (!response.ok) {
                 throw new Error("Failed to create employee");
             }
     
             const newEmployee = await response.json();
-            console.log("Employee added:", newEmployee);
             alert("Employee added successfully!");
             setEmployeeModel({
                 firstName: "",

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import api from "../../api";
 
 export default function UpdateSaleForm({ isOpen, onClose, billData }) {
     const [cart, setCart] = useState([]);
@@ -43,9 +43,7 @@ export default function UpdateSaleForm({ isOpen, onClose, billData }) {
         };
 
         try {
-            await axios.put(`http://localhost:8080/sale/${billData.billNumber}`, updatedSaleData, {
-                headers: { "Content-Type": "application/json" },
-            });
+            await api.put(`/sale/${billData.billNumber}`, updatedSaleData);
             alert("Sale bill updated successfully!");
             onClose();
         } catch (error) {

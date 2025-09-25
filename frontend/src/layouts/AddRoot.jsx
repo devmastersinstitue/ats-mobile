@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import Navbar from "../components/Navbar";
 import RootForm from "./forms/RootForm";
+import api from "../api";
 
 function AddRoot() {
     const [isMobile] = useState(window.innerWidth < 768);
@@ -16,7 +16,7 @@ function AddRoot() {
 
     const fetchRoots = async () => {
         try {
-            const response = await axios.get("http://localhost:8080/root");
+            const response = await api.get("/root");
             setRoots(response.data); // Update state with API data
         } catch (error) {
             console.error("Error fetching roots:", error);
@@ -26,7 +26,7 @@ function AddRoot() {
     // 🚀 Handle adding new root
     const handleAddRoot = async (newRoot) => {
         try {
-            await axios.post("http://localhost:8080/root", newRoot);
+            await api.post("/root", newRoot);
             fetchRoots(); // Refresh list after adding
         } catch (error) {
             console.error("Error adding root:", error);

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import api from "../api";
 import Navbar from "../components/Navbar";
 import PurchaseProductModal from "./forms/PurchaseProductModal";
 import PurchaseDetailsModal from "./forms/PurchaseDetailsModal";
@@ -19,7 +19,7 @@ function Purchase() {
 
     const fetchPurchases = async () => {
         try {
-            const response = await axios.get("http://localhost:8080/purchase");
+            const response = await api.get("/purchase");
             setPurchases(response.data); // Update state with API data
         } catch (error) {
             console.error("Error fetching purchases:", error);
@@ -28,7 +28,7 @@ function Purchase() {
 
     const handlePurchaseProduct = async (newPurchase) => {
         try {
-            await axios.post("http://localhost:8080/purchase", newPurchase);
+            await api.post("/purchase", newPurchase);
             fetchPurchases();
         } catch (error) {
             console.error("Error purchasing product:", error);

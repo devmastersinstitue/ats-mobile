@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import api from "../api";
 import Navbar from "../components/Navbar";
 import ReturnProductModal from "./forms/ReturnProductModal";
 // import ReturnDetailsModal from "./forms/ReturnDetailModal";
@@ -27,7 +27,7 @@ function ReturnProduct() {
 
     const fetchReturns = async () => {
         try {
-            const response = await axios.get("http://localhost:8080/return", {
+            const response = await api.get("/return", {
                 params: { isApproval: true, approvedStatus: "APPROVED" },
             });
             setReturns(response.data);
@@ -39,7 +39,7 @@ function ReturnProduct() {
 
     const handleReturnProduct = async (newReturn) => {
         try {
-            await axios.post("http://localhost:8080/return", newReturn);
+            await api.post("/return", newReturn);
             fetchReturns();
         } catch (error) {
             console.error("Error returning product:", error);

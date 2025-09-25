@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import api from "../../api";
 
 export default function RootForm({ isOpen, onClose }) {
     const [rootModel, setRootModel] = useState({
@@ -11,20 +12,15 @@ export default function RootForm({ isOpen, onClose }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(rootModel);
         try {
-            const response = await fetch("http://localhost:8080/root", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(rootModel),
-            });
+            
+            const response = await api.post("/root", rootModel);
     
             if (!response.ok) {
                 throw new Error("Failed to create root");
             }
     
             const newRoot = await response.json();
-            console.log("Root added:", newRoot);
             alert("Root added successfully!");
             setRootModel({ name: "" });
             onClose(); // Close modal after successful submission

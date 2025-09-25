@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import api from "../../api";
 import Select from "react-select";
 
 export default function ReturnProductModal({ isOpen, onClose }) {
@@ -33,7 +33,7 @@ export default function ReturnProductModal({ isOpen, onClose }) {
 
     const fetchCustomers = async () => {
         try {
-            const response = await axios.get("http://localhost:8080/customer");
+            const response = await api.get("/customer");
             setCustomers(response.data);
         } catch (error) {
             console.error("Error fetching customers:", error);
@@ -42,7 +42,7 @@ export default function ReturnProductModal({ isOpen, onClose }) {
 
     const fetchProducts = async () => {
         try {
-            const response = await axios.get("http://localhost:8080/product");
+            const response = await api.get("/product");
             setProducts(response.data);
         } catch (error) {
             console.error("Error fetching products:", error);
@@ -92,7 +92,7 @@ export default function ReturnProductModal({ isOpen, onClose }) {
         };
 
         try {
-            await axios.post("http://localhost:8080/return", returnData, {
+            await api.post("/return", returnData, {
                 headers: { "Content-Type": "application/json" },
             });
             alert("Return saved successfully!");

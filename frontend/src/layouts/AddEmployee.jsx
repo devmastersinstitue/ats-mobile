@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import api from "../api";
 import Navbar from "../components/Navbar";
 import EmployeeForm from "./forms/EmployeeForm";
 
@@ -16,7 +16,7 @@ function AddEmployee() {
 
     const fetchEmployees = async () => {
         try {
-            const response = await axios.get("http://localhost:8080/employee");
+            const response = await api.get("/employee");
             setEmployees(response.data); // Update state with API data
         } catch (error) {
             console.error("Error fetching employees:", error);
@@ -26,7 +26,7 @@ function AddEmployee() {
     // 🚀 Handle adding new employee
     const handleAddEmployee = async (newEmployee) => {
         try {
-            await axios.post("http://localhost:8080/employee", newEmployee);
+            await api.post("/employee", newEmployee);
             fetchEmployees(); // Refresh list after adding
         } catch (error) {
             console.error("Error adding employee:", error);

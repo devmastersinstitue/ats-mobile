@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import api from "../api";
 import Navbar from "../components/Navbar";
 import CustomerForm from "./forms/CustomerForm";
 
@@ -17,7 +17,7 @@ function AddCustomer() {
 
     const fetchCustomers = async () => {
         try {
-            const response = await axios.get("http://localhost:8080/customer");
+            const response = await api.get("/customer");
             setCustomers(response.data);
         } catch (error) {
             console.error("Error fetching customers:", error);
@@ -26,7 +26,7 @@ function AddCustomer() {
 
     const handleAddCustomer = async (newCustomer) => {
         try {
-            await axios.post("http://localhost:8080/customer", newCustomer);
+            await api.post("/customer", newCustomer);
             fetchCustomers();
         } catch (error) {
             console.error("Error adding customer:", error);

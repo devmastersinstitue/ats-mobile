@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import api from "../api";
 import Navbar from "../components/Navbar";
 import ExpensesForm from "./forms/ExpenseForm";
 
@@ -15,7 +15,7 @@ function AddExpenses() {
 
     const fetchExpenses = async () => {
         try {
-            const response = await axios.get("http://localhost:8080/expenses");
+            const response = await api.get("/expenses");
             setExpenses(response.data);
         } catch (error) {
             console.error("Error fetching expenses:", error);
@@ -24,7 +24,7 @@ function AddExpenses() {
 
     const handleAddExpense = async (newExpense) => {
         try {
-            await axios.post("http://localhost:8080/expenses", newExpense);
+            await api.post("/expenses", newExpense);
             fetchExpenses();
         } catch (error) {
             console.error("Error adding expense:", error);

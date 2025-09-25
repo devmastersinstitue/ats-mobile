@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import api from "../../api";
 
 export default function SalesmanForm({ isOpen, onClose }) {
     const [saleManModel, setSaleManModel] = useState({
@@ -19,18 +20,13 @@ export default function SalesmanForm({ isOpen, onClose }) {
         e.preventDefault();
 
         try {
-            const response = await fetch("http://localhost:8080/sale-man/create", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(saleManModel),
-            });
+            const response = await api.post("/sale-man/create", saleManModel);
     
             if (!response.ok) {
                 throw new Error("Failed to create salesman");
             }
     
             const newSalesman = await response.json(); // Parse response
-            console.log("Salesman added:", newSalesman);
             if (response.ok) {
                 alert("Salesman added successfully!");
                 setSaleManModel({

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import api from "../api";
 import Navbar from "../components/Navbar";
 import SaleProductModal from "./forms/SaleProductForm";
 import SaleDetailsModal from "./forms/SaleDetailModal";
@@ -27,7 +27,7 @@ function Sale() {
 
     const fetchSales = async () => {
         try {
-            const response = await axios.get("http://localhost:8080/sale", {
+            const response = await api.get("/sale", {
                 params: { isApproval: true, approvedStatus: "APPROVED" },
             });
             setSales(response.data);
@@ -39,7 +39,7 @@ function Sale() {
 
     const handleSaleProduct = async (newSale) => {
         try {
-            await axios.post("http://localhost:8080/sale", newSale);
+            await api.post("/sale", newSale);
             fetchSales();
         } catch (error) {
             console.error("Error selling product:", error);

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import api from "../../api";
 import Select from "react-select";
 
 export default function PurchaseProductModal({ isOpen, onClose }) {
@@ -24,7 +24,7 @@ export default function PurchaseProductModal({ isOpen, onClose }) {
 
     const fetchSuppliers = async () => {
         try {
-            const response = await axios.get("http://localhost:8080/supplier");
+            const response = await api.get("/supplier");
             setSuppliers(response.data);
         } catch (error) {
             console.error("Error fetching suppliers:", error);
@@ -33,7 +33,7 @@ export default function PurchaseProductModal({ isOpen, onClose }) {
 
     const fetchProducts = async () => {
         try {
-            const response = await axios.get("http://localhost:8080/product");
+            const response = await api.get("/product");
             setProducts(response.data);
         } catch (error) {
             console.error("Error fetching products:", error);
@@ -92,7 +92,7 @@ export default function PurchaseProductModal({ isOpen, onClose }) {
         };
 
         try {
-            await axios.post("http://localhost:8080/purchase", purchaseData, {
+            await api.post("/purchase", purchaseData, {
                 headers: { "Content-Type": "application/json" },
             });
             alert("Purchase saved successfully!");

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import api from "../../api";
 import Select from "react-select";
 
 export default function SaleProductModal({ isOpen, onClose }) {
@@ -52,7 +52,7 @@ export default function SaleProductModal({ isOpen, onClose }) {
 
     const fetchBillNumber = async () => {
         try {
-            const response = await axios.get("http://localhost:8080/sale/create-bill-number");
+            const response = await api.get("/sale/create-bill-number");
             setBillNumber(response.data); // Set bill number
         } catch (error) {
             console.error("Error fetching bill number:", error);
@@ -61,7 +61,7 @@ export default function SaleProductModal({ isOpen, onClose }) {
 
     const fetchCustomers = async () => {
         try {
-            const response = await axios.get("http://localhost:8080/customer");
+            const response = await api.get("/customer");
             setCustomers(response.data);
         } catch (error) {
             console.error("Error fetching customers:", error);
@@ -70,7 +70,7 @@ export default function SaleProductModal({ isOpen, onClose }) {
 
     const fetchProducts = async () => {
         try {
-            const response = await axios.get("http://localhost:8080/product");
+            const response = await api.get("/product");
             setProducts(response.data);
         } catch (error) {
             console.error("Error fetching products:", error);
@@ -154,9 +154,7 @@ export default function SaleProductModal({ isOpen, onClose }) {
         
         try {
             // Send sale data to API
-            await axios.post("http://localhost:8080/sale", saleData, {
-                headers: { "Content-Type": "application/json" },
-            });
+            await api.post("/sale", saleData);
 
             alert("Sale saved successfully!");
             onClose();
@@ -251,7 +249,6 @@ export default function SaleProductModal({ isOpen, onClose }) {
                                 menuPortalTarget={document.querySelector("body")}
                                 onChange={(selectedOption) => {
                                     const product = products.find((p) => p.id === selectedOption?.value);
-                                    console.log(product);
                                     product !== undefined ? setSalePrice(product.unitSalePrice) : setSalePrice(0);
                                     setSelectedProduct(product);
                                 }}

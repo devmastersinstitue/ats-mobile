@@ -5,7 +5,7 @@ import com.example.demo.model.ReturnProductModel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = "http://localhost:3000")
+//@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/return")
 @RequiredArgsConstructor

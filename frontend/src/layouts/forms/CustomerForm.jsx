@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import api from "../../api";
 
 export default function CustomerForm({ isOpen, onClose }) {
     const [customerModel, setCustomerModel] = useState({
@@ -17,7 +18,7 @@ export default function CustomerForm({ isOpen, onClose }) {
     useEffect(() => {
         const fetchRoots = async () => {
             try {
-                const response = await fetch("http://localhost:8080/root");
+                const response = await fetch("/root");
                 if (!response.ok) {
                     throw new Error("Failed to fetch roots");
                 }
@@ -38,11 +39,7 @@ export default function CustomerForm({ isOpen, onClose }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch("http://localhost:8080/customer", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(customerModel),
-            });
+            const response = await api.post("/customer", customerModel);
             const message = await response.text();
             
             if (!response.ok) {
