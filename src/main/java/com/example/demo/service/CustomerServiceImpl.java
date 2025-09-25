@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.domain.Customer;
+import com.example.demo.domain.ReturnProduct;
 import com.example.demo.domain.Sale;
 import com.example.demo.repository.CustomerRepository;
 import lombok.RequiredArgsConstructor;
@@ -51,5 +52,16 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public Optional<Customer> findByCnic(String cnic) {
         return customerRepository.findByCnic(cnic);
+    }
+
+    @Override
+    public void updateCustomerInfoWhenReturnProduct(ReturnProduct returnProduct) {
+        Optional<Customer> customerOptional = customerRepository.findByCnic(returnProduct.getCustomer().getCnic());
+        if(customerOptional.isPresent()){
+            Customer customer = customerOptional.get();
+            customer.setRemainingAmount(customer.getRemainingAmount()-returnProduct.getTotalReturnAmount());
+            customerRepository.save(customer);
+            transactionService.createReturnTransaction(returnProduct, customer);
+        }
     }
 }

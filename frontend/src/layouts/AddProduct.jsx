@@ -62,18 +62,18 @@ function AddProduct() {
                 )}
 
                 <div className="p-6">
-                    <button
+                {userRole !== "Sales Man" && <button
                         onClick={() => setIsModalOpen(true)}
                         className="px-4 py-2 bg-[#26a69d] text-white rounded hover:bg-[#208888]"
                     >
                         Add Product
-                    </button>
+                    </button>}
                     <input
                         type="text"
                         placeholder="Search by name..."
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
-                        className="px-3 mx-10 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#26a69d]"
+                        className={`${userRole !== "Sales Man" ? "mx-10" : "mx-0"} px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#26a69d]`}
                     />
                 </div>
 

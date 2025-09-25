@@ -154,4 +154,25 @@ public class TransactionServiceImpl implements TransactionService {
         return mongoTemplate.aggregate(aggregation, "transaction", DebitTransaction.class).getMappedResults();
     }
 
+    @Override
+    public void createReturnTransaction(ReturnProduct returnProduct, Customer customer) {
+        Optional<TransactionAudit> transactionAuditOptional = transactionRepository.findByCustomer(customer);
+        if (transactionAuditOptional.isPresent()) {
+            TransactionAudit transactionAudit = transactionAuditOptional.get();
+            Optional<Employee> employeeOptional = employeeRepository.findByFirstNameAndRole(returnProduct.getEmployeeName(), returnProduct.getEmployeeRole());
+            Transaction transaction = Transaction.builder()
+                    .date(returnProduct.getDate())
+                    .type(TransactionType.DEBIT)
+                    .amount(returnProduct.getTotalReturnAmount())
+                    .employee(employeeOptional.orElse(null))
+                    .remainingAmount(transactionAudit.getAmount() - returnProduct.getTotalReturnAmount())
+                    .build();
+            transactionAudit.setAmount(transactionAudit.getAmount() - returnProduct.getTotalReturnAmount());
+            transactionAudit.getTransactions().add(transaction);
+            transactionRepository.save(transactionAudit);
+            customer.setRemainingAmount(transactionAudit.getAmount());
+            customerRepository.save(customer);
+        }
+    }
+
 }

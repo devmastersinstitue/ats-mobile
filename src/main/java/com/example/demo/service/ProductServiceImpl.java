@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.domain.Product;
+import com.example.demo.domain.ReturnProduct;
 import com.example.demo.model.ProductItem;
 import com.example.demo.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
@@ -75,5 +76,21 @@ public class ProductServiceImpl implements ProductService {
         // Save all updated products in one database call
         productRepository.saveAll(products);
 
+    }
+
+    @Override
+    public void updateReturnProductList(ReturnProduct returnProduct) {
+        List<String> productNames = returnProduct.getItems().stream().map(ProductItem::getName).collect(Collectors.toList());
+        List<Product> products = productRepository.findAllByNameIn(productNames);
+
+        Map<String, Product> productMap = products.stream().collect(Collectors.toMap(Product::getName, p -> p));
+
+        for (ProductItem item : returnProduct.getItems()) {
+            Product product = productMap.get(item.getName());
+            if (product != null) {
+                product.setQuantity(product.getQuantity() + item.getQuantity());
+            }
+        }
+        productRepository.saveAll(products);
     }
 }

@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.domain.Customer;
+import com.example.demo.domain.ReturnProduct;
 import com.example.demo.domain.Sale;
 
 import java.util.List;
@@ -14,4 +15,6 @@ public interface CustomerService {
     void updateCustomerInfoAfterSale(Sale sale);
 
     Optional<Customer> findByCnic(String cnic);
+
+    void updateCustomerInfoWhenReturnProduct(ReturnProduct returnProduct);
 }

@@ -16,6 +16,7 @@ import PendingSale from './layouts/PendingSale';
 import Purchase from './layouts/Purchase';
 import Transaction from './layouts/Transaction';
 import DebitTransactionRecord from './layouts/DebitTransactionRecord';
+import ReturnProduct from './layouts/ReturnProduct';
 
 
 export default function App() {
@@ -35,6 +36,7 @@ export default function App() {
         <Route path="/app/expenses" element={<AddExpenses />} />
         <Route path="/app/customer-balance" element={<ShowCustomerRemainingBalance />} />
         <Route path="/app/sale-product" element={<Sale />} />
+        <Route path="/app/return-product" element={<ReturnProduct />} />
         <Route path="/app/pending-sale" element={<PendingSale />} />
         <Route path="/app/purchase-product" element={<Purchase />} />
         <Route path="/app/transaction" element={<Transaction />} />

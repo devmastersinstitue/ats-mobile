@@ -1,9 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.domain.Customer;
-import com.example.demo.domain.Root;
-import com.example.demo.domain.Sale;
-import com.example.demo.domain.TransactionAudit;
+import com.example.demo.domain.*;
 import com.example.demo.model.DebitTransaction;
 import com.example.demo.model.TransactionRequest;
 
@@ -22,4 +19,6 @@ public interface TransactionService {
     void createDebitTransactionWhenSale(Sale sale, Customer customer);
 
     List<DebitTransaction> getDebitTransactions(String employeeCnic, String date, Root rootName);
+
+    void createReturnTransaction(ReturnProduct returnProduct, Customer customer);
 }

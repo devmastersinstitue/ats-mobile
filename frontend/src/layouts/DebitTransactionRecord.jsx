@@ -143,7 +143,7 @@ function DebitTransactionRecord() {
                             </div>
                         </fieldset>
                     </div>
-                    <div className="gap-y-10 auto-rows-min md:gap-x-6">
+                    {/* <div className="gap-y-10 auto-rows-min md:gap-x-6">
                         <fieldset>
                             <div className="pt-6 space-y-6 sm:pt-4 sm:space-y-4">
                                 <Select
@@ -171,7 +171,7 @@ function DebitTransactionRecord() {
                                 />
                             </div>
                         </fieldset>
-                    </div>
+                    </div> */}
                     <button
                         className="bg-[#26a69d] hover:bg-[#2bbbad] text-white font-semibold py-2 px-4 rounded-md mt-4 h-[38px]"
                         onClick={handleSearch}

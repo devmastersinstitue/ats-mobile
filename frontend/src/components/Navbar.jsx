@@ -69,7 +69,7 @@ export default function Navbar({ sidebarOpen, setSidebarOpen }) {
                             </Link>
                             
                             {/* Users Dropdown */}
-                            {userRole !== "Sales Man" && <div className="relative">
+                            <div className="relative">
                                 <button
                                     className="flex items-center justify-between w-full py-2 px-6 hover:bg-[#208888] font-bold"
                                     onClick={() => setOpenSubMenu(openSubMenu === "users" ? "" : "users")}
@@ -79,24 +79,24 @@ export default function Navbar({ sidebarOpen, setSidebarOpen }) {
                                 </button>
                                 {openSubMenu === "users" && sidebarOpen && (
                                     <div className="pl-6">
-                                        <Link className="block py-2 px-6 hover:bg-[#208888]" to="/app/add-employee">
+                                        {userRole !== "Sales Man" && <Link className="block py-2 px-6 hover:bg-[#208888]" to="/app/add-employee">
                                             Employee Record
-                                        </Link>
-                                        <Link className="block py-2 px-6 hover:bg-[#208888]" to="/app/add-root">
+                                        </Link>}
+                                        {userRole !== "Sales Man" && <Link className="block py-2 px-6 hover:bg-[#208888]" to="/app/add-root">
                                             Root Record
-                                        </Link>
+                                        </Link>}
                                         <Link className="block py-2 px-6 hover:bg-[#208888]" to="/app/add-customer">
                                             Customer Record
                                         </Link>
-                                        <Link className="block py-2 px-6 hover:bg-[#208888]" to="/app/add-supplier">
+                                        {userRole === "Super Admin" && <Link className="block py-2 px-6 hover:bg-[#208888]" to="/app/add-supplier">
                                             Supplier Record
-                                        </Link>
+                                        </Link>}
                                     </div>
                                 )}
-                            </div>}
+                            </div>
 
                             {/* Products Dropdown */}
-                            {userRole !== "Sales Man" && <div className="relative">
+                            <div className="relative">
                                 <button
                                     className="flex items-center justify-between w-full py-2 px-6 hover:bg-[#208888] font-bold"
                                     onClick={() => setOpenSubMenu(openSubMenu === "products" ? "" : "products")}
@@ -109,12 +109,12 @@ export default function Navbar({ sidebarOpen, setSidebarOpen }) {
                                         <Link className="block py-2 px-6 hover:bg-[#208888]" to="/app/add-product">
                                             Product Record
                                         </Link>
-                                        <Link className="block py-2 px-6 hover:bg-[#208888]" to="/app/update-price">
+                                        {userRole === "Super Admin" && <Link className="block py-2 px-6 hover:bg-[#208888]" to="/app/update-price">
                                             Update Product Record
-                                        </Link>
+                                        </Link>}
                                     </div>
                                 )}
-                            </div>}
+                            </div>
 
                             {/* Transactions Dropdown */}
                             <div className="relative">
@@ -133,24 +133,25 @@ export default function Navbar({ sidebarOpen, setSidebarOpen }) {
                                         <Link className="block py-2 px-6 hover:bg-[#208888]" to="/app/transaction">
                                             Transaction Record
                                         </Link>
-                                        {userRole !== "Sales Man" && (<><Link className="block py-2 px-6 hover:bg-[#208888]" to="/app/purchase-product">
+                                        {userRole === "Super Admin" && <Link className="block py-2 px-6 hover:bg-[#208888]" to="/app/purchase-product">
                                             Purchase Product
-                                        </Link>
+                                        </Link>}
                                         <Link className="block py-2 px-6 hover:bg-[#208888]" to="/app/return-product">
                                             Return Product
                                         </Link>
-                                        <Link className="block py-2 px-6 hover:bg-[#208888]" to="/app/exchange-product">
+                                        {/* <Link className="block py-2 px-6 hover:bg-[#208888]" to="/app/exchange-product">
                                             Exchange Product
                                         </Link>
                                         <Link className="block py-2 px-6 hover:bg-[#208888]" to="/app/exchange-waiting-product">
                                             Exchange Waiting Product
-                                        </Link></>)}
+                                        </Link> */
+                                        }
                                     </div>
                                 )}
                             </div>
 
                             {/* Finance Dropdown */}
-                            {userRole !== "Sales Man" && <div className="relative">
+                            <div className="relative">
                                 <button
                                     className="flex items-center justify-between w-full py-2 px-6 hover:bg-[#208888] font-bold"
                                     onClick={() => setOpenSubMenu(openSubMenu === "finance" ? "" : "finance")}
@@ -160,21 +161,21 @@ export default function Navbar({ sidebarOpen, setSidebarOpen }) {
                                 </button>
                                 {openSubMenu === "finance" && sidebarOpen && (
                                     <div className="pl-6">
-                                        <Link className="block py-2 px-6 hover:bg-[#208888]" to="/app/expenses">
+                                        {userRole !== "Sales Man" && <Link className="block py-2 px-6 hover:bg-[#208888]" to="/app/expenses">
                                             Expenses Record
-                                        </Link>
+                                        </Link>}
                                         <Link className="block py-2 px-6 hover:bg-[#208888]" to="/app/debit-transaction-record">
                                             Debit Transaction Record
                                         </Link>
-                                        <Link className="block py-2 px-6 hover:bg-[#208888]" to="/app/pending-sale">
+                                        {userRole !== "Sales Man" && <Link className="block py-2 px-6 hover:bg-[#208888]" to="/app/pending-sale">
                                             Verify Salesman Bill
-                                        </Link>
+                                        </Link>}
                                         <Link className="block py-2 px-6 hover:bg-[#208888]" to="/app/customer-balance">
                                             Customer Balance Record
                                         </Link>
                                     </div>
                                 )}
-                            </div>}
+                            </div>
                         </nav>
                     </div>
 

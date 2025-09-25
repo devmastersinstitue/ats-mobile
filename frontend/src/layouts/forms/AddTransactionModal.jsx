@@ -115,7 +115,7 @@ export default function AddTransactionModal({ isOpen, onClose, onSuccess }) {
 
                 <input
                     type="number"
-                    className="w-full p-2 border rounded mb-4"
+                    className="w-full p-2 border rounded my-4"
                     placeholder="Enter Amount"
                     value={amount}
                     onChange={(e) => setAmount(+e.target.value)}
