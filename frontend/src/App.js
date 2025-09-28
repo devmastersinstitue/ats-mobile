@@ -1,26 +1,26 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; // 👈 required CSS
 
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Login from './layouts/Login';
-import Dashboard from './layouts/Dashboard';
-import AddEmployee from './layouts/AddEmployee';
-import AddCustomer from './layouts/AddCustomer';
-import AddProvider from './layouts/AddSupplier';
-import AddRoot from './layouts/AddRoot';
-import AddSupplier from './layouts/AddSupplier';
-import AddProduct from './layouts/AddProduct';
-import UpdateProductPurchasePrice from './layouts/UpdateProductPurchasePrice';
-import AddExpenses from './layouts/AddExpenses';
-import ShowCustomerRemainingBalance from './layouts/ShowCustomerRemainingBalance';
-import Sale from './layouts/Sale';
-import PendingSale from './layouts/PendingSale';
-import Purchase from './layouts/Purchase';
-import Transaction from './layouts/Transaction';
-import DebitTransactionRecord from './layouts/DebitTransactionRecord';
-import ReturnProduct from './layouts/ReturnProduct';
-
+import Login from "./layouts/Login";
+import Dashboard from "./layouts/Dashboard";
+import AddEmployee from "./layouts/AddEmployee";
+import AddCustomer from "./layouts/AddCustomer";
+import AddProvider from "./layouts/AddSupplier";
+import AddRoot from "./layouts/AddRoot";
+import AddSupplier from "./layouts/AddSupplier";
+import AddProduct from "./layouts/AddProduct";
+import UpdateProductPurchasePrice from "./layouts/UpdateProductPurchasePrice";
+import AddExpenses from "./layouts/AddExpenses";
+import ShowCustomerRemainingBalance from "./layouts/ShowCustomerRemainingBalance";
+import Sale from "./layouts/Sale";
+import PendingSale from "./layouts/PendingSale";
+import Purchase from "./layouts/Purchase";
+import Transaction from "./layouts/Transaction";
+import DebitTransactionRecord from "./layouts/DebitTransactionRecord";
+import ReturnProduct from "./layouts/ReturnProduct";
 
 export default function App() {
-  
   return (
     <Router>
       <Routes>
@@ -42,6 +42,20 @@ export default function App() {
         <Route path="/app/transaction" element={<Transaction />} />
         <Route path="/app/debit-transaction-record" element={<DebitTransactionRecord />} />
       </Routes>
+
+      {/* ✅ Global Toast Container (always available) */}
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored" // or "light" / "dark"
+      />
     </Router>
   );
 }
