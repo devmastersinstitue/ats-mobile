@@ -44,17 +44,8 @@ export default function App() {
       </Routes>
 
       {/* ✅ Global Toast Container (always available) */}
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="colored" // or "light" / "dark"
+      <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} newestOnTop={false}
+        closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="colored" // or "light" / "dark"
       />
     </Router>
   );
