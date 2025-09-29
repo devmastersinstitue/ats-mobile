@@ -4,6 +4,7 @@ package com.example.demo.controller;
 import com.example.demo.handler.CustomerHandler;
 import com.example.demo.model.CustomerModel;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 import java.io.IOException;
@@ -44,8 +45,9 @@ public class CustomerController {
         return customerHandler.getAllCustomer();
     }
 
-    @GetMapping("/stream")
-    public SseEmitter streamCustomers() {
+    // SSE endpoint
+    @GetMapping(value = "/stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public SseEmitter streamExpenses() {
         SseEmitter emitter = new SseEmitter(Long.MAX_VALUE);
         emitters.add(emitter);
 
