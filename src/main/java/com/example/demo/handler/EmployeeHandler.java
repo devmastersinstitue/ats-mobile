@@ -15,9 +15,10 @@ public class EmployeeHandler {
     private final EmployeeTransfer employeeTransfer;
     private final EmployeeService employeeService;
 
-    public void createEmployee(EmployeeModel employeeModel) {
+    public EmployeeModel createEmployee(EmployeeModel employeeModel) {
         Employee employee = employeeTransfer.toEntity(employeeModel);
         employeeService.createEmployee(employee);
+        return employeeModel;
     }
 
     public List<EmployeeModel> getAllEmployee() {

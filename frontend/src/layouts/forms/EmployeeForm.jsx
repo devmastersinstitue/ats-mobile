@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import api from "../../api";
+import { toast } from "react-toastify";
 
 export default function EmployeeForm({ isOpen, onClose }) {
     const [employeeModel, setEmployeeModel] = useState({
@@ -20,14 +21,8 @@ export default function EmployeeForm({ isOpen, onClose }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await api.post("/employee", employeeModel);
-    
-            if (!response.ok) {
-                throw new Error("Failed to create employee");
-            }
-    
-            const newEmployee = await response.json();
-            alert("Employee added successfully!");
+            await api.post("/employee", employeeModel);
+
             setEmployeeModel({
                 firstName: "",
                 lastName: "",
@@ -38,10 +33,10 @@ export default function EmployeeForm({ isOpen, onClose }) {
                 role: "Sales Man",
                 address: ""
             });
-            onClose(); // Close modal after successful submission
+            onClose();
         } catch (error) {
-            console.error("Error:", error);
-            alert("Something went wrong");
+            console.error("Error adding employee:", error);
+            toast.error("Failed to add employee", { position: "top-right" });
         }
     };
 

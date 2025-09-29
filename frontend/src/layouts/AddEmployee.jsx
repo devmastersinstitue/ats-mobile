@@ -2,36 +2,45 @@ import React, { useState, useEffect } from "react";
 import api from "../api";
 import Navbar from "../components/Navbar";
 import EmployeeForm from "./forms/EmployeeForm";
+import { toast } from "react-toastify";
 
 function AddEmployee() {
-    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+    const [isMobile] = useState(window.innerWidth < 768);
     const [sidebarOpen, setSidebarOpen] = useState(true);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [employees, setEmployees] = useState([]); // Employee list
 
-    // 🚀 Fetch employee list from backend
-    useEffect(() => {
-        fetchEmployees();
-    }, [setIsModalOpen, isModalOpen]);
-
+    // Load initial data
     const fetchEmployees = async () => {
         try {
             const response = await api.get("/employee");
-            setEmployees(response.data); // Update state with API data
+            setEmployees(response.data);
         } catch (error) {
             console.error("Error fetching employees:", error);
+            toast.error("Failed to load employees", { position: "top-right" });
         }
     };
 
-    // 🚀 Handle adding new employee
-    const handleAddEmployee = async (newEmployee) => {
-        try {
-            await api.post("/employee", newEmployee);
-            fetchEmployees(); // Refresh list after adding
-        } catch (error) {
-            console.error("Error adding employee:", error);
-        }
-    };
+    // Real-time subscription with SSE
+    useEffect(() => {
+        fetchEmployees(); // first load
+
+        const eventSource = new EventSource(`${process.env.REACT_APP_API_URL}/employee/stream`);
+        eventSource.onmessage = (event) => {
+            const newEmployee = JSON.parse(event.data);
+            setEmployees((prev) => [...prev, newEmployee]); // add new expense instantly
+            toast.info(`New employee added: ${newEmployee.firstName} ${newEmployee.lastName}`, {position: "top-right",});
+        };
+
+        eventSource.onerror = (err) => {
+            console.error("SSE connection error:", err);
+            eventSource.close();
+        };
+
+        return () => {
+            eventSource.close();
+        };
+    }, []);
 
     return (
         <div>
@@ -45,17 +54,21 @@ function AddEmployee() {
                 }`}
             >
                 {/* Header */}
-                {!isMobile && <div className="flex justify-center text-center">
-                    <h1 className="text-2xl font-bold h-14 bg-[#26a69d] text-white py-2 md:rounded-md w-full">
-                        Employee Management
-                    </h1>
-                </div>}
+                {!isMobile && (
+                    <div className="flex justify-center text-center">
+                        <h1 className="text-2xl font-bold h-14 bg-[#26a69d] text-white py-2 md:rounded-md w-full">
+                            Employee Management
+                        </h1>
+                    </div>
+                )}
 
-                {isMobile && <div className="flex">
-                    <h1 className="text-xl pl-16 font-bold h-14 bg-[#26a69d] text-white py-2 md:rounded-md w-full">
-                        Employee Management
-                    </h1>
-                </div>}
+                {isMobile && (
+                    <div className="flex">
+                        <h1 className="text-xl pl-16 font-bold h-14 bg-[#26a69d] text-white py-2 md:rounded-md w-full">
+                            Employee Management
+                        </h1>
+                    </div>
+                )}
 
                 {/* Add Employee Button */}
                 <div className="p-6 flex justify-start">
@@ -83,7 +96,6 @@ function AddEmployee() {
                                     <th className="py-2 px-4 border whitespace-nowrap">Password</th>
                                     <th className="py-2 px-4 border whitespace-nowrap">Role</th>
                                     <th className="py-2 px-4 border whitespace-nowrap">Address</th>
-                                    
                                 </tr>
                             </thead>
                             <tbody>
@@ -106,7 +118,7 @@ function AddEmployee() {
                 </div>
 
                 {/* Employee Form Modal */}
-                <EmployeeForm isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} onAdd={handleAddEmployee} />
+                <EmployeeForm isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
             </div>
         </div>
     );
