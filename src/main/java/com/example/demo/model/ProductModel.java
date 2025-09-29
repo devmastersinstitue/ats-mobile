@@ -20,4 +20,7 @@ public class ProductModel {
     private boolean isActive;
     private int lowStockLimit;
     private String companyName;
+
+    // 🔹 include barcode in API response
+    private String barcodeBase64;
 }
