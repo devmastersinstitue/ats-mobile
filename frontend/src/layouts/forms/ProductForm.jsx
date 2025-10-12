@@ -12,6 +12,7 @@ export default function ProductForm({ isOpen, onClose, onSave, productToEdit }) 
         companyName: ""
     });
     const [suppliers, setSuppliers] = useState([]);
+    const userRole = localStorage.getItem("role");
 
     useEffect(() => {
         if (productToEdit) {
@@ -30,20 +31,16 @@ export default function ProductForm({ isOpen, onClose, onSave, productToEdit }) 
     }, [productToEdit]);
 
     useEffect(() => {
-        const fetchSuppliers = async () => {
-            try {
-                const response = await api.get("/supplier");
-                if (!response.ok) {
-                    throw new Error("Failed to fetch suppliers");
-                }
-                const data = await response.json();
-                setSuppliers(data);
-            } catch (error) {
-                console.error("Error fetching suppliers:", error);
-            }
-        };
-        fetchSuppliers();
-    }, []);
+    const fetchSuppliers = async () => {
+      try {
+        const response = await api.get("/supplier");
+        setSuppliers(response.data);
+      } catch (error) {
+        console.error("Error fetching suppliers:", error);
+      }
+    };
+    fetchSuppliers();
+  }, []);
 
     const handleChange = (e) => {
         setProductModel({ ...productModel, [e.target.name]: e.target.value });
@@ -85,7 +82,7 @@ export default function ProductForm({ isOpen, onClose, onSave, productToEdit }) 
                     <input type="text" name="name" value={productModel.name} onChange={handleChange} placeholder="Product Name" className="w-full p-2 border rounded" required />
                     <input type="text" name="category" value={productModel.category} onChange={handleChange} placeholder="Category" className="w-full p-2 border rounded" required />
                     <input type="number" name="unitSalePrice" value={productModel.unitSalePrice} onChange={handleChange} placeholder="Unit Sale Price" className="w-full p-2 border rounded" required />
-                    {productToEdit && <input type="number" name="unitPurchasePrice" value={productModel.unitPurchasePrice} onChange={handleChange} placeholder="Unit Purchase Price" className="w-full p-2 border rounded" required />}
+                    {productToEdit || userRole === "Super Admin" && <input type="number" name="unitPurchasePrice" value={productModel.unitPurchasePrice} onChange={handleChange} placeholder="Unit Purchase Price" className="w-full p-2 border rounded" required />}
                     <input type="number" name="lowStockLimit" value={productModel.lowStockLimit} onChange={handleChange} placeholder="Low Stock Limit" className="w-full p-2 border rounded" required />
                     <select name="companyName" value={productModel.companyName} onChange={handleChange} className="w-full p-2 border rounded" required>
                         <option value="">Select Supplier</option>

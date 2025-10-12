@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import api from "../api";
 import Navbar from "../components/Navbar";
 import ProductForm from "./forms/ProductForm";
+import Barcode from "react-barcode"; // ✅ import
 
 function AddProduct() {
     const [isMobile] = useState(window.innerWidth < 768);
@@ -9,7 +10,7 @@ function AddProduct() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [products, setProducts] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
-    const userRole = localStorage.getItem("role"); // Get user role
+    const userRole = localStorage.getItem("role");
 
     useEffect(() => {
         fetchProducts();
@@ -45,15 +46,13 @@ function AddProduct() {
                     sidebarOpen ? "md:ml-64" : "md:ml-16 ml-0"
                 }`}
             >
-                {!isMobile && (
+                {!isMobile ? (
                     <div className="flex justify-center text-center">
                         <h1 className="text-2xl font-bold h-14 bg-[#26a69d] text-white py-2 md:rounded-md w-full">
                             Product Management
                         </h1>
                     </div>
-                )}
-
-                {isMobile && (
+                ) : (
                     <div className="flex">
                         <h1 className="text-xl pl-16 font-bold h-14 bg-[#26a69d] text-white py-2 md:rounded-md w-full">
                             Product Management
@@ -61,19 +60,21 @@ function AddProduct() {
                     </div>
                 )}
 
-                <div className="p-6">
-                {userRole !== "Sales Man" && <button
-                        onClick={() => setIsModalOpen(true)}
-                        className="px-4 py-2 bg-[#26a69d] text-white rounded hover:bg-[#208888]"
-                    >
-                        Add Product
-                    </button>}
+                <div className="p-6 flex items-center">
+                    {userRole !== "Sales Man" && (
+                        <button
+                            onClick={() => setIsModalOpen(true)}
+                            className="px-4 py-2 bg-[#26a69d] text-white rounded hover:bg-[#208888]"
+                        >
+                            Add Product
+                        </button>
+                    )}
                     <input
                         type="text"
                         placeholder="Search by name..."
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
-                        className={`${userRole !== "Sales Man" ? "mx-10" : "mx-0"} px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#26a69d]`}
+                        className={`ml-4 px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#26a69d]`}
                     />
                 </div>
 
@@ -92,6 +93,7 @@ function AddProduct() {
                                     )}
                                     <th className="py-2 px-4 border">Low Stock Limit</th>
                                     <th className="py-2 px-4 border">Provider Name</th>
+                                    <th className="py-2 px-4 border">Barcode</th> {/* ✅ New column */}
                                 </tr>
                             </thead>
                             <tbody>
@@ -108,11 +110,22 @@ function AddProduct() {
                                             )}
                                             <td className="py-2 px-4 border">{product.lowStockLimit}</td>
                                             <td className="py-2 px-4 border">{product.companyName}</td>
+                                            <td className="py-2 px-4 border">
+                                                {product.barcodeBase64 && (
+                                                    <Barcode 
+                                                        value={product.barcodeBase64}
+                                                        height={40}
+                                                        width={0.1}
+                                                        displayValue={false} // hide number text under barcode
+                                                    />
+                                                )}
+                                                {product.itemCode}
+                                            </td>
                                         </tr>
                                     ))
                                 ) : (
                                     <tr>
-                                        <td colSpan="8" className="py-2 px-4 border text-center">
+                                        <td colSpan="9" className="py-2 px-4 border text-center">
                                             No matching products found.
                                         </td>
                                     </tr>
@@ -121,7 +134,11 @@ function AddProduct() {
                         </table>
                     </div>
                 </div>
-                <ProductForm isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} onAdd={handleAddProduct} />
+                <ProductForm
+                    isOpen={isModalOpen}
+                    onClose={() => setIsModalOpen(false)}
+                    onAdd={handleAddProduct}
+                />
             </div>
         </div>
     );
