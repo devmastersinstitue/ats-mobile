@@ -22,18 +22,18 @@ public class ExpenseController {
 
     @PostMapping
     public ExpenseModel createExpense(@RequestBody ExpenseModel expenseModel) {
-        ExpenseModel saved = expenseHandler.createExpense(expenseModel);
+        ExpenseModel expenseObject = expenseHandler.createExpense(expenseModel);
 
         // Notify all SSE subscribers about the new expense
         for (SseEmitter emitter : emitters) {
             try {
-                emitter.send(saved, MediaType.APPLICATION_JSON);
+                emitter.send(expenseObject, MediaType.APPLICATION_JSON);
             } catch (IOException e) {
                 emitters.remove(emitter); // remove dead connections
             }
         }
 
-        return saved;
+        return expenseObject;
     }
 
     @GetMapping
