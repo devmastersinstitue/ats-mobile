@@ -3,6 +3,7 @@ import api from "../api";
 import Navbar from "../components/Navbar";
 import ProductForm from "./forms/ProductForm";
 import Barcode from "react-barcode"; // ✅ import
+import { toast } from "react-toastify";
 
 function AddProduct() {
     const [isMobile] = useState(window.innerWidth < 768);
@@ -12,31 +13,67 @@ function AddProduct() {
     const [searchTerm, setSearchTerm] = useState("");
     const userRole = localStorage.getItem("role");
 
-    useEffect(() => {
-        fetchProducts();
-    }, [isModalOpen]);
+    // useEffect(() => {
+    //     fetchProducts();
+    // }, [isModalOpen]);
 
+    // const fetchProducts = async () => {
+    //     try {
+    //         const response = await api.get("/product");
+    //         setProducts(response.data);
+    //     } catch (error) {
+    //         console.error("Error fetching products:", error);
+    //     }
+    // };
+
+    // const handleAddProduct = async (newProduct) => {
+    //     try {
+    //         await api.post("/product", newProduct);
+    //         fetchProducts();
+    //     } catch (error) {
+    //         console.error("Error adding product:", error);
+    //     }
+    // };
+
+    // const filteredProducts = products.filter((product) =>
+    //     product.name.toLowerCase().includes(searchTerm.toLowerCase())
+    // );
+
+    // Load initial data
     const fetchProducts = async () => {
         try {
             const response = await api.get("/product");
             setProducts(response.data);
         } catch (error) {
             console.error("Error fetching products:", error);
+            toast.error("Failed to load products", { position: "top-right" });
         }
     };
 
-    const handleAddProduct = async (newProduct) => {
-        try {
-            await api.post("/product", newProduct);
-            fetchProducts();
-        } catch (error) {
-            console.error("Error adding product:", error);
-        }
-    };
+    // Real-time subscription with SSE
+    useEffect(() => {
+        fetchProducts(); // first load
 
-    const filteredProducts = products.filter((product) =>
-        product.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+        const eventSource = new EventSource(`${process.env.REACT_APP_API_URL}/product/stream`);
+
+        eventSource.onmessage = (event) => {
+            const newProduct = JSON.parse(event.data);
+            setProducts((prev) => [...prev, newProduct]); // add new product instantly
+            toast.info(`New product added: ${newProduct.name} - ${newProduct.unitSalePrice}`, {
+                position: "top-right",
+            });
+        };
+
+        eventSource.onerror = (err) => {
+            console.error("SSE connection error:", err);
+            eventSource.close();
+        };
+
+        return () => {
+            eventSource.close();
+        };
+    }, []);
+
 
     return (
         <div>
@@ -97,8 +134,8 @@ function AddProduct() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {filteredProducts.length > 0 ? (
-                                    filteredProducts.map((product, index) => (
+                                {products.length > 0 ? (
+                                    products.map((product, index) => (
                                         <tr key={product.id} className="text-center border hover:bg-gray-100">
                                             <td className="py-2 px-4 border">{index + 1}</td>
                                             <td className="py-2 px-4 border">{product.itemCode}</td>
@@ -137,7 +174,6 @@ function AddProduct() {
                 <ProductForm
                     isOpen={isModalOpen}
                     onClose={() => setIsModalOpen(false)}
-                    onAdd={handleAddProduct}
                 />
             </div>
         </div>

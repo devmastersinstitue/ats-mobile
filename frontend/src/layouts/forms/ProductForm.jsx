@@ -1,75 +1,85 @@
 import React, { useState, useEffect } from "react";
 import api from "../../api";
+import { toast } from "react-toastify";
 
 export default function ProductForm({ isOpen, onClose, onSave, productToEdit }) {
     const [productModel, setProductModel] = useState({
+    itemCode: "",
+    name: "",
+    category: "",
+    unitSalePrice: "",
+    unitPurchasePrice: "",
+    lowStockLimit: "",
+    companyName: "",
+  });
+
+  const [suppliers, setSuppliers] = useState([]);
+  const userRole = localStorage.getItem("role");
+
+  // Load existing product for edit
+  useEffect(() => {
+    if (productToEdit) {
+      setProductModel(productToEdit);
+    } else {
+      setProductModel({
         itemCode: "",
         name: "",
         category: "",
         unitSalePrice: "",
         unitPurchasePrice: "",
         lowStockLimit: "",
-        companyName: ""
-    });
-    const [suppliers, setSuppliers] = useState([]);
-    const userRole = localStorage.getItem("role");
+        companyName: "",
+      });
+    }
+  }, [productToEdit]);
 
-    useEffect(() => {
-        if (productToEdit) {
-            setProductModel(productToEdit);
-        } else {
-            setProductModel({
-                itemCode: "",
-                name: "",
-                category: "",
-                unitSalePrice: "",
-                unitPurchasePrice: "",
-                lowStockLimit: "",
-                companyName: ""
-            });
-        }
-    }, [productToEdit]);
-
-    useEffect(() => {
+  // Load suppliers for dropdown
+  useEffect(() => {
     const fetchSuppliers = async () => {
       try {
         const response = await api.get("/supplier");
         setSuppliers(response.data);
       } catch (error) {
         console.error("Error fetching suppliers:", error);
+        toast.error("Failed to load suppliers", { position: "top-right" });
       }
     };
     fetchSuppliers();
   }, []);
 
-    const handleChange = (e) => {
-        setProductModel({ ...productModel, [e.target.name]: e.target.value });
-    };
+  const handleChange = (e) => {
+    setProductModel({ ...productModel, [e.target.name]: e.target.value });
+  };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        const response = null;
-        try {
-            if (productToEdit) {
-               response = await api.put("/product", productModel);
-            } else {
-                response = await api.post("/product", productModel);
-            }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      if (productToEdit) {
+        await api.put("/product", productModel);
+        toast.success("Product updated successfully!", { position: "top-right" });
+      } else {
+        await api.post("/product", productModel);
+        toast.success("Product added successfully!", { position: "top-right" });
+      }
 
-            if (!response.ok) {
-                throw new Error(productToEdit ? "Failed to update product" : "Failed to add product");
-            }
+      setProductModel({
+        itemCode: "",
+        name: "",
+        category: "",
+        unitSalePrice: "",
+        unitPurchasePrice: "",
+        lowStockLimit: "",
+        companyName: "",
+      });
 
-            alert(productToEdit ? "Product updated successfully!" : "Product added successfully!");
-            // onSave(); // Refresh product list
-            onClose();
-        } catch (error) {
-            console.error("Error:", error);
-            alert("Something went wrong");
-        }
-    };
+      onClose(); // Close modal after success
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error("Something went wrong", { position: "top-right" });
+    }
+  };
 
-    if (!isOpen) return null;
+  if (!isOpen) return null;
 
     return (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
