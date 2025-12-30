@@ -14,9 +14,8 @@ public class PurchaseHandler {
     private final PurchaseTransformer purchaseTransformer;
     private final PurchaseService purchaseService;
 
-    public String savePurchase(PurchaseRequestModel purchaseRequestModel) {
+    public void savePurchase(PurchaseRequestModel purchaseRequestModel) {
         purchaseService.savePurchase(purchaseTransformer.toEntity(purchaseRequestModel));
-        return "Purchase saved successfully!";
     }
 
     public List<PurchaseRequestModel> getAllPurchase() {
