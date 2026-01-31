@@ -2,7 +2,7 @@ import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import api from "../api";
 import Logo from "../components/Logo.jsx";
 import Button from "../components/Button.jsx";
 import Footer from "./Footer.jsx";
@@ -16,8 +16,8 @@ export default function Login() {
         password: Yup.string().max(255).required("Password is required"),
     });
     const onSubmit = (value) => {
-        axios
-            .post("api/auth/signin", {
+        api
+            .post("/api/auth/signin", {
                 email: value.email,
                 password: value.password,
             })
