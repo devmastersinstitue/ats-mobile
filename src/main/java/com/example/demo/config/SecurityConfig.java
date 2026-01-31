@@ -22,8 +22,7 @@ public class SecurityConfig {
             .cors(cors -> cors.configurationSource(corsConfigurationSource()))
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/auth/**", "/api/**").permitAll()
-                .anyRequest().authenticated()
+                .anyRequest().permitAll()
             )
             .formLogin(form -> form.disable())
             .httpBasic(basic -> basic.disable());
@@ -36,13 +35,9 @@ public class SecurityConfig {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(Arrays.asList(
             "http://localhost:3000",
+            "http://127.0.0.1:3000",
             "http://192.168.100.7:3000",
-            "http://192.168.100.48:3000",
-            "http://10.81.201.246:3000",
-            "http://172.20.10.3:3000",
-            "http://10.86.58.246:3000",
-            "http://192.168.100.64:3000",
-            "http://127.0.0.1:3000"
+            "http://192.168.100.79:3000"
         ));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("*"));

@@ -27,9 +27,7 @@ function ReturnProduct() {
 
     const fetchReturns = async () => {
         try {
-            const response = await api.get("/return", {
-                params: { isApproval: true, approvedStatus: "APPROVED" },
-            });
+            const response = await api.get("/return");
             setReturns(response.data);
             setFilteredReturns(response.data);
         } catch (error) {

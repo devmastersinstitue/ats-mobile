@@ -9,6 +9,8 @@ import com.example.demo.service.ReturnProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 @RequiredArgsConstructor
 public class ReturnProductHandler {
@@ -24,5 +26,10 @@ public class ReturnProductHandler {
         customerService.updateCustomerInfoWhenReturnProduct(returnProduct);
         productService.updateReturnProductList(returnProduct);
         return "success";
+    }
+
+    public List<ReturnProductModel> getAllReturnProducts() {
+        List<ReturnProduct> returnProducts = returnProductService.getAllReturnProducts();
+        return returnProductTransformer.toModelList(returnProducts);
     }
 }

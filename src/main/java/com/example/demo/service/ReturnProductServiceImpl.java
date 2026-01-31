@@ -5,6 +5,8 @@ import com.example.demo.repository.ReturnProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class ReturnProductServiceImpl implements ReturnProductService {
@@ -13,5 +15,10 @@ public class ReturnProductServiceImpl implements ReturnProductService {
     @Override
     public void saveReturnProduct(ReturnProduct returnProduct) {
         returnProductRepository.save(returnProduct);
+    }
+
+    @Override
+    public List<ReturnProduct> getAllReturnProducts() {
+        return returnProductRepository.findAll();
     }
 }

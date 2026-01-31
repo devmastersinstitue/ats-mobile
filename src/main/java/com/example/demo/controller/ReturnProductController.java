@@ -33,6 +33,11 @@ public class ReturnProductController {
         return response;
     }
 
+    @GetMapping
+    public List<ReturnProductModel> getAllReturnProducts() {
+        return returnProductHandler.getAllReturnProducts();
+    }
+
     // SSE endpoint
     @GetMapping(value = "/stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public SseEmitter streamExpenses() {
