@@ -203,7 +203,7 @@ export default function Navbar({ sidebarOpen, setSidebarOpen }) {
 
             {/* Mobile Menu Dropdown */}
             {isMobile && menuOpen && (
-                <div className="bg-[#26a69d] text-white absolute top-16 left-0 w-full">
+                <div className="bg-[#26a69d] text-white absolute top-16 left-0 w-full z-10">
                     <nav className="flex flex-col items-center py-2 text-lg">
                         <Link className="py-2 px-6 hover:bg-[#208888] font-bold w-full text-center" to="/app/dashboard">
                             Home

@@ -1,0 +1,9 @@
+package com.example.demo.model;
+
+public class ProductItemModel {
+    private String name;
+    private int quantity;
+    private double unitSalePrice;
+    private double unitPurchasePrice;
+    
+}

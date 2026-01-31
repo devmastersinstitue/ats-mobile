@@ -5,6 +5,7 @@ import com.example.demo.domain.user.User;
 import com.example.demo.repository.EmployeeRepository;
 import com.example.demo.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,7 +19,16 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public void createEmployee(Employee employee) {
         employeeRepository.save(employee);
-        userRepository.save(User.builder().id(employee.getId()).firstName(employee.getFirstName()).lastName(employee.getLastName()).contact(employee.getContact()).email(employee.getEmail()).cnic(employee.getCnic()).password(employee.getPassword()).role(employee.getRole()).build());
+        userRepository.save(User.builder()
+                .id(employee.getId())
+                .firstName(employee.getFirstName())
+                .lastName(employee.getLastName())
+                .contact(employee.getContact())
+                .email(employee.getEmail())
+                .cnic(employee.getCnic())
+                .password(employee.getPassword())
+                .role(employee.getRole())
+                .build());
     }
 
     @Override
